@@ -1,13 +1,17 @@
-const Input = ({ type }) => {
-    const allowedTypes = ['password', 'text'];
-    
-    if (!allowedTypes.includes(type)) {
-        throw new Error(`Invalid input type: ${type}`);
-    }
+import PropTypes from 'prop-types';
+import TextField from '@mui/material/TextField';
+
+const Input = ({ type, label, size }) => {
 
     return (
-        <input type={type} />
+        <TextField type={type || 'text'} label={label} size={size || 'small'} />
     );
+};
+
+Input.propTypes = {
+    type: PropTypes.oneOf(['password', 'text']).isRequired,
+    label: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'normal']),
 };
 
 export default Input;
