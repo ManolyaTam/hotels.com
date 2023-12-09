@@ -15,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +36,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "7.6.4",
+    "@storybook/addon-interactions": "7.6.4",
+    "@storybook/addon-links": "7.6.4",
+    "@storybook/addon-onboarding": "1.0.9",
+    "@storybook/blocks": "7.6.4",
+    "@storybook/preset-create-react-app": "7.6.4",
+    "@storybook/react": "7.6.4",
+    "@storybook/react-webpack5": "7.6.4",
+    "@storybook/test": "7.6.4",
+    "prop-types": "15.8.1",
+    "storybook": "7.6.4",
+    "webpack": "5.89.0"
   }
 }
