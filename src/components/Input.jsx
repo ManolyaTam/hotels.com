@@ -18,6 +18,8 @@ Input.propTypes = {
     type: PropTypes.oneOf(['password', 'text']).isRequired,
     label: PropTypes.string,
     size: PropTypes.oneOf(['small', 'normal']),
+    fullWidth: PropTypes.bool,
+    margin: PropTypes.oneOf(['none', 'dense', 'normal']),
 };
 
 export default Input;
