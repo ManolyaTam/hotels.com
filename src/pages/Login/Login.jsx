@@ -1,7 +1,9 @@
 import './login.css'
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Input from '../../components/Input'
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+
 const LoginPage = () => {
   return (
     <div className="login-page">
@@ -12,6 +14,7 @@ const LoginPage = () => {
         <form>
           <Input label="Username" fullWidth margin="normal" />
           <Input label="Password" type="password" fullWidth margin="normal" />
+          <Button label='Login' fullWidth />
         </form>
       </Paper>
     </div>
