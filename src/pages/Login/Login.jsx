@@ -8,16 +8,14 @@ import Button from '../../components/Button';
 const LoginPage = () => {
   const formik = useFormik({
     initialValues: {
-      username: 'hello',
-      password: '123'
+      username: '',
+      password: ''
     }
   })
   return (
     <div className="login-page">
-      <Paper style={{ maxWidth: 400, margin: 'auto', padding: '20px', marginBlock: 'auto' }}>
-        <Typography variant="h5" align="center">
-          Login
-        </Typography>
+      <Paper className="login-paper" >
+        <Typography variant="h5" align="center"> Login </Typography>
         <form>
           <Input
             name="username"

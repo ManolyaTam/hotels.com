@@ -5,3 +5,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.login-page .login-paper {
+    max-width: 400px;
+    padding: 20px;
+}
