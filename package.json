@@ -21,7 +21,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "precommit": "bash .git/hooks/pre-commit.sh"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +53,8 @@
     "@storybook/react": "7.6.4",
     "@storybook/react-webpack5": "7.6.4",
     "@storybook/test": "7.6.4",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.1",
     "prop-types": "15.8.1",
     "storybook": "7.6.4",
     "webpack": "5.89.0"
