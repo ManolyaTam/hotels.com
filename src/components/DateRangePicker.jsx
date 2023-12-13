@@ -15,6 +15,7 @@ const DateRangePicker = ({ defaultDate }) => {
         boxSizing: "border-box",
         height: 40,
         fontFamily: "roboto",
+        borderRadius: "4px",
       }}
       defaultValue={[
         defaultDate?.start || today,
