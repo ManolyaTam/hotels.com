@@ -19,7 +19,11 @@ const LoginPage = () => {
     const username = e.target.username.value;
     const password = e.target.password.value;
 
-    login(username, password);
+    login(username, password).then((res) => {
+      if (res === "success") {
+        // update user context and navigate to next page dependint on user type
+      }
+    });
   };
   return (
     <div className="login-page">

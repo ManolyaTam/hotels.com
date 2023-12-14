@@ -1,6 +1,7 @@
 import { BASE_URL } from "./api-config";
 
 const login = async (username, password) => {
+  // i guess this should become a hook
   return await fetch(`${BASE_URL}/api/auth/login`, {
     method: "POST",
     headers: {
@@ -31,11 +32,22 @@ const login = async (username, password) => {
       }
     })
     .then((body) => {
-      console.log(body.userType); // TODO: add to useContext
-      // TODO: get auth token
+      console.log({
+        status: "success",
+        userType: body.userType,
+        userAuth: body.authorization,
+      });
+      return {
+        status: "success",
+        userType: body.userType,
+        userAuth: body.authorization,
+      };
     })
     .catch((error) => {
       console.error(error);
+      return {
+        status: "error",
+      };
     });
 };
 
