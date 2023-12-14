@@ -1,7 +1,6 @@
 import { BASE_URL } from "./api-config";
 
 const login = async (username, password) => {
-  // i guess this should become a hook
   return await fetch(`${BASE_URL}/api/auth/login`, {
     method: "POST",
     headers: {

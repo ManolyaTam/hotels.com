@@ -1,30 +1,13 @@
 import "./login.css";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { useFormik } from "formik";
+
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import login from "../../services/login";
+import useLogin from "../../hooks/useLogin";
 
 const LoginPage = () => {
-  const formik = useFormik({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-  });
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
-
-    login(username, password).then((res) => {
-      if (res === "success") {
-        // update user context and navigate to next page dependint on user type
-      }
-    });
-  };
+  const { formik, onSubmit } = useLogin();
   return (
     <div className="login-page">
       <Paper className="login-paper">
