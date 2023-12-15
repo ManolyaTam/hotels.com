@@ -6,7 +6,25 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import useLogin from "../../hooks/useLogin";
 
+import { UserContext } from "../../components/providers/UserProvider";
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log("fetching", user);
+    if (!user || !user?.userType) {
+      console.log("login please");
+    } else if (user.userType?.toLowerCase() === "user") {
+      navigate("/user/home");
+    } else if (user.userType?.toLowerCase() === "admin") {
+      navigate("/admin/home");
+    }
+  }, [user, navigate]);
+
   const { formik, onSubmit } = useLogin();
   return (
     <div className="login-page">
