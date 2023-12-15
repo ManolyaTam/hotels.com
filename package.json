@@ -3,11 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.20",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "formik": "^2.4.5",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.0"
   },
@@ -15,7 +21,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "precommit": "bash .git/hooks/pre-commit.sh"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +43,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@storybook/addon-essentials": "7.6.4",
+    "@storybook/addon-interactions": "7.6.4",
+    "@storybook/addon-links": "7.6.4",
+    "@storybook/addon-onboarding": "1.0.9",
+    "@storybook/blocks": "7.6.4",
+    "@storybook/preset-create-react-app": "7.6.4",
+    "@storybook/react": "7.6.4",
+    "@storybook/react-webpack5": "7.6.4",
+    "@storybook/test": "7.6.4",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.1",
+    "prop-types": "15.8.1",
+    "storybook": "7.6.4",
+    "webpack": "5.89.0"
   }
 }
