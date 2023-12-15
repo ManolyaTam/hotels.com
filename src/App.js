@@ -1,15 +1,22 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Login/Login";
+import UserProvider from "./components/providers/UserProvider";
+import Dummy from "./pages/dummy";
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route paht="/*" /> {/* TODO: Add Default Path + error page */}
-        </Routes>
+        <UserProvider>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/user/home" element={<Dummy />} />
+            <Route path="/admin/home" element={<Dummy />} />
+          </Routes>
+        </UserProvider>{" "}
+        {/* TODO: Add Default Path + error page */}
       </BrowserRouter>
     </div>
   );
