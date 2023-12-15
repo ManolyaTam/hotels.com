@@ -1,7 +1,8 @@
 import { BASE_URL } from "./api-config";
+import { jwtDecode } from "jwt-decode";
 
 const login = async (username, password) => {
-  return await fetch(`${BASE_URL}/api/auth/login`, {
+  return await fetch(`${BASE_URL}/api/auth/authenticate`, {
     method: "POST",
     headers: {
       "Content-Type": "text/json",
@@ -11,39 +12,28 @@ const login = async (username, password) => {
       password,
     }),
   })
-    .then((response) => {
+    .then(async (response) => {
       if (response.status === 200) {
-        return response.json();
-      } else if (response.status === 400) {
-        alert("Bad Request, password and username are required...");
-        return;
-      } else if (response.status === 401) {
-        alert(
-          "unautherized???, check email password combination and try again?",
-        );
-        return;
+        return response.text();
+      } else if (response.status === 400 || response.status === 401) {
+        return { status: "failed", statusCode: response.status };
       } else {
-        throw new Error(
-          "unexpected response",
-          response.status,
-          response.statusText,
-        );
+        throw new Error("unexpected response", response.status);
       }
     })
-    .then((body) => {
-      console.log({
-        status: "success",
-        userType: body.userType,
-        userAuth: body.authorization,
-      });
+    .then((token) => {
+      console.log("body!", token);
+      const decoded = jwtDecode(token);
+      console.dir(decoded);
       return {
         status: "success",
-        userType: body.userType,
-        userAuth: body.authorization,
+        firstName: decoded.given_name,
+        lastName: decoded.family_name,
+        userType: decoded.userType,
       };
     })
     .catch((error) => {
-      console.error(error);
+      console.error("ERROR", error);
       return {
         status: "error",
       };

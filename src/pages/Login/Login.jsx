@@ -12,8 +12,7 @@ const LoginPage = () => {
     <div className="login-page">
       <Paper className="login-paper">
         <Typography variant="h5" align="center">
-          {" "}
-          Login{" "}
+          Login
         </Typography>
         <form onSubmit={onSubmit}>
           <Input

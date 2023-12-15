@@ -19,10 +19,10 @@ const useLogin = () => {
     login(username, password).then((res) => {
       if (res.status === "success") {
         if (res.userType.toLowerCase() === "user") {
-          navigate("user/home");
-          // TODO: add welcomming message
+          navigate("/user/home");
+          // TODO: add welcomming message, and error messages for 400 and 401
         } else if (res.userType.toLowerCase() === "admin") {
-          navigate("admin/home");
+          navigate("/admin/home");
         }
         // TODO: update user context and navigate to next page dependint on user type
       }
