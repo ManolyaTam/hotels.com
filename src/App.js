@@ -3,12 +3,14 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Login/Login";
 import UserProvider from "./components/providers/UserProvider";
 import Dummy from "./pages/dummy";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
         <UserProvider>
+          <NavBar />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Navigate to="/login" />} />
