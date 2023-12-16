@@ -7,9 +7,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
+import { UserContext } from "./providers/UserProvider";
+import { useContext } from "react";
 
-const Avatar = ({ user }) => {
-  const userInitials = user?.firstName[0] + user?.lastName[0];
+const Avatar = () => {
+  const { user, setUser } = useContext(UserContext);
+  const userInitials = user?.firstName[0] + user?.lastName[0] || null;
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -35,9 +38,13 @@ const Avatar = ({ user }) => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <Typography sx={{ padding: 1 }}>
-          {user.firstName + " " + user.lastName}
+          {user ? user.firstName + " " + user.lastName : null}
         </Typography>
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            setUser(null);
+          }}
+        >
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
