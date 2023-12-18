@@ -17,7 +17,7 @@ function App() {
             <Route path="/user/home" element={<Dummy />} />
             <Route path="/admin/home" element={<Dummy />} />
           </Routes>
-        </UserProvider>{" "}
+        </UserProvider>
         {/* TODO: Add Default Path + error page */}
       </BrowserRouter>
     </div>

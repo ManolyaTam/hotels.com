@@ -14,22 +14,22 @@ const login = async (username, password) => {
   })
     .then(async (response) => {
       if (response.status === 200) {
-        return response.text();
+        return response.json();
       } else if (response.status === 400 || response.status === 401) {
         return { status: "failed", statusCode: response.status };
       } else {
         throw new Error("unexpected response", response.status);
       }
     })
-    .then((token) => {
-      console.log("body!", token);
-      const decoded = jwtDecode(token);
-      console.dir(decoded);
+    .then((body) => {
+      const auth = body.authentication;
+      const decoded = jwtDecode(auth);
       return {
         status: "success",
         firstName: decoded.given_name,
         lastName: decoded.family_name,
         userType: decoded.userType,
+        authentication: body.authentication,
       };
     })
     .catch((error) => {

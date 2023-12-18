@@ -21,11 +21,8 @@ const useLogin = () => {
 
     login(username, password)
       .then((res) => {
-        console.log("user", userContext.user);
         if (res.status === "success") {
-          console.log(res);
           const { status, ...userData } = res;
-          console.log("userData", userData);
           userContext.setUser(userData);
           return res.userType.toLowerCase();
           // TODO: update user context and navigate to next page dependint on user type
