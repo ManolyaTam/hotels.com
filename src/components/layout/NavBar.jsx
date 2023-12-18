@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
-import Avatar from "./Avatar";
-import { UserContext } from "./providers/UserProvider";
+import Avatar from "../Avatar";
+import { UserContext } from "../providers/UserProvider";
 import { useContext } from "react";
 
 const NavBar = () => {
