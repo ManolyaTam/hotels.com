@@ -15,9 +15,7 @@ const LoginPage = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    console.log("fetching", user);
     if (!user || !user?.userType) {
-      console.log("login please");
     } else if (user.userType?.toLowerCase() === "user") {
       navigate("/user/home");
     } else if (user.userType?.toLowerCase() === "admin") {
