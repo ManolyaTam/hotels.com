@@ -1,9 +1,12 @@
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "./Avatar";
+import { UserContext } from "./providers/UserProvider";
+import { useContext } from "react";
 
 const NavBar = () => {
-  return (
+  const { user } = useContext(UserContext);
+  return user !== null ? (
     <Box>
       <AppBar
         sx={{
@@ -21,6 +24,8 @@ const NavBar = () => {
       </AppBar>
       <div style={{ marginTop: "80px" }} />
     </Box>
+  ) : (
+    <></>
   );
 };
 export default NavBar;
