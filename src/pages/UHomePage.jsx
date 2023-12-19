@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import getFeatured from "../services/getFeatured";
-const Dummy = () => {
+
+const UHomePage = () => {
   useEffect(() => {
     getFeatured();
   }, []);
+
   return (
     <div>
-      <h1>Dummy Component</h1>
-      <p>This is a dummy component.</p>
+      <h3>User Home Page</h3>
     </div>
   );
 };
-
-export default Dummy;
+export default UHomePage;
