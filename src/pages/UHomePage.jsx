@@ -1,29 +1,11 @@
-import { useEffect, useState, useContext } from "react";
-import { getFeatured } from "../services/user/featuredDeals";
 import Divider from "@mui/material/Divider";
 import HotelCard from "../components/HotelCard";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { getRecentlyVisited } from "../services/user/recentlyVisited";
-import { UserContext } from "../providers/UserProvider";
+import useFetchUserHome from "../hooks/useFetchUserHome";
 
 const UHomePage = () => {
-  const { user } = useContext(UserContext);
-  const [featured, setFeatured] = useState([]);
-  const [recent, setRecent] = useState([]);
-  useEffect(() => {
-    const loadFeatured = async () => {
-      const result = await getFeatured();
-      setFeatured(result);
-    };
-    loadFeatured();
-    const loadRecent = async () => {
-      const result = await getRecentlyVisited(user.userId, user.authentication);
-      setRecent(result);
-    };
-    loadFeatured();
-    loadRecent();
-  }, []);
+  const { featured, recent } = useFetchUserHome();
 
   return (
     <div>
