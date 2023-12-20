@@ -20,7 +20,9 @@ const HotelCard = ({
   hotelName,
   city,
   price,
+  date,
 }) => {
+  const dateTime = date ? new Date(date) : null;
   return (
     <Card sx={{ maxWidth: 350 }}>
       <CardActionArea onClick={onClick}>
@@ -32,7 +34,15 @@ const HotelCard = ({
         <Typography fontSize={12} color="text.secondary">
           {hotelName}, {city}
         </Typography>
-
+        {dateTime && (
+          <Typography fontSize={12} color="text.secondary">
+            {dateTime?.toLocaleDateString()} at{" "}
+            {dateTime?.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </Typography>
+        )}
         <Typography variant="body2" color="text.secondary" gutterBottom>
           {description}
         </Typography>
@@ -59,8 +69,7 @@ const HotelCard = ({
                   color="success.main"
                   style={{ fontWeight: "bold" }}
                 >
-                  {" "}
-                  ${finalPrice}
+                  &nbsp;&nbsp;${finalPrice}
                 </Typography>
                 <Typography color="success.main" fontSize={12}>
                   Save {discount * 100}%
