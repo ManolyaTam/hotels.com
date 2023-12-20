@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../components/providers/UserProvider";
+import { UserContext } from "../providers/UserProvider";
 import { useContext } from "react";
 import login from "../services/login";
 
