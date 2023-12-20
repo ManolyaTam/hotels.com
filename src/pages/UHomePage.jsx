@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getFeatured } from "../services/user/featuredDeals";
 import Divider from "@mui/material/Divider";
 import HotelCard from "../components/HotelCard";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { getRecentlyVisited } from "../services/user/recentlyVisited";
+import { UserContext } from "../providers/UserProvider";
 
 const UHomePage = () => {
+  const { user } = useContext(UserContext);
   const [featured, setFeatured] = useState([]);
   const [recent, setRecent] = useState([]);
   useEffect(() => {
@@ -16,7 +18,7 @@ const UHomePage = () => {
     };
     loadFeatured();
     const loadRecent = async () => {
-      const result = await getRecentlyVisited(1);
+      const result = await getRecentlyVisited(user.userId, user.authentication);
       setRecent(result);
     };
     loadFeatured();
