@@ -1,9 +1,4 @@
-import { useEffect } from "react";
-import getFeatured from "../services/getFeatured";
 const Dummy = () => {
-  useEffect(() => {
-    getFeatured();
-  }, []);
   return (
     <div>
       <h1>Dummy Component</h1>

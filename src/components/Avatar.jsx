@@ -7,7 +7,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
-import { UserContext } from "./providers/UserProvider";
+import { UserContext } from "../providers/UserProvider";
 import { useContext } from "react";
 
 const Avatar = () => {

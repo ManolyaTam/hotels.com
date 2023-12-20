@@ -24,12 +24,14 @@ const login = async (username, password) => {
     .then((body) => {
       const auth = body.authentication;
       const decoded = jwtDecode(auth);
+      console.log(decoded);
       return {
         status: "success",
         firstName: decoded.given_name,
         lastName: decoded.family_name,
         userType: decoded.userType,
         authentication: body.authentication,
+        userId: decoded.user_id,
       };
     })
     .catch((error) => {

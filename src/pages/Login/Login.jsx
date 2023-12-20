@@ -6,7 +6,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import useLogin from "../../hooks/useLogin";
 
-import { UserContext } from "../../components/providers/UserProvider";
+import { UserContext } from "../../providers/UserProvider";
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 

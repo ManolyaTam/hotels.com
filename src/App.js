@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Login/Login";
-import UserProvider from "./components/providers/UserProvider";
+import UserProvider from "./providers/UserProvider";
 import Dummy from "./pages/dummy";
 import UHomePage from "./pages/UHomePage";
 import NavBar from "./components/layout/NavBar";
