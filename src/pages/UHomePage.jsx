@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getFeatured from "../services/getFeatured";
+import { getFeatured } from "../services/user/featuredDeals";
 import HotelCard from "../components/HotelCard";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
