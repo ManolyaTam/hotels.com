@@ -1,4 +1,4 @@
-import SearchForm from "../components/SearchForm/SearchForm";
+import SearchForm from "../components/SearchForm";
 
 const SearchFormStory = {
   component: SearchForm,
