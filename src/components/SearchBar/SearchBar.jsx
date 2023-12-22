@@ -8,7 +8,7 @@ const SearchBar = ({ name, textSearchPlaceholder, label }) => {
     <div className="search-bar">
       <Input
         className="search-input"
-        style={{ margin: 5, width: 400 }}
+        style={{ margin: 5, width: 400, backgroundColor: "white" }}
         name={name}
         placeholder={textSearchPlaceholder}
         label={label}

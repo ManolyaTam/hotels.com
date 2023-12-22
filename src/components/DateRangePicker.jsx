@@ -11,10 +11,11 @@ const DateRangePicker = ({ defaultDate }) => {
 
   return (
     <RangePicker
+      placeholder={["Check-in", "Checkout"]}
       style={{
         boxSizing: "border-box",
         height: 40,
-        fontFamily: "roboto",
+        font: "roboto",
         borderRadius: "4px",
       }}
       defaultValue={[

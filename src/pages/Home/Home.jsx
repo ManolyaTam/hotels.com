@@ -3,6 +3,7 @@ import useFetchUserHome from "../../hooks/useFetchUserHome";
 import { useEffect, useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { jwtDecode } from "jwt-decode";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import Featured from "./Featured";
 import Recent from "./Recent";
 import Trending from "./Trending";
@@ -24,8 +25,10 @@ const Home = () => {
     };
     checkSession();
   }, [user, setUser]);
+
   return (
     <div>
+      <SearchBar textSearchPlaceholder="Search for hotels, cities..." />
       <Featured featuredArr={featured} />
       <Divider light style={{ marginBottom: 20 }} />
       {user && (
