@@ -13,12 +13,18 @@ const useFetchUserHome = () => {
       setFeatured(result);
     };
     loadFeatured();
-    const loadRecent = async () => {
-      const result = await getRecentlyVisited(user.userId, user.authentication);
-      setRecent(result);
-    };
-    loadFeatured();
-    loadRecent();
+  }, []);
+  useEffect(() => {
+    if (user) {
+      const loadRecent = async () => {
+        const result = await getRecentlyVisited(
+          user.userId,
+          user.authentication,
+        );
+        setRecent(result);
+      };
+      loadRecent();
+    }
   }, [user]);
 
   return { featured, recent };

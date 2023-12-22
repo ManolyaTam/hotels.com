@@ -9,8 +9,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import { UserContext } from "../providers/UserProvider";
 import { useContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Avatar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { user, setUser } = useContext(UserContext);
   const userInitials = user?.firstName[0] + user?.lastName[0] || null;
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,29 +31,32 @@ const Avatar = () => {
           {userInitials}
         </MuiAvatar>
       </IconButton>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <Typography sx={{ padding: 1 }}>
-          {user ? user.firstName + " " + user.lastName : null}
-        </Typography>
-        <MenuItem
-          onClick={() => {
-            setUser(null);
-          }}
+      {location.pathname !== "/login" && (
+        <Menu
+          anchorEl={anchorEl}
+          id="account-menu"
+          open={open}
+          onClose={handleClose}
+          onClick={handleClose}
+          transformOrigin={{ horizontal: "right", vertical: "top" }}
+          anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
-      </Menu>
+          <Typography sx={{ padding: 1 }}>
+            {user ? user.firstName + " " + user.lastName : null}
+          </Typography>
+          <MenuItem
+            onClick={() => {
+              navigate("/login");
+              setUser(null);
+            }}
+          >
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            {user ? "Logout" : "Login"}
+          </MenuItem>
+        </Menu>
+      )}
     </span>
   );
 };
