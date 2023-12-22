@@ -16,7 +16,7 @@ const Input = ({
 }) => {
   return (
     <TextField
-      style={style}
+      style={{ backgroundColor: "white", ...style }}
       name={name}
       type={type || "text"}
       label={label}

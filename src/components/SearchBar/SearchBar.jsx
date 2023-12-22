@@ -8,12 +8,15 @@ const SearchBar = ({ name, textSearchPlaceholder, label }) => {
     <div className="search-bar">
       <Input
         className="search-input"
-        style={{ margin: 5, width: 400, backgroundColor: "white" }}
+        style={{ margin: 5, width: 400 }}
         name={name}
         placeholder={textSearchPlaceholder}
         label={label}
       />
       <DateRangePicker />
+      <Input type="number" style={{ margin: 5, width: 100 }} label="Children" />
+      <Input type="number" style={{ margin: 5, width: 100 }} label="Adults" />
+      <Input type="number" style={{ margin: 5, width: 100 }} label="Rooms" />
     </div>
   );
 };
