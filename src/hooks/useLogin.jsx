@@ -25,7 +25,6 @@ const useLogin = () => {
           const { status, ...userData } = res;
           userContext.setUser(userData);
           return res.userType.toLowerCase();
-          // TODO: update user context and navigate to next page dependint on user type
         }
       })
       .then((userType) => {
