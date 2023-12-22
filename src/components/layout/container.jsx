@@ -1,10 +1,7 @@
-import React from "react";
 import { Container as MuiContainer } from "@mui/material";
 
 const Container = ({ children }) => {
-  return (
-    <MuiContainer style={{ marginInline: "auto" }}>{children}</MuiContainer>
-  );
+  return <MuiContainer maxWidth="xl">{children}</MuiContainer>;
 };
 
 export default Container;
