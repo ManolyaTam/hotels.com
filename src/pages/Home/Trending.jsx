@@ -13,7 +13,7 @@ const Trending = ({ trendingArr }) => {
               {...item}
               imgUrl={item.thumbnailUrl}
               city={item.cityName}
-              country={item.country}
+              country={item.countryName}
               description={item.description}
             />
           </div>
