@@ -5,9 +5,11 @@ import { UserContext } from "../../providers/UserProvider";
 import { jwtDecode } from "jwt-decode";
 import Featured from "./Featured";
 import Recent from "./Recent";
+import Trending from "./Trending";
 
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
+  const { featured, recent, trending } = useFetchUserHome();
 
   useEffect(() => {
     const checkSession = () => {
@@ -22,7 +24,6 @@ const Home = () => {
     };
     checkSession();
   }, [user, setUser]);
-  const { featured, recent } = useFetchUserHome();
   return (
     <div>
       <Featured featuredArr={featured} />
@@ -30,9 +31,10 @@ const Home = () => {
       {user && (
         <>
           <Recent recentArr={recent} />
-          <Divider />
+          <Divider light style={{ marginBottom: 20 }} />
         </>
       )}
+      <Trending trendingArr={trending} />
     </div>
   );
 };

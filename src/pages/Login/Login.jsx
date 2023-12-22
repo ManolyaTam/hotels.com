@@ -17,7 +17,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (!user || !user?.userType) {
     } else if (user.userType?.toLowerCase() === "user") {
-      navigate("/user/home");
+      navigate("/home");
     } else if (user.userType?.toLowerCase() === "admin") {
       navigate("/admin/home");
     }
