@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
-import { getRecentlyVisited } from "../services/user/recentlyVisited";
-import { getFeatured } from "../services/user/featuredDeals";
+import { getRecentlyVisited } from "../services/home/recentlyVisited";
+import { getFeatured } from "../services/home/featuredDeals";
 
 const useFetchUserHome = () => {
   const { user } = useContext(UserContext);
