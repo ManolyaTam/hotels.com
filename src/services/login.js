@@ -24,7 +24,6 @@ const login = async (username, password) => {
     .then((body) => {
       const auth = body.authentication;
       const decoded = jwtDecode(auth);
-      console.log(decoded);
       return {
         status: "success",
         firstName: decoded.given_name,

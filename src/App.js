@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Login/Login";
 import UserProvider from "./providers/UserProvider";
 import Dummy from "./pages/dummy";
-import UHomePage from "./pages/UHomePage";
+import Home from "./pages/home/Home";
 import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
 
@@ -17,7 +17,7 @@ function App() {
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/" element={<Navigate to="/login" />} />
-              <Route path="/user/home" element={<UHomePage />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/admin/home" element={<Dummy />} />
             </Routes>
           </Container>

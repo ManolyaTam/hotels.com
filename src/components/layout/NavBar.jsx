@@ -1,12 +1,10 @@
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "../Avatar";
-import { UserContext } from "../../providers/UserProvider";
-import { useContext } from "react";
+import Typography from "@mui/material/Typography";
 
 const NavBar = () => {
-  const { user } = useContext(UserContext);
-  return user !== null ? (
+  return (
     <Box>
       <AppBar
         sx={{
@@ -17,15 +15,15 @@ const NavBar = () => {
           justifyContent: "space-between",
         }}
       >
-        <Box className="navbar-left">Logo here</Box>
+        <Typography className="navbar-left" variant="h5" style={{ margin: 5 }}>
+          Hotels.com
+        </Typography>
         <Box className="navbar-right">
           <Avatar />
         </Box>
       </AppBar>
       <div style={{ marginTop: "80px" }} />
     </Box>
-  ) : (
-    <></>
   );
 };
 export default NavBar;

@@ -25,18 +25,18 @@ const useLogin = () => {
           const { status, ...userData } = res;
           userContext.setUser(userData);
           return res.userType.toLowerCase();
-          // TODO: update user context and navigate to next page dependint on user type
         }
       })
       .then((userType) => {
         if (userType === "user") {
-          navigate("/user/home");
+          navigate("/home");
           // TODO: add welcomming message, and error messages for 400 and 401
         } else if (userType === "admin") {
           navigate("/admin/home");
         }
       });
   };
+
   return {
     formik,
     onSubmit,
