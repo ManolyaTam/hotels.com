@@ -1,7 +1,7 @@
 import { BASE_URL } from "../api-config";
 
 const getRecentlyVisited = async (userId, auth) => {
-  return fetch(BASE_URL + `/users/${userId}/recent-hotels`, {
+  return fetch(BASE_URL + `/api/home/users/${userId}/recent-hotels`, {
     headers: {
       Authorization: `Bearer ${auth}`,
     },

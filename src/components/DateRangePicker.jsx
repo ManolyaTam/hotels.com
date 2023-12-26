@@ -6,11 +6,14 @@ import { DatePicker } from "antd";
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
 
-const DateRangePicker = ({ defaultDate }) => {
+const DateRangePicker = ({ defaultDate, name, value, onChange }) => {
   const today = dayjs();
 
   return (
     <RangePicker
+      name={name}
+      value={value}
+      onChange={onChange}
       placeholder={["Check-in", "Checkout"]}
       style={{
         boxSizing: "border-box",

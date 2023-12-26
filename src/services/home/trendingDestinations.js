@@ -1,7 +1,7 @@
 import { BASE_URL } from "../api-config";
 
 const getTrending = async () => {
-  return fetch(BASE_URL + "/destinations/trending")
+  return fetch(BASE_URL + "/api/home/destinations/trending")
     .then((response) => response.json())
     .then((data) => {
       return data;
