@@ -6,6 +6,7 @@ import Dummy from "./pages/dummy";
 import Home from "./pages/home/Home";
 import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
+import Hotel from "./pages/Hotel/Hotel";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
               <Route path="/admin/home" element={<Dummy />} />
+              <Route path="/hotel" element={<Hotel />} />
             </Routes>
           </Container>
         </UserProvider>
