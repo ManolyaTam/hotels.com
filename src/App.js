@@ -16,7 +16,7 @@ function App() {
           <Container>
             <Routes>
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/" element={<Navigate to="/login" />} />
+              <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
               <Route path="/admin/home" element={<Dummy />} />
             </Routes>
