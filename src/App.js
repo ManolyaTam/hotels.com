@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Login/Login";
 import UserProvider from "./providers/UserProvider";
-import Dummy from "./pages/dummy";
+import Admin from "./pages/Admin/Admin";
 import Home from "./pages/home/Home";
 import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
@@ -19,7 +19,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/admin/home" element={<Dummy />} />
+              <Route path="/admin" element={<Admin />} />
               <Route path="/hotel" element={<Hotel />} />
             </Routes>
           </Container>

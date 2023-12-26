@@ -32,7 +32,7 @@ const useLogin = () => {
           navigate("/home");
           // TODO: add welcomming message, and error messages for 400 and 401
         } else if (userType === "admin") {
-          navigate("/admin/home");
+          navigate("/admin");
         }
       });
   };
