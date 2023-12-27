@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import Map from "./Map";
 const Hotel = () => {
   return (
     <>
@@ -11,7 +12,7 @@ const Hotel = () => {
           </Paper>
 
           <Paper sx={{ height: 200 }}>
-            <Typography>Location</Typography>
+            <Map />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={7}>
