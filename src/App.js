@@ -7,22 +7,25 @@ import Home from "./pages/home/Home";
 import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
 import Hotel from "./pages/Hotel/Hotel";
+import MessageProvider from "./providers/MessageProvider";
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
         <UserProvider>
-          <NavBar />
-          <Container>
-            <Routes>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="/hotel" element={<Hotel />} />
-            </Routes>
-          </Container>
+          <MessageProvider>
+            <NavBar />
+            <Container>
+              <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/" element={<Navigate to="/home" />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/hotel" element={<Hotel />} />
+              </Routes>
+            </Container>
+          </MessageProvider>
         </UserProvider>
         {/* TODO: Add Default Path + error page */}
       </BrowserRouter>

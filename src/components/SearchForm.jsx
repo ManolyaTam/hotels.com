@@ -33,8 +33,8 @@ const SearchForm = () => {
           sort: "",
         }}
         onSubmit={(values) => {
-          console.log(values);
-          console.log(values.dateRange[0].toDate());
+          // console.log(values);
+          // console.log(values.dateRange[0].toDate());
         }}
       >
         {(props) => (
