@@ -3,23 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../providers/UserProvider";
 import { MessageContext } from "../providers/MessageProvider";
 import { useContext } from "react";
+import * as yup from "yup";
 import login from "../services/login";
+
+const validationSchema = yup.object({
+  username: yup.string("Enter your username").required("Username is required"),
+  password: yup.string("Enter your password").required("Password is required"),
+});
 
 const useLogin = () => {
   const userContext = useContext(UserContext);
   const { showMessage } = useContext(MessageContext);
   const navigate = useNavigate();
-  const formik = useFormik({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-  });
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const username = formik.values.username;
-    const password = formik.values.password;
+  const onSubmit = (values) => {
+    const username = values.username;
+    const password = values.password;
 
     login(username, password)
       .then((res) => {
@@ -48,9 +47,17 @@ const useLogin = () => {
       });
   };
 
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: onSubmit,
+  });
+
   return {
     formik,
-    onSubmit,
   };
 };
 

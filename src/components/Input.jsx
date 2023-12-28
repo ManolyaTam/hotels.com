@@ -13,6 +13,9 @@ const Input = ({
   onChange,
   placeholder,
   style,
+  error,
+  helperText,
+  onBlur,
 }) => {
   return (
     <TextField
@@ -27,6 +30,9 @@ const Input = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
+      error={error}
+      helperText={helperText}
+      onBlur={onBlur}
     />
   );
 };

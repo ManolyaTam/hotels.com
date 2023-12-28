@@ -24,14 +24,14 @@ const LoginPage = () => {
     }
   }, [user, navigate]);
 
-  const { formik, onSubmit } = useLogin();
+  const { formik } = useLogin();
   return (
     <Box className="login-page">
       <Paper className="login-paper">
         <Typography variant="h5" align="center">
           Login
         </Typography>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={formik.handleSubmit} noValidate>
           <Input
             name="username"
             label="Username"
@@ -39,6 +39,9 @@ const LoginPage = () => {
             margin="normal"
             value={formik.values.username}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.username && formik.errors.username}
             required
           />
           <Input
@@ -49,6 +52,9 @@ const LoginPage = () => {
             margin="normal"
             value={formik.values.password}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.username && Boolean(formik.errors.password)}
+            helperText={formik.touched.username && formik.errors.password}
             required
           />
           <Button type="submit" label="Login" fullWidth />
