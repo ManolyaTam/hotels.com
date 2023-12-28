@@ -25,7 +25,6 @@ const MessageProvider = ({ children }) => {
         type={messageType}
         isOpen={open}
         onClose={hideMessage}
-        autoHideAfter={6000}
         anchorOrigin={{ horizontal: "center", vertical: "top" }}
       />
     </MessageContext.Provider>

@@ -28,6 +28,15 @@ const useLogin = () => {
           userContext.setUser(userData);
           showMessage("success", `welcome back, ${userData.firstName}!`);
           return res.userType.toLowerCase();
+        } else if (res.status === "failed") {
+          if (res.statusCode === 400) {
+            showMessage("warning", "Username and password are required");
+          } else if (res.statusCode === 401) {
+            showMessage(
+              "warning",
+              "Username/Password combination is invalid, please try again",
+            );
+          }
         }
       })
       .then((userType) => {
