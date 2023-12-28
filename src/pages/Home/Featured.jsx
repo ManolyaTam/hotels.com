@@ -8,7 +8,7 @@ const Featured = ({ featuredArr }) => {
       <Typography variant="h6">Featured Deals</Typography>
       <Box style={{ display: "flex", flexWrap: "wrap" }}>
         {featuredArr.map((item, index) => (
-          <div key={"featured-" + index} style={{ margin: 10 }}>
+          <Box key={"featured-" + index} style={{ margin: 10 }}>
             <HotelCard
               {...item}
               imgUrl={item.roomPhotoUrl}
@@ -17,7 +17,7 @@ const Featured = ({ featuredArr }) => {
               rating={item.hotelStarRating}
               originalPrice={item.originalRoomPrice}
             />
-          </div>
+          </Box>
         ))}
       </Box>
     </>

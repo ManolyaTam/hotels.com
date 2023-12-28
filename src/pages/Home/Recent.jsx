@@ -8,7 +8,7 @@ const Recent = ({ recentArr }) => {
       <Typography variant="h6">Recently Visited Hotels</Typography>
       <Box style={{ display: "flex", flexWrap: "wrap" }}>
         {recentArr.map((item, index) => (
-          <div key={"recent-" + index} style={{ margin: 10 }}>
+          <Box key={"recent-" + index} style={{ margin: 10 }}>
             <HotelCard
               {...item}
               imgUrl={item.thumbnailUrl}
@@ -18,7 +18,7 @@ const Recent = ({ recentArr }) => {
               originalPrice={item.originalRoomPrice}
               date={item.visitDate}
             />
-          </div>
+          </Box>
         ))}
       </Box>
     </>

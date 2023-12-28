@@ -1,4 +1,5 @@
 import "./login.css";
+import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
@@ -15,8 +16,8 @@ const LoginPage = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user || !user?.userType) {
-    } else if (user.userType?.toLowerCase() === "user") {
+    if (!user || !user?.userType) return;
+    if (user.userType?.toLowerCase() === "user") {
       navigate("/home");
     } else if (user.userType?.toLowerCase() === "admin") {
       navigate("/admin/home");
@@ -25,7 +26,7 @@ const LoginPage = () => {
 
   const { formik, onSubmit } = useLogin();
   return (
-    <div className="login-page">
+    <Box className="login-page">
       <Paper className="login-paper">
         <Typography variant="h5" align="center">
           Login
@@ -53,7 +54,7 @@ const LoginPage = () => {
           <Button type="submit" label="Login" fullWidth />
         </form>
       </Paper>
-    </div>
+    </Box>
   );
 };
 
