@@ -1,4 +1,5 @@
 import "./login.css";
+import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
@@ -25,7 +26,7 @@ const LoginPage = () => {
 
   const { formik, onSubmit } = useLogin();
   return (
-    <div className="login-page">
+    <Box className="login-page">
       <Paper className="login-paper">
         <Typography variant="h5" align="center">
           Login
@@ -53,7 +54,7 @@ const LoginPage = () => {
           <Button type="submit" label="Login" fullWidth />
         </form>
       </Paper>
-    </div>
+    </Box>
   );
 };
 

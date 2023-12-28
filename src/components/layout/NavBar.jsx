@@ -54,7 +54,7 @@ const NavBar = () => {
         </Box>
       </AppBar>
       {isAdmin && <AdminSidebar onClose={handleDrawerClose} open={open} />}
-      <div style={{ marginTop: "80px" }} />
+      <Box style={{ marginTop: "80px" }} />
     </Box>
   );
 };
