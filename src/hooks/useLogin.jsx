@@ -26,7 +26,7 @@ const useLogin = () => {
         if (res.status === "success") {
           const { status, ...userData } = res;
           userContext.setUser(userData);
-          showMessage("success", `welcome back, ${userData.firstName}!`);
+          showMessage("success", `Welcome back, ${userData.firstName}!`);
           return res.userType.toLowerCase();
         } else if (res.status === "failed") {
           if (res.statusCode === 400) {
@@ -42,7 +42,6 @@ const useLogin = () => {
       .then((userType) => {
         if (userType === "user") {
           navigate("/home");
-          // TODO: add welcomming message, and error messages for 400 and 401
         } else if (userType === "admin") {
           navigate("/admin");
         }
