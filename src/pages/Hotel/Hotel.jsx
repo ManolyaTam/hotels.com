@@ -5,6 +5,7 @@ import Map from "./Map";
 import useGetHotel from "../../hooks/useGetHotel";
 import { useParams } from "react-router-dom";
 import Details from "./Details";
+import { CircularProgress } from "@mui/material";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
@@ -24,7 +25,11 @@ const Hotel = () => {
           </Paper>
 
           <Paper sx={{ mb: 2, height: 400 }}>
-            <Map xpos={31.916989} ypos={35.206938} />
+            {hotel.latitude && hotel.longitude ? (
+              <Map position={[hotel.latitude, hotel.longitude]} />
+            ) : (
+              <CircularProgress />
+            )}
           </Paper>
         </Grid>
         <Grid item xs={12} sm={7}>

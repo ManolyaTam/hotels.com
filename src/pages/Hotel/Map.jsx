@@ -9,8 +9,7 @@ const marker = icon({
   iconSize: [54, 54],
 });
 
-function Map({ xpos, ypos }) {
-  const position = [xpos, ypos];
+function Map({ position }) {
   return (
     <MapContainer center={position} zoom={17} scrollWheelZoom={true}>
       <TileLayer
