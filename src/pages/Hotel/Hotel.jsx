@@ -11,7 +11,7 @@ import Gallery from "./Gallery";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
-  const { hotel, reviews } = useFetchHotelData(+params.id);
+  const { hotel, reviews, gallery } = useFetchHotelData(+params.id);
 
   return (
     <>
@@ -42,7 +42,7 @@ const Hotel = () => {
         </Grid>
         <Grid item xs={12} sm={7}>
           <Paper sx={{ mb: 2 }}>
-            <Gallery />
+            <Gallery images={gallery} />
           </Paper>
           <Paper sx={{ height: 200 }}>
             <Typography>Available Rooms</Typography>
