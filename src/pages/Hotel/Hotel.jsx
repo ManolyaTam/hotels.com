@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Map from "./Map";
 import useGetHotel from "../../hooks/useGetHotel";
 import { useParams } from "react-router-dom";
+import Details from "./Details";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
@@ -13,13 +14,16 @@ const Hotel = () => {
     <>
       <Grid container columnGap={2}>
         <Grid item xs={12} sm={4}>
-          <Paper sx={{ mb: 2, height: 200 }}>
-            <Typography>{hotel.hotelName}</Typography>
-            <Typography>{hotel.location}</Typography>
-            <Typography>{hotel.description}</Typography>
+          <Paper sx={{ mb: 2 }}>
+            <Details
+              hotelName={hotel.hotelName}
+              location={hotel.location}
+              rating={hotel.starRating}
+              description={hotel.description}
+            />
           </Paper>
 
-          <Paper sx={{ height: 400 }}>
+          <Paper sx={{ mb: 2, height: 400 }}>
             <Map xpos={31.916989} ypos={35.206938} />
           </Paper>
         </Grid>
