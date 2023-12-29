@@ -6,6 +6,7 @@ import useGetHotel from "../../hooks/useGetHotel";
 import { useParams } from "react-router-dom";
 import Details from "./Details";
 import { CircularProgress } from "@mui/material";
+import GuestReviews from "./GuestReviews";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
@@ -30,6 +31,10 @@ const Hotel = () => {
             ) : (
               <CircularProgress />
             )}
+          </Paper>
+          <Paper>
+            What our guests think
+            <GuestReviews />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={7}>
