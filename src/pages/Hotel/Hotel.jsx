@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Map from "./Map";
-import useGetHotel from "../../hooks/useGetHotel";
+import useFetchHotelData from "../../hooks/useGetHotel";
 import { useParams } from "react-router-dom";
 import Details from "./Details";
 import { CircularProgress } from "@mui/material";
@@ -10,7 +10,7 @@ import GuestReviews from "./GuestReviews";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
-  const { hotel } = useGetHotel(+params.id);
+  const { hotel, reviews } = useFetchHotelData(+params.id);
 
   return (
     <>
@@ -33,8 +33,10 @@ const Hotel = () => {
             )}
           </Paper>
           <Paper sx={{ backgroundColor: "#fbfbfb" }}>
-            What our guests think
-            <GuestReviews />
+            <Typography sx={{ textAlign: "center" }} variant="h6">
+              What our guests think
+            </Typography>
+            <GuestReviews reviews={reviews} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={7}>

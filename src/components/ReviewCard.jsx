@@ -4,7 +4,7 @@ const ReviewCard = ({ review }) => {
   const { customerName, rating, description } = review;
 
   return (
-    <Card sx={{ margin: 1 }}>
+    <Card sx={{ margin: 1, userSelect: "none" }}>
       <CardContent>
         <Typography variant="h6">{customerName}</Typography>
         <Rating value={rating} precision={0.5} readOnly />
