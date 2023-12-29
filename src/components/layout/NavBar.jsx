@@ -5,6 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import Badge from "@mui/material/Badge";
 
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
@@ -91,7 +92,9 @@ const NavBar = () => {
                   marginTop: "5px",
                 }}
               >
-                <ShoppingBagIcon />
+                <Badge badgeContent={4} color="warning">
+                  <ShoppingBagIcon />
+                </Badge>
               </NavLink>
             )}
             <Avatar />
