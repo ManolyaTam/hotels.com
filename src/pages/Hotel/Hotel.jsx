@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import Details from "./Details";
 import { CircularProgress } from "@mui/material";
 import GuestReviews from "./GuestReviews";
+import Gallery from "./Gallery";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
@@ -40,8 +41,8 @@ const Hotel = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={7}>
-          <Paper sx={{ mb: 2, height: 300 }}>
-            <Typography>Picture Gallery</Typography>
+          <Paper sx={{ mb: 2 }}>
+            <Gallery />
           </Paper>
           <Paper sx={{ height: 200 }}>
             <Typography>Available Rooms</Typography>
