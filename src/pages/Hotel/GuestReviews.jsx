@@ -1,7 +1,8 @@
 import AliceCarousel from "react-alice-carousel";
+import ReviewCard from "../../components/ReviewCard";
 
 const GuestReviews = () => {
-  const items = reviews.map((rev) => <div>{rev.customerName}</div>);
+  const items = reviews.map((rev) => <ReviewCard review={rev} />);
   return <AliceCarousel mouseTracking infinite items={items} />;
 };
 

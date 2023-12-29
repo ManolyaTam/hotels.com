@@ -32,7 +32,7 @@ const Hotel = () => {
               <CircularProgress />
             )}
           </Paper>
-          <Paper>
+          <Paper sx={{ backgroundColor: "#fbfbfb" }}>
             What our guests think
             <GuestReviews />
           </Paper>
