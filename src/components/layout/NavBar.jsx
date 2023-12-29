@@ -4,7 +4,10 @@ import Avatar from "../Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import Badge from "@mui/material/Badge";
 
+import { NavLink } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
 import { useState, useContext } from "react";
 import AdminSidebar from "./AdminSidebar";
@@ -12,6 +15,7 @@ import AdminSidebar from "./AdminSidebar";
 const NavBar = () => {
   const { user } = useContext(UserContext);
   const isAdmin = user?.userType.toLowerCase() === "admin";
+  const isLoggedIn = user?.userType;
 
   const [open, setOpen] = useState(false);
 
@@ -46,11 +50,55 @@ const NavBar = () => {
             </IconButton>
           )}
           <Typography variant="h5" style={{ margin: 5 }}>
-            Hotels.com
+            <NavLink
+              to="/home"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Hotels.com
+            </NavLink>
           </Typography>
         </Box>
         <Box className="navbar-right">
-          <Avatar />
+          <Box display="flex" alignItems="center">
+            <NavLink
+              to="/home"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                marginInline: "10px",
+              }}
+            >
+              Home
+            </NavLink>
+            {isAdmin && (
+              <NavLink
+                to="/admin"
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                  marginInline: "10px",
+                }}
+              >
+                Admin
+              </NavLink>
+            )}
+            {isLoggedIn && (
+              <NavLink
+                to="/cart"
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                  marginInline: "10px",
+                  marginTop: "5px",
+                }}
+              >
+                <Badge badgeContent={4} color="warning">
+                  <ShoppingBagIcon />
+                </Badge>
+              </NavLink>
+            )}
+            <Avatar />
+          </Box>
         </Box>
       </AppBar>
       {isAdmin && <AdminSidebar onClose={handleDrawerClose} open={open} />}
