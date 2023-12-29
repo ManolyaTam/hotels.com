@@ -7,6 +7,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 import { UserContext } from "../providers/UserProvider";
 import { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -51,9 +52,18 @@ const Avatar = () => {
             }}
           >
             <ListItemIcon>
-              <Logout fontSize="small" />
+              {user ? (
+                <>
+                  <Logout fontSize="small" />
+                  <Typography style={{ marginLeft: "10px" }}>Logout</Typography>
+                </>
+              ) : (
+                <>
+                  <LoginIcon fontSize="small" />
+                  <Typography style={{ marginLeft: "10px" }}>Login</Typography>
+                </>
+              )}
             </ListItemIcon>
-            {user ? "Logout" : "Login"}
           </MenuItem>
         </Menu>
       )}

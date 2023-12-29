@@ -6,6 +6,7 @@ import Button from "./Button";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Rating from "@mui/material/Rating";
+import { useNavigate } from "react-router-dom";
 
 const HotelCard = ({
   onClick,
@@ -21,8 +22,10 @@ const HotelCard = ({
   city,
   price,
   date,
+  hotelId,
 }) => {
   const dateTime = date ? new Date(date) : null;
+  const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 350 }}>
       <CardActionArea onClick={onClick}>
@@ -85,7 +88,12 @@ const HotelCard = ({
               </Typography>
             )}
           </Box>
-          <Button label="See details" />
+          <Button
+            label="See details"
+            onClick={() => {
+              navigate(`/hotel/${hotelId}`);
+            }}
+          />
         </Box>
       </CardContent>
     </Card>
