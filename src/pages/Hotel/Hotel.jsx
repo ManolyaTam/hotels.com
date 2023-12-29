@@ -2,13 +2,21 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Map from "./Map";
+import useGetHotel from "../../hooks/useGetHotel";
+import { useParams } from "react-router-dom";
+
 const Hotel = () => {
+  const params = useParams(); // to read hotel id from url
+  const { hotel } = useGetHotel(+params.id);
+
   return (
     <>
       <Grid container columnGap={2}>
         <Grid item xs={12} sm={4}>
           <Paper sx={{ mb: 2, height: 200 }}>
-            <Typography>Hotel Details</Typography>
+            <Typography>{hotel.hotelName}</Typography>
+            <Typography>{hotel.location}</Typography>
+            <Typography>{hotel.description}</Typography>
           </Paper>
 
           <Paper sx={{ height: 400 }}>

@@ -22,7 +22,7 @@ function App() {
                 <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/admin" element={<Admin />} />
-                <Route path="/hotel" element={<Hotel />} />
+                <Route path="/hotel/:id" element={<Hotel />} />
               </Routes>
             </Container>
           </MessageProvider>
