@@ -18,6 +18,8 @@ const Checkout = () => {
                 price={item.room.price}
                 adults={item.room.capacityOfAdults}
                 children={item.room.capacityOfChildren}
+                hotelId={item.hotel}
+                showLinktoHotel
               />
             </Box>
           ))
