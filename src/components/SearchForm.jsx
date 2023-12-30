@@ -1,12 +1,26 @@
 import Input from "./Input";
-import DateRangePicker from "./DateRangePicker";
+import RangePicker from "./RangePicker";
 import Button from "./Button";
 import { Box } from "@mui/material";
-import { Formik } from "formik";
+import { useFormik } from "formik";
 import dayjs from "dayjs";
 
 const SearchForm = () => {
-  const dateFormat = "DD-MM-YYYY";
+  const formik = useFormik({
+    initialValues: {
+      search: "",
+      dateRange: [],
+      numberOfRooms: 1,
+      adults: 2,
+      children: 0,
+      city: "",
+      starRate: "",
+      sort: "",
+    },
+    onSubmit: (values) => {
+      console.log(values.dateRange[0].toDate());
+    },
+  });
 
   return (
     <Box
@@ -18,75 +32,53 @@ const SearchForm = () => {
         justifyContent: "center",
       }}
     >
-      <Formik
-        initialValues={{
-          search: "",
-          dateRange: [
-            dayjs("20-10-2023", dateFormat),
-            dayjs("22-10-2023", dateFormat),
-          ],
-          numberOfRooms: 1,
-          adults: 2,
-          children: 0,
-          city: "",
-          starRate: "",
-          sort: "",
-        }}
-        onSubmit={(values) => {
-          // console.log(values);
-          // console.log(values.dateRange[0].toDate());
-        }}
-      >
-        {(props) => (
-          <form onSubmit={props.handleSubmit}>
-            <Input
-              name="search"
-              className="search-input"
-              style={{ marginRight: 5, width: 400 }}
-              placeholder="Search for hotels, cities..."
-              value={props.values.search}
-              onChange={props.handleChange}
-            />
+      <form onSubmit={formik.handleSubmit}>
+        <Input
+          name="search"
+          className="search-input"
+          style={{ marginRight: 5, width: 400 }}
+          placeholder="Search for hotels, cities..."
+          value={formik.values.search}
+          onChange={formik.handleChange}
+        />
 
-            <DateRangePicker
-              name="checkInDate"
-              value={props.values.dateRange}
-              onChange={props.handleChange}
-            />
+        <RangePicker
+          name="checkInDate"
+          value={formik.values.dateRange}
+          onChange={(value) => formik.setFieldValue("dateRange", value)}
+        />
 
-            <Input
-              name="adults"
-              type="number"
-              style={{ marginLeft: 5, marginRight: 2.5, width: 100 }}
-              label="Adults"
-              value={props.values.adults.toString()}
-              onChange={props.handleChange}
-            />
-            <Input
-              name="children"
-              type="number"
-              style={{ marginRight: 2.5, width: 100 }}
-              label="Children"
-              value={props.values.children.toString()}
-              onChange={props.handleChange}
-            />
-            <Input
-              name="numberOfRooms"
-              type="number"
-              style={{ marginRight: 2.5, width: 100 }}
-              label="Rooms"
-              value={props.values.numberOfRooms.toString()}
-              onChange={props.handleChange}
-            />
-            <Button
-              type="submit"
-              label="Search"
-              variant="contained"
-              style={{ padding: 7, marginLeft: 20 }}
-            />
-          </form>
-        )}
-      </Formik>
+        <Input
+          name="adults"
+          type="number"
+          style={{ marginLeft: 5, marginRight: 2.5, width: 100 }}
+          label="Adults"
+          value={formik.values.adults.toString()}
+          onChange={formik.handleChange}
+        />
+        <Input
+          name="children"
+          type="number"
+          style={{ marginRight: 2.5, width: 100 }}
+          label="Children"
+          value={formik.values.children.toString()}
+          onChange={formik.handleChange}
+        />
+        <Input
+          name="numberOfRooms"
+          type="number"
+          style={{ marginRight: 2.5, width: 100 }}
+          label="Rooms"
+          value={formik.values.numberOfRooms.toString()}
+          onChange={formik.handleChange}
+        />
+        <Button
+          type="submit"
+          label="Search"
+          variant="contained"
+          style={{ padding: 7, marginLeft: 20 }}
+        />
+      </form>
     </Box>
   );
 };
