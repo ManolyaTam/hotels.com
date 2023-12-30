@@ -42,7 +42,11 @@ const Hotel = () => {
         </Grid>
         <Grid item xs={12} sm={7}>
           <Paper sx={{ mb: 2 }}>
-            <Gallery images={gallery} />
+            {gallery.length ? (
+              <Gallery images={gallery} />
+            ) : (
+              <CircularProgress />
+            )}
           </Paper>
           <Paper sx={{ height: 200 }}>
             <Typography>Available Rooms</Typography>
