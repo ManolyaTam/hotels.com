@@ -3,12 +3,14 @@ import RangePicker from "./RangePicker";
 import Button from "./Button";
 import { Box } from "@mui/material";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       search: "",
-      dateRange: null,
+      dateRange: 0,
       numberOfRooms: 1,
       adults: 2,
       children: 0,
@@ -17,7 +19,19 @@ const SearchForm = () => {
       sort: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      if (values.dateRange?.length === 2) {
+        values.checkin = new Date(values.dateRange[0]).getTime();
+        values.checkout = new Date(values.dateRange[1]).getTime();
+        values.dateRange = 0;
+      }
+      const queryParams = new URLSearchParams();
+
+      Object.entries(values).forEach(([key, value]) => {
+        if (value !== null && value !== undefined && value !== "") {
+          queryParams.append(key, value.toString());
+        }
+      });
+      navigate(`/search?${queryParams.toString()}`);
     },
   });
 
