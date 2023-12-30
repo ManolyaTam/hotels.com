@@ -5,6 +5,8 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const isLoggedIn = user?.userType;
+  const isAdmin = user?.userType.toLowerCase() === "admin";
   const setUserOverride = (user) => {
     setUser(user);
 
@@ -16,7 +18,9 @@ const UserProvider = ({ children }) => {
     }
   };
   return (
-    <UserContext.Provider value={{ user, setUser: setUserOverride }}>
+    <UserContext.Provider
+      value={{ user, setUser: setUserOverride, isLoggedIn, isAdmin }}
+    >
       {children}
     </UserContext.Provider>
   );

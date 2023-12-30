@@ -10,9 +10,7 @@ import { useState, useContext } from "react";
 import AdminSidebar from "./AdminSidebar";
 
 const NavBar = () => {
-  const { user } = useContext(UserContext);
-  const isAdmin = user?.userType.toLowerCase() === "admin";
-  const isLoggedIn = user?.userType;
+  const { isAdmin, isLoggedIn } = useContext(UserContext);
 
   const [open, setOpen] = useState(false);
 
