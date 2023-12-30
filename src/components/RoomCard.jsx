@@ -65,13 +65,7 @@ const RoomCard = ({
               <Button
                 style={{ padding: 0, width: "25px" }}
                 variant="text"
-                label={
-                  viewServices ? (
-                    <KeyboardArrowDownIcon />
-                  ) : (
-                    <KeyboardArrowRightIcon />
-                  )
-                }
+                label={viewServices ? "▶" : "▼"}
                 onClick={() => setViewServices((viewServices) => !viewServices)}
               />
               <Typography>Services</Typography>

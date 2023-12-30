@@ -9,7 +9,7 @@ import Rooms from "./Rooms";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
-  const { hotel, reviews, gallery } = useFetchHotelData(+params.id);
+  const { hotel, reviews, gallery, rooms } = useFetchHotelData(+params.id);
 
   return (
     <>
@@ -48,7 +48,7 @@ const Hotel = () => {
           </Paper>
           <Paper sx={{ backgroundColor: "#fbfbfb", mb: 2, padding: "10px" }}>
             <Typography variant="h6">Available Rooms</Typography>
-            <Rooms />
+            <Rooms rooms={rooms} />
           </Paper>
         </Grid>
       </Grid>
