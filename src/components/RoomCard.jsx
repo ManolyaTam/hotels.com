@@ -6,8 +6,6 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Button from "./Button";
 import PersonIcon from "@mui/icons-material/Person";
 import { useState } from "react";
