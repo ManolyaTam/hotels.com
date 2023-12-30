@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Details from "./Details";
 import GuestReviews from "./GuestReviews";
 import Gallery from "./Gallery";
+import Rooms from "./Rooms";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
@@ -30,7 +31,7 @@ const Hotel = () => {
               <CircularProgress />
             )}
           </Paper>
-          <Paper sx={{ backgroundColor: "#fbfbfb" }}>
+          <Paper sx={{ backgroundColor: "#fbfbfb", mb: 2 }}>
             <Typography sx={{ textAlign: "center" }} variant="h6">
               What our guests think
             </Typography>
@@ -45,8 +46,9 @@ const Hotel = () => {
               <CircularProgress />
             )}
           </Paper>
-          <Paper sx={{ height: 200 }}>
-            <Typography>Available Rooms</Typography>
+          <Paper sx={{ backgroundColor: "#fbfbfb", mb: 2, padding: "10px" }}>
+            <Typography variant="h6">Available Rooms</Typography>
+            <Rooms />
           </Paper>
         </Grid>
       </Grid>
