@@ -1,5 +1,5 @@
 import { Container as MuiContainer } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 
 const Container = ({ children }) => {
   return (

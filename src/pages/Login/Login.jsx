@@ -1,8 +1,5 @@
 import "./login.css";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-
+import { Box, Paper, Typography } from "@mui/material";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import useLogin from "../../hooks/useLogin";

@@ -1,11 +1,13 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Box from "@mui/material/Box";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Box,
+  Typography,
+  Rating,
+} from "@mui/material";
 import Button from "./Button";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import Rating from "@mui/material/Rating";
 import { useNavigate } from "react-router-dom";
 
 const HotelCard = ({

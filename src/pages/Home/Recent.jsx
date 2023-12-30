@@ -1,7 +1,5 @@
 import HotelCard from "../../components/HotelCard";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-
+import { Typography, Box } from "@mui/material";
 const Recent = ({ recentArr }) => {
   return (
     <>

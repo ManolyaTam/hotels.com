@@ -1,7 +1,7 @@
 import Input from "./Input";
 import DateRangePicker from "./DateRangePicker";
 import Button from "./Button";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { Formik } from "formik";
 import dayjs from "dayjs";
 

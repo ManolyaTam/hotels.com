@@ -1,5 +1,4 @@
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+import { Snackbar, Alert as MuiAlert } from "@mui/material";
 import PropTypes from "prop-types";
 
 const Toast = ({ message, isOpen, type, anchorOrigin, onClose }) => {

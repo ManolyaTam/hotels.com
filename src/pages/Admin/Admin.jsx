@@ -1,6 +1,6 @@
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 
 const Admin = () => {
   return (
