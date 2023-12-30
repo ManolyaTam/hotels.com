@@ -1,25 +1,31 @@
 import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";
 import { Box, Container, Typography, Paper } from "@mui/material";
-import RoomCard from "../../components/RoomCard";
+import CartCard from "../../components/CartCard";
 
 const Checkout = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, dispatch } = useContext(CartContext);
 
   return (
     <Container>
       <Paper>
-        {cart.length > 0 ? (
+        {cart?.length > 0 ? (
           cart.map((item, index) => (
             <Box key={"cart-" + index} style={{ margin: 10 }}>
-              <RoomCard
-                {...item.room}
-                imgUrl={item.room.roomPhotoUrl}
-                price={item.room.price}
-                adults={item.room.capacityOfAdults}
-                children={item.room.capacityOfChildren}
+              <CartCard
+                {...item}
+                imgUrl={item.roomPhotoUrl}
+                price={item.price}
+                adults={item.capacityOfAdults}
+                children={item.capacityOfChildren}
                 hotelId={item.hotel}
                 showLinktoHotel
+                onClick={() => {
+                  dispatch({
+                    ...item,
+                    type: "DELETE",
+                  });
+                }}
               />
             </Box>
           ))
