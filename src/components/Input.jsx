@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import TextField from "@mui/material/TextField";
+import { TextField } from "@mui/material";
 
 const Input = ({
   name,

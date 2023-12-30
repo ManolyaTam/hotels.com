@@ -1,11 +1,8 @@
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+import { Typography, Paper, Grid, CircularProgress } from "@mui/material";
 import Map from "./Map";
 import useFetchHotelData from "../../hooks/useGetHotel";
 import { useParams } from "react-router-dom";
 import Details from "./Details";
-import { CircularProgress } from "@mui/material";
 import GuestReviews from "./GuestReviews";
 import Gallery from "./Gallery";
 

@@ -1,4 +1,4 @@
-import Divider from "@mui/material/Divider";
+import { Divider } from "@mui/material";
 import useFetchUserHome from "../../hooks/useFetchUserHome";
 import { useEffect, useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";

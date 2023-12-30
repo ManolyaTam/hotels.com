@@ -1,11 +1,8 @@
-import Box from "@mui/material/Box";
-import AppBar from "@mui/material/AppBar";
+import { Box, AppBar, IconButton, Typography, Badge } from "@mui/material";
 import Avatar from "../Avatar";
-import MenuIcon from "@mui/icons-material/Menu";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import Badge from "@mui/material/Badge";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";

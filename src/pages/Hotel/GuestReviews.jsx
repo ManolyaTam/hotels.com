@@ -1,7 +1,7 @@
 import AliceCarousel from "react-alice-carousel";
 import ReviewCard from "../../components/ReviewCard";
 import Button from "../../components/Button";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { useRef } from "react";
 
 const GuestReviews = ({ reviews }) => {

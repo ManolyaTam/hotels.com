@@ -1,13 +1,15 @@
-import { Avatar as MuiAvatar } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
+import {
+  Avatar as MuiAvatar,
+  Typography,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  IconButton,
+} from "@mui/material";
+import { Logout } from "@mui/icons-material";
+import LoginIcon from "@mui/icons-material/Login";
 import { useState } from "react";
 
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Logout from "@mui/icons-material/Logout";
-import LoginIcon from "@mui/icons-material/Login";
 import { UserContext } from "../providers/UserProvider";
 import { useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
