@@ -19,6 +19,7 @@ const RoomCard = ({
   price,
   roomNumber,
   roomAmenities,
+  onClick,
 }) => {
   const [viewServices, setViewServices] = useState(false);
   return (
@@ -103,7 +104,7 @@ const RoomCard = ({
               ${price}
             </Typography>
           </Box>
-          <Button label="Add to Cart" onClick={() => {}} />
+          <Button label="Add to Cart" onClick={onClick} />
         </Box>
       </CardContent>
     </Card>

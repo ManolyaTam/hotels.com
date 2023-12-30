@@ -8,6 +8,7 @@ import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
 import Hotel from "./pages/Hotel/Hotel";
 import MessageProvider from "./providers/MessageProvider";
+import CartProvider from "./providers/CartProvider";
 
 function App() {
   return (
@@ -15,16 +16,18 @@ function App() {
       <BrowserRouter>
         <UserProvider>
           <MessageProvider>
-            <NavBar />
-            <Container>
-              <Routes>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/" element={<Navigate to="/home" />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/hotel/:id" element={<Hotel />} />
-              </Routes>
-            </Container>
+            <CartProvider>
+              <NavBar />
+              <Container>
+                <Routes>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/" element={<Navigate to="/home" />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/hotel/:id" element={<Hotel />} />
+                </Routes>
+              </Container>
+            </CartProvider>
           </MessageProvider>
         </UserProvider>
         {/* TODO: Add Default Path + error page */}

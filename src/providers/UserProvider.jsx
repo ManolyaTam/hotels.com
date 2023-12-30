@@ -9,7 +9,7 @@ const UserProvider = ({ children }) => {
   const isAdmin = user?.userType.toLowerCase() === "admin";
   const setUserOverride = (user) => {
     setUser(user);
-
+    localStorage.removeItem("cart");
     if (user === null) {
       localStorage.removeItem("user");
       navigate("/login");

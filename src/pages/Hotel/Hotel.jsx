@@ -48,7 +48,7 @@ const Hotel = () => {
           </Paper>
           <Paper sx={{ backgroundColor: "#fbfbfb", mb: 2, padding: "10px" }}>
             <Typography variant="h6">Available Rooms</Typography>
-            <Rooms rooms={rooms} />
+            <Rooms rooms={rooms} hotelNumber={params.id} />
           </Paper>
         </Grid>
       </Grid>

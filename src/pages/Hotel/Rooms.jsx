@@ -1,6 +1,10 @@
 import RoomCard from "../../components/RoomCard";
 import { Box } from "@mui/material";
-const Rooms = ({ rooms }) => {
+import { CartContext } from "../../providers/CartProvider";
+import { useContext } from "react";
+
+const Rooms = ({ hotelNumber, rooms }) => {
+  const { dispatch } = useContext(CartContext);
   return (
     <Box>
       {rooms.map((item, index) =>
@@ -12,6 +16,13 @@ const Rooms = ({ rooms }) => {
               price={item.price}
               adults={item.capacityOfAdults}
               children={item.capacityOfChildren}
+              onClick={() => {
+                dispatch({
+                  hotelNumber: hotelNumber,
+                  roomNumber: item.roomNumber,
+                  type: "ADD",
+                });
+              }}
             />
           </Box>
         ) : (
