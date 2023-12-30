@@ -29,7 +29,7 @@ const CartCard = ({
   const [viewServices, setViewServices] = useState(true);
 
   return (
-    <Card>
+    <Card sx={{ padding: "5px", border: "1px solid lightgrey" }}>
       <Grid container>
         {/* First Column */}
         <Grid item xs={12} md={4}>
