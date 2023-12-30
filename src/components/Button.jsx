@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Button as MuiButton } from "@mui/material";
 
-const Button = ({ label, variant, onClick, type, fullWidth, style }) => {
+const Button = ({ color, label, variant, onClick, type, fullWidth, style }) => {
   return (
     <MuiButton
       onClick={onClick}
@@ -9,6 +9,7 @@ const Button = ({ label, variant, onClick, type, fullWidth, style }) => {
       type={type || "button"}
       fullWidth={fullWidth}
       style={style}
+      color={color}
     >
       {label}
     </MuiButton>

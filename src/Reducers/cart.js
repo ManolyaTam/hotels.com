@@ -1,17 +1,29 @@
 const reducer = (cart, action) => {
-  // action => {type: add/delete, hotelNumber, roomNumber }
+  // action => {type: add/delete, HotelName, ...room }
   switch (action.type) {
-    case "ADD":
-      return [...cart, { hotel: action.hotelNumber, room: action.roomNumber }];
-    case "DELETE": {
-      return cart.filter(
+    case "ADD": {
+      const newData = { hotelNumber: action.hotelNumber, ...action.room };
+      const isAlreadyInCart = cart.some(
         (cartItem) =>
-          cartItem.roomNumber !== action.roomNumber ||
-          cartItem.hotelNumber !== action.hotelNumber,
+          cartItem.roomNumber === newData.roomNumber &&
+          cartItem.hotelNumber === newData.hotelNumber,
       );
-    }
-    case "GET": {
+
+      if (!isAlreadyInCart) {
+        return [...cart, newData];
+      }
+
       return cart;
+    }
+
+    case "DELETE": {
+      const { roomNumber, hotelNumber } = action;
+      const newCart = cart.filter(
+        (cartItem) =>
+          cartItem.roomNumber !== roomNumber ||
+          cartItem.hotelNumber !== hotelNumber,
+      );
+      return newCart;
     }
     default:
       return cart;

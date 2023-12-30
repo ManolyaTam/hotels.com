@@ -12,7 +12,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const RoomCard = ({
+const CartCard = ({
   imgUrl,
   alt,
   roomType,
@@ -27,8 +27,9 @@ const RoomCard = ({
 }) => {
   const navigate = useNavigate();
   const [viewServices, setViewServices] = useState(true);
+
   return (
-    <Card>
+    <Card sx={{ padding: "5px", border: "1px solid lightgrey" }}>
       <Grid container>
         {/* First Column */}
         <Grid item xs={12} md={4}>
@@ -127,7 +128,7 @@ const RoomCard = ({
                   ${price}
                 </Typography>
               </Box>
-              <Button label="Add to Cart" onClick={onClick} />
+              <Button onClick={onClick} color="error" label="Delete"></Button>
             </Box>
           </CardContent>
         </Grid>
@@ -136,4 +137,4 @@ const RoomCard = ({
   );
 };
 
-export default RoomCard;
+export default CartCard;

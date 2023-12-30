@@ -9,7 +9,7 @@ const Rooms = ({ hotelNumber, rooms }) => {
     <Box>
       {rooms.map((item, index) =>
         item.availability ? (
-          <Box key={"featured-" + index} style={{ margin: 10 }}>
+          <Box key={"rooms-" + index} style={{ margin: 10 }}>
             <RoomCard
               {...item}
               imgUrl={item.roomPhotoUrl}
@@ -19,7 +19,7 @@ const Rooms = ({ hotelNumber, rooms }) => {
               onClick={() => {
                 dispatch({
                   hotelNumber: hotelNumber,
-                  roomNumber: item.roomNumber,
+                  room: item,
                   type: "ADD",
                 });
               }}

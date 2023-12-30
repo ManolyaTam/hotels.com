@@ -6,11 +6,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
+import { CartContext } from "../../providers/CartProvider";
 import { useState, useContext } from "react";
 import AdminSidebar from "./AdminSidebar";
 
 const NavBar = () => {
-  const { isAdmin, isLoggedIn } = useContext(UserContext);
+  const { isAdmin } = useContext(UserContext);
+  const { cart } = useContext(CartContext);
 
   const [open, setOpen] = useState(false);
 
@@ -77,21 +79,20 @@ const NavBar = () => {
                 Admin
               </NavLink>
             )}
-            {isLoggedIn && (
-              <NavLink
-                to="/cart"
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                  marginInline: "10px",
-                  marginTop: "5px",
-                }}
-              >
-                <Badge badgeContent={4} color="warning">
-                  <ShoppingBagIcon />
-                </Badge>
-              </NavLink>
-            )}
+
+            <NavLink
+              to="/checkout"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                marginInline: "10px",
+                marginTop: "5px",
+              }}
+            >
+              <Badge badgeContent={cart.length} color="warning">
+                <ShoppingBagIcon />
+              </Badge>
+            </NavLink>
             <Avatar />
           </Box>
         </Box>
