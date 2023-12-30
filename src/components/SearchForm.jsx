@@ -3,13 +3,12 @@ import RangePicker from "./RangePicker";
 import Button from "./Button";
 import { Box } from "@mui/material";
 import { useFormik } from "formik";
-import dayjs from "dayjs";
 
 const SearchForm = () => {
   const formik = useFormik({
     initialValues: {
       search: "",
-      dateRange: [],
+      dateRange: null,
       numberOfRooms: 1,
       adults: 2,
       children: 0,
@@ -18,7 +17,7 @@ const SearchForm = () => {
       sort: "",
     },
     onSubmit: (values) => {
-      console.log(values.dateRange[0].toDate());
+      console.log(values);
     },
   });
 
@@ -27,7 +26,6 @@ const SearchForm = () => {
       style={{
         marginBottom: 20,
         display: "flex",
-        flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "center",
       }}
