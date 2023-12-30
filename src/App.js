@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
 import Hotel from "./pages/Hotel/Hotel";
+import Checkout from "./pages/Checkout/Checkout";
 import MessageProvider from "./providers/MessageProvider";
 import CartProvider from "./providers/CartProvider";
 
@@ -25,6 +26,7 @@ function App() {
                   <Route path="/home" element={<Home />} />
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/hotel/:id" element={<Hotel />} />
+                  <Route path="/checkout" element={<Checkout />} />
                 </Routes>
               </Container>
             </CartProvider>
