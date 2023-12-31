@@ -3,9 +3,9 @@ import { BASE_URL } from "../api-config";
 const searchHotels = async ({
   checkout,
   checkin,
-  // city,
+  city,
   starRate,
-  // sort,
+  sort,
   numberOfRooms,
   adults,
   children,
@@ -20,6 +20,9 @@ const searchHotels = async ({
     ["adults", adults],
     ["children", children],
     ["search", search],
+    ["sort", sort],
+    ["city", city],
+    ["starRate", starRate],
   ];
 
   parameters.forEach(([key, value]) => {

@@ -9,14 +9,17 @@ import {
   FormGroup,
   List,
   ListItem,
+  Rating,
   RadioGroup,
   Radio,
 } from "@mui/material";
 import { useFormik } from "formik";
 import Button from "../../components/Button";
 import useParam from "../../hooks/useParam";
+import { useState } from "react";
 
 const Filter = () => {
+  const [rating, setRating] = useState(4);
   const { updateParams } = useParam();
   const formik = useFormik({
     initialValues: {
@@ -29,7 +32,7 @@ const Filter = () => {
       sortBy: "none",
     },
     onSubmit: (values) => {
-      updateParams({ sort: values.sortBy });
+      updateParams({ sort: values.sortBy, starRate: rating });
     },
   });
 
@@ -51,7 +54,7 @@ const Filter = () => {
                 name="priceRange"
                 getAriaLabel={() => "Temperature range"}
                 value={formik.values.priceRange}
-                onChange={(event, newValue) => {
+                onChange={(_, newValue) => {
                   formik.setFieldValue("priceRange", newValue);
                 }}
                 valueLabelFormat={valuetext}
@@ -102,6 +105,17 @@ const Filter = () => {
                   label="King Suite"
                 />
               </FormGroup>
+            </Box>
+            <Box>
+              <ListItem disablePadding>
+                <Typography fontWeight="bold">Rating</Typography>
+              </ListItem>
+              <Rating
+                value={rating}
+                onChange={(_, val) => setRating(val)}
+                precision={1}
+                name="rating"
+              />
             </Box>
             <Box>
               <ListItem disablePadding>
