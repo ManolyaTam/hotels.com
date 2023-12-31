@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hotels.com/static/css/main.bf0aba0f.css",
+    "main.js": "/hotels.com/static/js/main.58021ceb.js",
+    "static/js/787.83e1347f.chunk.js": "/hotels.com/static/js/787.83e1347f.chunk.js",
+    "index.html": "/hotels.com/index.html",
+    "main.bf0aba0f.css.map": "/hotels.com/static/css/main.bf0aba0f.css.map",
+    "main.58021ceb.js.map": "/hotels.com/static/js/main.58021ceb.js.map",
+    "787.83e1347f.chunk.js.map": "/hotels.com/static/js/787.83e1347f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bf0aba0f.css",
+    "static/js/main.58021ceb.js"
+  ]
+}
