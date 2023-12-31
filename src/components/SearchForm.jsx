@@ -4,25 +4,37 @@ import Button from "./Button";
 import { Box } from "@mui/material";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import useParam from "../hooks/useParam";
 
-const SearchForm = () => {
+const SearchForm = ({ initialValues }) => {
   const navigate = useNavigate();
+  const { setParam } = useParam();
   const formik = useFormik({
-    initialValues: {
-      search: "",
-      dateRange: 0,
-      numberOfRooms: 1,
-      adults: 2,
-      children: 0,
-      city: "",
-      starRate: "",
-      sort: "",
-    },
+    initialValues: initialValues
+      ? {
+          ...initialValues,
+          dateRange: +initialValues.checkin
+            ? [
+                new Date(+initialValues.checkin),
+                new Date(+initialValues.checkout),
+              ]
+            : null,
+        }
+      : {
+          search: "",
+          dateRange: 0,
+          numberOfRooms: 1,
+          adults: 2,
+          children: 0,
+          city: "",
+          starRate: "",
+          sort: "",
+        },
     onSubmit: (values) => {
       if (values.dateRange?.length === 2) {
         values.checkin = new Date(values.dateRange[0]).getTime();
         values.checkout = new Date(values.dateRange[1]).getTime();
-        values.dateRange = 0;
+        values.dateRange = null;
       }
       const queryParams = new URLSearchParams();
 
@@ -31,6 +43,7 @@ const SearchForm = () => {
           queryParams.append(key, value.toString());
         }
       });
+      setParam(queryParams);
       navigate(`/search?${queryParams.toString()}`);
     },
   });

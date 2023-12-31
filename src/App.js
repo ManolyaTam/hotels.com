@@ -4,6 +4,7 @@ import LoginPage from "./pages/Login/Login";
 import UserProvider from "./providers/UserProvider";
 import Admin from "./pages/Admin/Admin";
 import Home from "./pages/home/Home";
+import Search from "./pages/Search/Search";
 import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
 import Hotel from "./pages/Hotel/Hotel";
@@ -24,6 +25,7 @@ function App() {
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/" element={<Navigate to="/home" />} />
                   <Route path="/home" element={<Home />} />
+                  <Route path="/search" element={<Search />} />
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/hotel/:id" element={<Hotel />} />
                   <Route path="/checkout" element={<Checkout />} />
