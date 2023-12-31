@@ -1,13 +1,23 @@
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, CircularProgress } from "@mui/material";
 import SearchForm from "../../components/SearchForm";
 import useParam from "../../hooks/useParam";
 import DetailedRoomCard from "../../components/DetailedRoomCard";
-import { searchResults } from "./searchResults";
+import { searchHotels } from "../../services/Search/searchHotels";
+import { useState, useEffect } from "react";
 
-// Each hotel's entry to include a thumbnail, name, star rating, price per night, and a brief description.z
 const Search = () => {
   const { params } = useParam();
-
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchResults = async () => {
+      setLoading(true);
+      const res = await searchHotels(params);
+      setResults(res);
+      setLoading(false);
+    };
+    fetchResults();
+  }, [params]);
   return (
     <>
       <SearchForm initialValues={params} />
@@ -15,21 +25,24 @@ const Search = () => {
         <Grid item xs={12} sm={3}>
           hello world
         </Grid>
-        <Grid item xs={12} sm={9}>
-          {searchResults.map((item, index) => (
-            <Box style={{ padding: 5 }}>
-              <DetailedRoomCard
-                key={index}
-                {...searchResults[0]}
-                imgUrl={item.roomPhotoUrl}
-                price={item.roomPrice} // dont forget the discount
-                rating={item.starRating}
-                city={item.cityName}
-                roomAmenities={item.amenities}
-              />
-            </Box>
-          ))}
-        </Grid>
+        {!loading ? (
+          <Grid item xs={12} sm={9}>
+            {results.map((item, index) => (
+              <Box key={index} style={{ padding: 5 }}>
+                <DetailedRoomCard
+                  {...item}
+                  imgUrl={item.roomPhotoUrl}
+                  price={item.roomPrice}
+                  rating={item.starRating}
+                  city={item.cityName}
+                  roomAmenities={item.amenities}
+                />
+              </Box>
+            ))}
+          </Grid>
+        ) : (
+          <CircularProgress />
+        )}
       </Grid>
     </>
   );

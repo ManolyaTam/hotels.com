@@ -7,6 +7,7 @@ import {
   Typography,
   Container,
   Chip,
+  Rating,
 } from "@mui/material";
 import Button from "./Button";
 import PersonIcon from "@mui/icons-material/Person";
@@ -20,9 +21,7 @@ const DetailedRoomCard = ({
   adults,
   children,
   price,
-  roomNumber,
   roomAmenities,
-  onClick,
   showLinktoHotel,
   hotelId,
   hotelName,
@@ -45,7 +44,6 @@ const DetailedRoomCard = ({
             alt={alt}
           />
         </Grid>
-
         {/* Second Column */}
         <Grid item xs={12} md={3}>
           <CardContent sx={{ display: "flex", flexDirection: "column" }}>
@@ -66,12 +64,7 @@ const DetailedRoomCard = ({
                 <PersonIcon sx={{ fontSize: "15px" }} key={i} />
               ))}
             </Box>
-            {showLinktoHotel && (
-              <Button
-                label="View Hotel"
-                onClick={() => navigate(`/hotel/${hotelId}`)}
-              />
-            )}
+            <Rating value={rating} />
           </CardContent>
         </Grid>
         {/* Third Column */}

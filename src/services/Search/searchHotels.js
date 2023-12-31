@@ -1,26 +1,25 @@
 import { BASE_URL } from "../api-config";
 
-const searchHotels = async (
-  checkInDate,
-  checkOutDate,
-  city,
-  starRate,
-  sort,
+const searchHotels = async ({
+  checkout,
+  checkin,
+  // city,
+  // starRate,
+  // sort,
   numberOfRooms,
   adults,
   children,
-) => {
+  search,
+}) => {
   const queryParams = new URLSearchParams();
 
   const parameters = [
-    ["checkInDate", checkInDate],
-    ["checkOutDate", checkOutDate],
-    ["city", city],
-    ["starRate", starRate],
-    ["sort", sort],
+    ["checkInDate", checkin],
+    ["checkOutDate", checkout],
     ["numberOfRooms", numberOfRooms],
     ["adults", adults],
     ["children", children],
+    ["search", search],
   ];
 
   parameters.forEach(([key, value]) => {
