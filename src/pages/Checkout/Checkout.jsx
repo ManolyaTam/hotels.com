@@ -1,47 +1,26 @@
 import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";
-import { Box, Container, Typography, Paper } from "@mui/material";
-import CartCard from "../../components/CartCard";
-import Button from "../../components/Button";
+import { Container } from "@mui/material";
+import { useState } from "react";
+
+import CheckoutSteps from "./Steps";
+import Cart from "./Cart";
 
 const Checkout = () => {
-  const { cart, dispatch } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
+  const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <Container>
-      <Typography sx={{ textAlign: "end", fontSize: "17px" }}>
-        Total: $<b>{cart.reduce((total, item) => total + item.price, 0)}</b>
-        <br />
-        <Button label="Checkout" />
-      </Typography>
-      <Paper sx={{ padding: "5px", margin: "5px" }}>
-        {cart?.length > 0 ? (
-          cart.map((item, index) => (
-            <Box key={"cart-" + index} style={{ margin: 10 }}>
-              <CartCard
-                {...item}
-                imgUrl={item.roomPhotoUrl}
-                price={item.price}
-                adults={item.capacityOfAdults}
-                children={item.capacityOfChildren}
-                hotelId={item.hotel}
-                showLinktoHotel
-                onClick={() => {
-                  dispatch({
-                    ...item,
-                    type: "DELETE",
-                  });
-                }}
-              />
-            </Box>
-          ))
-        ) : (
-          <Typography variant="h6" sx={{ textAlign: "center" }}>
-            Cart is Empty ¯\_(ツ)_/¯
-          </Typography>
-        )}
-      </Paper>
-    </Container>
+    <>
+      {!cart.length || (
+        <CheckoutSteps activeStep={activeStep} setActiveStep={setActiveStep} />
+      )}
+      <Container>
+        {activeStep === 0 && <Cart />}
+        {activeStep === 1 && <>user Details Form</>}
+        {activeStep === 2 && <>Confirmation + print + pdf</>}
+      </Container>
+    </>
   );
 };
 
