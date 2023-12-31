@@ -4,25 +4,27 @@ import Button from "./Button";
 import { Box } from "@mui/material";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import useParam from "../hooks/useParam";
+import dayjs from "dayjs";
 
 const SearchForm = ({ initialValues }) => {
+  const today = dayjs();
   const navigate = useNavigate();
   const { setParam } = useParam();
+  const [date, setDate] = useState([
+    initialValues?.checkin
+      ? new Date(Number(initialValues?.checkin))
+      : new Date(today),
+    initialValues?.checkout
+      ? new Date(Number(initialValues?.checkout))
+      : new Date(today.add(1, "day")),
+  ]);
   const formik = useFormik({
     initialValues: initialValues
-      ? {
-          ...initialValues,
-          dateRange: +initialValues.checkin
-            ? [
-                new Date(+initialValues.checkin),
-                new Date(+initialValues.checkout),
-              ]
-            : null,
-        }
+      ? initialValues
       : {
           search: "",
-          dateRange: 0,
           numberOfRooms: 1,
           adults: 2,
           children: 0,
@@ -31,11 +33,9 @@ const SearchForm = ({ initialValues }) => {
           sort: "",
         },
     onSubmit: (values) => {
-      if (values.dateRange?.length === 2) {
-        values.checkin = new Date(values.dateRange[0]).getTime();
-        values.checkout = new Date(values.dateRange[1]).getTime();
-        values.dateRange = null;
-      }
+      values.checkin = date[0].getTime();
+      values.checkout = date[1].getTime();
+
       const queryParams = new URLSearchParams();
 
       Object.entries(values).forEach(([key, value]) => {
@@ -69,8 +69,10 @@ const SearchForm = ({ initialValues }) => {
 
         <RangePicker
           name="checkInDate"
-          value={formik.values.dateRange}
-          onChange={(value) => formik.setFieldValue("dateRange", value)}
+          value={date}
+          onChange={(value) => {
+            setDate(value);
+          }}
         />
 
         <Input
