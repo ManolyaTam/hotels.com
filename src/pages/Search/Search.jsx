@@ -3,6 +3,7 @@ import SearchForm from "../../components/SearchForm";
 import useParam from "../../hooks/useParam";
 import DetailedRoomCard from "../../components/DetailedRoomCard";
 import { searchHotels } from "../../services/Search/searchHotels";
+import Filter from "./Filter";
 import { useState, useEffect } from "react";
 
 const Search = () => {
@@ -21,9 +22,9 @@ const Search = () => {
   return (
     <>
       <SearchForm initialValues={params} />
-      <Grid container>
+      <Grid container padding="5px" margin="5px">
         <Grid item xs={12} sm={3}>
-          hello world
+          <Filter />
         </Grid>
         {!loading ? (
           <Grid item xs={12} sm={9}>
