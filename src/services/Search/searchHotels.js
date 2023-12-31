@@ -1,4 +1,4 @@
-import { BASE_URL } from "../api-config";
+import { BASE_URL, formatDate } from "../api-config";
 
 const searchHotels = async ({
   checkout,
@@ -14,8 +14,8 @@ const searchHotels = async ({
   const queryParams = new URLSearchParams();
 
   const parameters = [
-    ["checkInDate", checkin],
-    ["checkOutDate", checkout],
+    ["checkInDate", formatDate(checkin)],
+    ["checkOutDate", formatDate(checkout)],
     ["numberOfRooms", numberOfRooms],
     ["adults", adults],
     ["children", children],
