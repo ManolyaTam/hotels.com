@@ -58,7 +58,7 @@ const SearchForm = ({ initialValues }) => {
         <Input
           name="search"
           className="search-input"
-          style={{ marginRight: 5, width: 400 }}
+          style={{ marginRight: 5, maxwidth: 400, marginBlock: 7 }}
           placeholder="Search for hotels, cities..."
           value={formik.values.search}
           onChange={formik.handleChange}
@@ -75,7 +75,12 @@ const SearchForm = ({ initialValues }) => {
         <Input
           name="adults"
           type="number"
-          style={{ marginLeft: 5, marginRight: 2.5, width: 100 }}
+          style={{
+            marginLeft: 5,
+            marginRight: 2.5,
+            width: 100,
+            marginBlock: 7,
+          }}
           label="Adults"
           value={formik.values.adults.toString()}
           onChange={formik.handleChange}
@@ -83,7 +88,7 @@ const SearchForm = ({ initialValues }) => {
         <Input
           name="children"
           type="number"
-          style={{ marginRight: 2.5, width: 100 }}
+          style={{ marginRight: 2.5, width: 100, marginBlock: 7 }}
           label="Children"
           value={formik.values.children.toString()}
           onChange={formik.handleChange}
@@ -91,7 +96,7 @@ const SearchForm = ({ initialValues }) => {
         <Input
           name="numberOfRooms"
           type="number"
-          style={{ marginRight: 2.5, width: 100 }}
+          style={{ marginRight: 2.5, width: 100, marginBlock: 7 }}
           label="Rooms"
           value={formik.values.numberOfRooms.toString()}
           onChange={formik.handleChange}
@@ -100,7 +105,7 @@ const SearchForm = ({ initialValues }) => {
           type="submit"
           label="Search"
           variant="contained"
-          style={{ padding: 7, marginLeft: 20 }}
+          style={{ padding: 7, marginLeft: 20, marginBlock: 7 }}
         />
       </form>
     </Box>
