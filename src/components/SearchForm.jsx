@@ -28,9 +28,6 @@ const SearchForm = ({ initialValues }) => {
           numberOfRooms: 1,
           adults: 2,
           children: 0,
-          city: "",
-          starRate: "",
-          sort: "",
         },
     onSubmit: (values) => {
       values.checkin = date[0].getTime();

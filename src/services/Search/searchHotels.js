@@ -4,7 +4,7 @@ const searchHotels = async ({
   checkout,
   checkin,
   // city,
-  // starRate,
+  starRate,
   // sort,
   numberOfRooms,
   adults,
