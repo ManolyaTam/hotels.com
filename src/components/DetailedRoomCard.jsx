@@ -64,7 +64,7 @@ const DetailedRoomCard = ({
                 <PersonIcon sx={{ fontSize: "15px" }} key={i} />
               ))}
             </Box>
-            <Rating value={rating} />
+            <Rating readOnly value={rating} />
           </CardContent>
         </Grid>
         {/* Third Column */}
@@ -132,7 +132,7 @@ const DetailedRoomCard = ({
                   <Chip
                     color="success"
                     size="small"
-                    label={`Get ${discount * 100} % off`}
+                    label={`Save ${discount * 100} %`}
                   />
                 )}
               </Box>
