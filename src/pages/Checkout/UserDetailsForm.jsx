@@ -1,11 +1,8 @@
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Select from "../../components/Select";
 import { Card } from "@mui/material";
-import { UserContext } from "../../providers/UserProvider";
-import { useContext } from "react";
+import useCheckout from "../../hooks/useCheckout";
 
 const paymentOptions = [
   { value: "none", label: "Select billing type" },
@@ -13,35 +10,8 @@ const paymentOptions = [
   { value: "paypal", label: "PayPal" },
 ];
 
-const validationSchema = Yup.object({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  phoneNumber: Yup.string()
-    .matches(/^[\d()-]+$/, "Invalid phone number")
-    .min(10, "Phone Number must be at least 10 characters")
-    .required("Phone Number is required"),
-  paymentMethod: Yup.string().notOneOf(["none"], "Payment method is required"),
-});
-
 const UserDetailsForm = () => {
-  const { user } = useContext(UserContext);
-  const formik = useFormik({
-    initialValues: {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: "",
-      paymentMethod: "none",
-      phoneNumber: "",
-    },
-    validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
-
+  const { formik } = useCheckout();
   return (
     <form onSubmit={formik.handleSubmit} noValidate>
       <Card
