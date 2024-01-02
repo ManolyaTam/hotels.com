@@ -24,7 +24,7 @@ const UserDetailsForm = () => {
           onBlur={formik.handleBlur}
           value={formik.values.firstName}
           required
-          error={formik.touched.firstName && formik.errors.firstName}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
           helperText={formik.touched.firstName && formik.errors.firstName}
         />
         <br />
@@ -35,7 +35,7 @@ const UserDetailsForm = () => {
           onBlur={formik.handleBlur}
           value={formik.values.lastName}
           required
-          error={formik.touched.lastName && formik.errors.lastName}
+          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
           helperText={formik.touched.lastName && formik.errors.lastName}
         />
         <br />
@@ -47,7 +47,7 @@ const UserDetailsForm = () => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
           required
-          error={formik.touched.email && formik.errors.email}
+          error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
         />
         <br />
@@ -59,7 +59,9 @@ const UserDetailsForm = () => {
           onBlur={formik.handleBlur}
           value={formik.values.phoneNumber}
           required
-          error={formik.touched.phoneNumber && formik.errors.phoneNumber}
+          error={
+            formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)
+          }
           helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
         />
         <br />
@@ -71,7 +73,9 @@ const UserDetailsForm = () => {
           onBlur={formik.handleBlur}
           options={paymentOptions}
           required
-          error={formik.touched.paymentMethod && formik.errors.paymentMethod}
+          error={
+            formik.touched.paymentMethod && Boolean(formik.errors.paymentMethod)
+          }
           helperText={
             formik.touched.paymentMethod && formik.errors.paymentMethod
           }
