@@ -5,6 +5,7 @@ import { UserContext } from "../../providers/UserProvider";
 
 import CheckoutSteps from "./Steps";
 import Cart from "./Cart";
+import UserDetailsForm from "./UserDetailsForm";
 
 const Checkout = () => {
   const { isLoggedIn } = useContext(UserContext);
@@ -17,9 +18,11 @@ const Checkout = () => {
         <CheckoutSteps activeStep={activeStep} setActiveStep={setActiveStep} />
       )}
       <Container>
-        {!isLoggedIn && <Typography>Please log in to continue</Typography>}
+        {!isLoggedIn && (
+          <Typography color="error">Please log in to continue</Typography>
+        )}
         {activeStep === 0 && <Cart />}
-        {activeStep === 1 && <>user Details Form</>}
+        {activeStep === 1 && <UserDetailsForm />}
         {activeStep === 2 && <>Confirmation + print + pdf</>}
       </Container>
     </>

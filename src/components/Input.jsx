@@ -39,7 +39,7 @@ const Input = ({
 
 Input.propTypes = {
   name: PropTypes.string,
-  type: PropTypes.oneOf(["password", "text", "number"]),
+  type: PropTypes.oneOf(["password", "text", "number", "email", "tel"]),
   label: PropTypes.string,
   size: PropTypes.oneOf(["small", "normal"]),
   fullWidth: PropTypes.bool,
