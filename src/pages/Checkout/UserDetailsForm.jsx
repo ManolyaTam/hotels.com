@@ -4,6 +4,8 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Select from "../../components/Select";
 import { Card } from "@mui/material";
+import { UserContext } from "../../providers/UserProvider";
+import { useContext } from "react";
 
 const paymentOptions = [
   { value: "none", label: "Select billing type" },
@@ -25,10 +27,11 @@ const validationSchema = Yup.object({
 });
 
 const UserDetailsForm = () => {
+  const { user } = useContext(UserContext);
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: "",
       paymentMethod: "none",
       phoneNumber: "",
