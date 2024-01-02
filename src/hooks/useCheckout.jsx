@@ -1,10 +1,27 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { UserContext } from "../providers/UserProvider";
+import { CartContext } from "../providers/CartProvider";
 import { useContext } from "react";
 
 const useCheckout = () => {
   const { user } = useContext(UserContext);
+  const { cart } = useContext(CartContext);
+  const onSubmit = (values) => {
+    cart.forEach((room) => {
+      const toSubmit = {
+        customerName: values.firstName + " " + values.lastName,
+        hotelName: room.hotelNumber,
+        roomNumber: room.roomNumber,
+        roomType: room.roomType,
+        bookingDateTime: new Date().toISOString(),
+        totalCost: room.price,
+        paymentMethod: values.paymentMethod,
+        bookingStatus: "string",
+      };
+      alert(JSON.stringify(toSubmit));
+    });
+  };
 
   const validationSchema = yup.object({
     firstName: yup.string().required("First Name is required"),
@@ -32,9 +49,7 @@ const useCheckout = () => {
       phoneNumber: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    onSubmit: onSubmit,
   });
 
   return { formik };
