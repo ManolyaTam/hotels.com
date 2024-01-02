@@ -4,16 +4,28 @@ import {
   InputLabel,
   Box,
   FormControl,
+  FormHelperText,
 } from "@mui/material";
 
-const Select = ({ label, options, name, value, onChange, style }) => {
+const Select = ({
+  label,
+  options,
+  name,
+  value,
+  onChange,
+  style,
+  error,
+  helperText,
+  onBlur,
+}) => {
   return (
     <Box
       sx={{ maxWidth: 200, backgroundColor: "white", marginBlock: 2, ...style }}
     >
-      <FormControl fullWidth>
+      <FormControl fullWidth error={error}>
         <InputLabel id="payment-method-select">{label}</InputLabel>
         <MuiSelect
+          onBlur={onBlur}
           labelId="payment-method-select"
           label={label}
           name={name}
@@ -26,6 +38,7 @@ const Select = ({ label, options, name, value, onChange, style }) => {
             </MenuItem>
           ))}
         </MuiSelect>
+        <FormHelperText>{helperText}</FormHelperText>
       </FormControl>
     </Box>
   );
