@@ -3,12 +3,13 @@ import * as yup from "yup";
 import { UserContext } from "../providers/UserProvider";
 import { CartContext } from "../providers/CartProvider";
 import { useContext } from "react";
+import { checkout } from "../services/checkout/checkout";
 
 const useCheckout = () => {
   const { user } = useContext(UserContext);
   const { cart } = useContext(CartContext);
   const onSubmit = (values) => {
-    cart.forEach((room) => {
+    cart.forEach(async (room) => {
       const toSubmit = {
         customerName: values.firstName + " " + values.lastName,
         hotelName: room.hotelNumber,
@@ -19,7 +20,8 @@ const useCheckout = () => {
         paymentMethod: values.paymentMethod,
         bookingStatus: "string",
       };
-      alert(JSON.stringify(toSubmit));
+      const response = await checkout(toSubmit, user.authentication);
+      console.log(response);
     });
   };
 
