@@ -23,7 +23,7 @@ const Cart = () => {
                 price={item.price}
                 adults={item.capacityOfAdults}
                 children={item.capacityOfChildren}
-                hotelId={item.hotel}
+                hotelId={item.hotelNumber}
                 showLinktoHotel
                 onClick={() => {
                   dispatch({
