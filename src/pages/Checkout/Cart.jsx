@@ -2,14 +2,21 @@ import { Typography, Paper, Box } from "@mui/material";
 import CartCard from "../../components/CartCard";
 import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";
+import Button from "../../components/Button";
 
-const Cart = () => {
+const Cart = ({ setActiveStep }) => {
   const { cart, dispatch } = useContext(CartContext);
   return (
     <>
       <Typography sx={{ textAlign: "end", fontSize: "17px" }}>
         Total: $<b>{cart.reduce((total, item) => total + item.price, 0)}</b>
         <br />
+        <Button
+          label="checkout"
+          variant="contained"
+          style={{ marginBlock: 5 }}
+          onClick={() => setActiveStep(1)}
+        />
       </Typography>
       <Paper sx={{ padding: "5px", margin: "5px" }}>
         {cart?.length > 0 ? (

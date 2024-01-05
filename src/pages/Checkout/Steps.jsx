@@ -1,28 +1,13 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 
 const steps = ["Review your selection", "Add your Details", "Final Step"];
 
-const CheckoutSteps = ({
-  activeStep,
-  setActiveStep,
-  isNextActive,
-  setIsNextActive,
-}) => {
-  const onNextClick = () => {
-    if (activeStep === 0) {
-      setIsNextActive(false);
-    }
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
+const CheckoutSteps = ({ activeStep }) => {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", marginBlock: 2 }}>
       <Stepper activeStep={activeStep}>
         {steps.map((label) => {
           const stepProps = {};
@@ -35,23 +20,6 @@ const CheckoutSteps = ({
           );
         })}
       </Stepper>
-      {activeStep === steps.length ? (
-        <>
-          <Typography variant="h5" sx={{ mt: 2, mb: 1, textAlign: "center" }}>
-            All steps completed!
-          </Typography>
-        </>
-      ) : (
-        <>
-          <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Box sx={{ flex: "1 1 auto" }} />
-
-            <Button disabled={!isNextActive} onClick={onNextClick}>
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
-            </Button>
-          </Box>
-        </>
-      )}
     </Box>
   );
 };

@@ -4,10 +4,12 @@ import { UserContext } from "../providers/UserProvider";
 import { CartContext } from "../providers/CartProvider";
 import { useContext } from "react";
 import { checkout } from "../services/checkout/checkout";
+import { MessageContext } from "../providers/MessageProvider";
 
-const useCheckout = (setIsNextActive, checkoutRes, setCheckoutRes) => {
+const useCheckout = (checkoutRes, setCheckoutRes, setActiveStep) => {
   const { user } = useContext(UserContext);
   const { cart } = useContext(CartContext);
+  const { showMessage } = useContext(MessageContext);
   const onSubmit = (values) => {
     cart.forEach(async (room) => {
       const toSubmit = {
@@ -23,7 +25,8 @@ const useCheckout = (setIsNextActive, checkoutRes, setCheckoutRes) => {
       const response = await checkout(toSubmit, user.authentication);
       if (response.status === "success") {
         setCheckoutRes([...checkoutRes, response]);
-        setIsNextActive(true);
+        setActiveStep(2);
+        showMessage("success", "Your reservation was successfull!");
       }
     });
   };
