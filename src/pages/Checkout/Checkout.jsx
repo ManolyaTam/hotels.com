@@ -6,7 +6,7 @@ import { UserContext } from "../../providers/UserProvider";
 import CheckoutSteps from "./Steps";
 import Cart from "./Cart";
 import UserDetailsForm from "./UserDetailsForm";
-import Confirmation from "./Confirmation";
+import Bookings from "./Bookings";
 
 const Checkout = () => {
   const { isLoggedIn } = useContext(UserContext);
@@ -31,7 +31,7 @@ const Checkout = () => {
             setCheckoutRes={setCheckoutRes}
           />
         )}
-        {activeStep === 2 && <Confirmation />}
+        {activeStep === 2 && <Bookings responses={checkoutRes} />}
         {/*page 2: Confirmation + print + pdf */}
       </Container>
     </>
