@@ -1,5 +1,5 @@
 import { CartContext } from "../../providers/CartProvider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Container, Typography } from "@mui/material";
 import { UserContext } from "../../providers/UserProvider";
 
@@ -13,10 +13,6 @@ const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isNextActive, setIsNextActive] = useState(isLoggedIn);
   const [checkoutRes, setCheckoutRes] = useState([]); //array of all responses to all rooms reserved in a single process
-
-  useEffect(() => {
-    console.log(checkoutRes);
-  }, [checkoutRes]);
 
   return (
     <>

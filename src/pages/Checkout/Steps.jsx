@@ -21,10 +21,6 @@ const CheckoutSteps = ({
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const onBackClick = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
   return (
     <Box sx={{ width: "100%" }}>
       <Stepper activeStep={activeStep}>
@@ -48,13 +44,6 @@ const CheckoutSteps = ({
       ) : (
         <>
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={onBackClick}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
             <Box sx={{ flex: "1 1 auto" }} />
 
             <Button disabled={!isNextActive} onClick={onNextClick}>
