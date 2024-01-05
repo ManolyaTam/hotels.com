@@ -5,7 +5,7 @@ import { CartContext } from "../providers/CartProvider";
 import { useContext } from "react";
 import { checkout } from "../services/checkout/checkout";
 
-const useCheckout = (setIsNextActive) => {
+const useCheckout = (setIsNextActive, checkoutRes, setCheckoutRes) => {
   const { user } = useContext(UserContext);
   const { cart } = useContext(CartContext);
   const onSubmit = (values) => {
@@ -21,8 +21,10 @@ const useCheckout = (setIsNextActive) => {
         bookingStatus: "string",
       };
       const response = await checkout(toSubmit, user.authentication);
-      console.log(response);
-      setIsNextActive(true);
+      if (response.status === "success") {
+        setCheckoutRes([...checkoutRes, response]);
+        setIsNextActive(true);
+      }
     });
   };
 

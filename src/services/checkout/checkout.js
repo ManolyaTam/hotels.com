@@ -19,7 +19,7 @@ const checkout = async (checkoutData, auth) => {
       }
     })
     .then((res) => {
-      return { status: "succuess", res };
+      return { status: "success", res };
     })
     .catch((error) => {
       return {

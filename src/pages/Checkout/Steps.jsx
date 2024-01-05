@@ -14,7 +14,6 @@ const CheckoutSteps = ({
   isNextActive,
   setIsNextActive,
 }) => {
-  console.log(isNextActive);
   const onNextClick = () => {
     if (activeStep === 0) {
       setIsNextActive(false);
