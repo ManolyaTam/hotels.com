@@ -10,8 +10,8 @@ const paymentOptions = [
   { value: "paypal", label: "PayPal" },
 ];
 
-const UserDetailsForm = () => {
-  const { formik } = useCheckout();
+const UserDetailsForm = ({ setIsNextActive }) => {
+  const { formik } = useCheckout(setIsNextActive);
   return (
     <form onSubmit={formik.handleSubmit} noValidate>
       <Card

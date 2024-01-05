@@ -5,7 +5,7 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const isLoggedIn = user?.userType;
+  const isLoggedIn = Boolean(user?.userType);
   const isAdmin = user?.userType.toLowerCase() === "admin";
   const setUserOverride = (user) => {
     setUser(user);

@@ -5,7 +5,7 @@ import { CartContext } from "../providers/CartProvider";
 import { useContext } from "react";
 import { checkout } from "../services/checkout/checkout";
 
-const useCheckout = () => {
+const useCheckout = (setIsNextActive) => {
   const { user } = useContext(UserContext);
   const { cart } = useContext(CartContext);
   const onSubmit = (values) => {
@@ -22,6 +22,7 @@ const useCheckout = () => {
       };
       const response = await checkout(toSubmit, user.authentication);
       console.log(response);
+      setIsNextActive(true);
     });
   };
 

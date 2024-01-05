@@ -5,15 +5,20 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { UserContext } from "../../providers/UserProvider";
-import { useContext } from "react";
 
 const steps = ["Review your selection", "Add your Details", "Final Step"];
 
-const CheckoutSteps = ({ activeStep, setActiveStep }) => {
-  const { isLoggedIn } = useContext(UserContext);
-
+const CheckoutSteps = ({
+  activeStep,
+  setActiveStep,
+  isNextActive,
+  setIsNextActive,
+}) => {
+  console.log(isNextActive);
   const onNextClick = () => {
+    if (activeStep === 0) {
+      setIsNextActive(false);
+    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -53,7 +58,7 @@ const CheckoutSteps = ({ activeStep, setActiveStep }) => {
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
 
-            <Button disabled={!isLoggedIn} onClick={onNextClick}>
+            <Button disabled={!isNextActive} onClick={onNextClick}>
               {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </Box>
