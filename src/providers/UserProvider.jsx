@@ -22,6 +22,11 @@ const UserProvider = ({ children }) => {
       }
     };
     checkSession();
+
+    // run checkSession every 5 minutes
+    const intervalId = setInterval(checkSession, 5 * 60 * 1000);
+
+    return () => clearInterval(intervalId);
   }, [user, setUser, navigate]);
 
   const setUserOverride = (user) => {
