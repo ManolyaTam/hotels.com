@@ -16,14 +16,14 @@ const Checkout = () => {
 
   return (
     <>
-      {!cart.length || (
-        <CheckoutSteps isLoggedIn={isLoggedIn} setActiveStep={setActiveStep} />
-      )}
+      {!cart.length || <CheckoutSteps activeStep={activeStep} />}
       <Container>
         {!isLoggedIn && (
           <Typography color="error">Please log in to continue</Typography>
         )}
-        {activeStep === 0 && <Cart setActiveStep={setActiveStep} />}
+        {activeStep === 0 && (
+          <Cart isLoggedIn={isLoggedIn} setActiveStep={setActiveStep} />
+        )}
         {activeStep === 1 && (
           <UserDetailsForm
             setActiveStep={setActiveStep}

@@ -4,7 +4,7 @@ import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";
 import Button from "../../components/Button";
 
-const Cart = ({ setActiveStep, isloggedIn }) => {
+const Cart = ({ setActiveStep, isLoggedIn }) => {
   const { cart, dispatch } = useContext(CartContext);
   return (
     <>
@@ -13,7 +13,7 @@ const Cart = ({ setActiveStep, isloggedIn }) => {
           Total: $<b>{cart.reduce((total, item) => total + item.price, 0)}</b>
           <br />
           <Button
-            disabled={!isloggedIn}
+            disabled={!isLoggedIn}
             label="checkout"
             variant="contained"
             style={{ marginBlock: 5 }}
