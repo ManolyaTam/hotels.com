@@ -13,6 +13,7 @@ const Bookings = ({ responses }) => {
       <Button label="Print" onClick={() => window.print()} />
 
       {reservations.map((res) => {
+        console.log(res);
         return (
           <Card key={res.confirmationNumber} sx={{ marginBottom: "1rem" }}>
             <CardContent>
