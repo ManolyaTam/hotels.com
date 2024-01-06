@@ -1,6 +1,6 @@
 import Button from "../../components/Button";
 
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, Box, CardContent, Typography } from "@mui/material";
 
 const getBookingsFromArray = (responses) => {
   return responses.map((res) => res.res);
@@ -8,12 +8,13 @@ const getBookingsFromArray = (responses) => {
 
 const Bookings = ({ responses }) => {
   const reservations = getBookingsFromArray(responses);
+
   return (
     <>
-      <Button label="Print" onClick={() => window.print()} />
-
+      <Box display="flex" justifyContent="flex-end" sx={{ marginBlock: 1 }}>
+        <Button label="Print" onClick={() => window.print()} />
+      </Box>
       {reservations.map((res) => {
-        console.log(res);
         return (
           <Card key={res.confirmationNumber} sx={{ marginBottom: "1rem" }}>
             <CardContent>

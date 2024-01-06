@@ -8,10 +8,11 @@ const paymentOptions = [
   { value: "none", label: "Select billing type" },
   { value: "creditCard", label: "Credit Card" },
   { value: "paypal", label: "PayPal" },
+  { value: "cash", label: "Cash" },
 ];
 
 const UserDetailsForm = ({ checkoutRes, setCheckoutRes, setActiveStep }) => {
-  const { formik } = useCheckout(checkoutRes, setCheckoutRes, setActiveStep);
+  const { formik } = useCheckout(setCheckoutRes, setActiveStep);
   return (
     <form onSubmit={formik.handleSubmit} noValidate>
       <Card

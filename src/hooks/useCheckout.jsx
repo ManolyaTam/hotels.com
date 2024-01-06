@@ -6,12 +6,13 @@ import { useContext } from "react";
 import { checkout } from "../services/checkout/checkout";
 import { MessageContext } from "../providers/MessageProvider";
 
-const useCheckout = (checkoutRes, setCheckoutRes, setActiveStep) => {
+const useCheckout = (setCheckoutRes, setActiveStep) => {
   const { user } = useContext(UserContext);
   const { cart } = useContext(CartContext);
   const { showMessage } = useContext(MessageContext);
-  const onSubmit = (values) => {
-    cart.forEach(async (room) => {
+
+  const onSubmit = async (values) => {
+    const checkoutPromises = cart.map((room) => {
       const toSubmit = {
         customerName: values.firstName + " " + values.lastName,
         hotelName: room.hotelNumber,
@@ -20,15 +21,25 @@ const useCheckout = (checkoutRes, setCheckoutRes, setActiveStep) => {
         bookingDateTime: new Date().toISOString(),
         totalCost: room.price,
         paymentMethod: values.paymentMethod,
-        bookingStatus: "string",
+        bookingStatus: "",
       };
-      const response = await checkout(toSubmit, user.authentication);
-      if (response.status === "success") {
-        setCheckoutRes([...checkoutRes, response]);
-        setActiveStep(2);
-        showMessage("success", "Your reservation was successfull!");
-      }
+      return checkout(toSubmit, user.authentication);
     });
+
+    const responses = await Promise.all(checkoutPromises);
+
+    const successfulResponses = responses.filter(
+      (response) => response.status === "success",
+    );
+
+    if (successfulResponses.length === cart.length) {
+      setCheckoutRes((prevCheckoutRes) => [
+        ...prevCheckoutRes,
+        ...successfulResponses,
+      ]);
+      setActiveStep(2);
+      showMessage("success", "Your reservation was successful!");
+    }
   };
 
   const validationSchema = yup.object({
