@@ -1,18 +1,26 @@
 import { Typography, Paper, Box } from "@mui/material";
 import CartCard from "../../components/CartCard";
-import Button from "../../components/Button";
 import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";
+import Button from "../../components/Button";
 
-const Cart = () => {
+const Cart = ({ setActiveStep, isLoggedIn }) => {
   const { cart, dispatch } = useContext(CartContext);
   return (
     <>
-      <Typography sx={{ textAlign: "end", fontSize: "17px" }}>
-        Total: $<b>{cart.reduce((total, item) => total + item.price, 0)}</b>
-        <br />
-        <Button label="Checkout" />
-      </Typography>
+      {!cart?.length || (
+        <Typography sx={{ textAlign: "end", fontSize: "17px" }}>
+          Total: $<b>{cart.reduce((total, item) => total + item.price, 0)}</b>
+          <br />
+          <Button
+            disabled={!isLoggedIn}
+            label="checkout"
+            variant="contained"
+            style={{ marginBlock: 5 }}
+            onClick={() => setActiveStep(1)}
+          />
+        </Typography>
+      )}
       <Paper sx={{ padding: "5px", margin: "5px" }}>
         {cart?.length > 0 ? (
           cart.map((item, index) => (
