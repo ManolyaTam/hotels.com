@@ -17,7 +17,7 @@ const Checkout = () => {
   return (
     <>
       {!cart.length || (
-        <CheckoutSteps activeStep={activeStep} setActiveStep={setActiveStep} />
+        <CheckoutSteps isLoggedIn={isLoggedIn} setActiveStep={setActiveStep} />
       )}
       <Container>
         {!isLoggedIn && (
