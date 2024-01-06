@@ -89,7 +89,7 @@ const NavBar = () => {
                 marginTop: "5px",
               }}
             >
-              <Badge badgeContent={cart.length} color="warning">
+              <Badge badgeContent={cart?.length} color="warning">
                 <ShoppingBagIcon />
               </Badge>
             </NavLink>

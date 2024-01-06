@@ -25,6 +25,9 @@ const reducer = (cart, action) => {
       );
       return newCart;
     }
+    case "DELETE_ALL": {
+      return [];
+    }
     default:
       return cart;
   }

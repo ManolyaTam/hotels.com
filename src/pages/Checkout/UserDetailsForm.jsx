@@ -11,7 +11,7 @@ const paymentOptions = [
   { value: "cash", label: "Cash" },
 ];
 
-const UserDetailsForm = ({ checkoutRes, setCheckoutRes, setActiveStep }) => {
+const UserDetailsForm = ({ setCheckoutRes, setActiveStep }) => {
   const { formik } = useCheckout(setCheckoutRes, setActiveStep);
   return (
     <form onSubmit={formik.handleSubmit} noValidate>

@@ -8,7 +8,7 @@ import { MessageContext } from "../providers/MessageProvider";
 
 const useCheckout = (setCheckoutRes, setActiveStep) => {
   const { user } = useContext(UserContext);
-  const { cart } = useContext(CartContext);
+  const { cart, dispatch } = useContext(CartContext);
   const { showMessage } = useContext(MessageContext);
 
   const onSubmit = async (values) => {
@@ -37,6 +37,7 @@ const useCheckout = (setCheckoutRes, setActiveStep) => {
         ...prevCheckoutRes,
         ...successfulResponses,
       ]);
+      dispatch({ type: "DELETE_ALL" });
       setActiveStep(2);
       showMessage("success", "Your reservation was successful!");
     }

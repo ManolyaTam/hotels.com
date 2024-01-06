@@ -16,7 +16,7 @@ const Checkout = () => {
 
   return (
     <>
-      {!cart.length || <CheckoutSteps activeStep={activeStep} />}
+      {!cart?.length || <CheckoutSteps activeStep={activeStep} />}
       <Container>
         {!isLoggedIn && (
           <Typography color="error">Please log in to continue</Typography>
@@ -27,12 +27,10 @@ const Checkout = () => {
         {activeStep === 1 && (
           <UserDetailsForm
             setActiveStep={setActiveStep}
-            checkoutRes={checkoutRes}
             setCheckoutRes={setCheckoutRes}
           />
         )}
         {activeStep === 2 && <Bookings responses={checkoutRes} />}
-        {/*page 2: Confirmation + print + pdf */}
       </Container>
     </>
   );
