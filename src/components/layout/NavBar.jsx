@@ -67,19 +67,6 @@ const NavBar = () => {
             >
               Home
             </NavLink>
-            {isAdmin && (
-              <NavLink
-                to="/admin"
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                  marginInline: "10px",
-                }}
-              >
-                Admin
-              </NavLink>
-            )}
-
             <NavLink
               to="/checkout"
               style={{

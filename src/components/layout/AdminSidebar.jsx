@@ -12,8 +12,8 @@ import {
 import PlaceIcon from "@mui/icons-material/Place";
 import BedIcon from "@mui/icons-material/Bed";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
+import { useNavigate } from "react-router-dom";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -25,6 +25,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const AdminSidebar = ({ open, onClose }) => {
+  const navigate = useNavigate();
   const drawerWidth = 240;
 
   return (
@@ -49,12 +50,24 @@ const AdminSidebar = ({ open, onClose }) => {
       <Divider />
       <List>
         {[
-          { text: "Manage Cities", icon: <PlaceIcon /> },
-          { text: "Manage Hotels", icon: <MapsHomeWorkIcon /> },
-          { text: "Manage Rooms", icon: <BedIcon /> },
+          {
+            text: "Manage Cities",
+            icon: <PlaceIcon />,
+            navTo: "/admin/cities",
+          },
+          {
+            text: "Manage Hotels",
+            icon: <MapsHomeWorkIcon />,
+            navTo: "/admin/hotels",
+          },
+          { text: "Manage Rooms", icon: <BedIcon />, navTo: "/admin/rooms" },
         ].map((item, index) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                navigate(item.navTo);
+              }}
+            >
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
