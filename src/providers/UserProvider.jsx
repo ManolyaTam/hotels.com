@@ -8,6 +8,7 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const isLoggedIn = Boolean(user?.userType);
   const isAdmin = user?.userType.toLowerCase() === "admin";
+  const userAuth = user?.authentication;
 
   useEffect(() => {
     const checkSession = () => {
@@ -41,7 +42,7 @@ const UserProvider = ({ children }) => {
   };
   return (
     <UserContext.Provider
-      value={{ user, setUser: setUserOverride, isLoggedIn, isAdmin }}
+      value={{ user, setUser: setUserOverride, isLoggedIn, isAdmin, userAuth }}
     >
       {children}
     </UserContext.Provider>

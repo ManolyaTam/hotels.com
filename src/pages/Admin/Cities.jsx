@@ -1,4 +1,11 @@
-import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
 const Cities = ({ data }) => {
   return (
@@ -17,10 +24,10 @@ const Cities = ({ data }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(row => (
+          {data.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
-              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.city}</TableCell>
               <TableCell>{row.country}</TableCell>
               <TableCell>{row.postOffice}</TableCell>
               <TableCell>{row.hotels}</TableCell>
