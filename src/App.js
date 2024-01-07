@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Login/Login";
 import UserProvider from "./providers/UserProvider";
 import Admin from "./pages/Admin/Admin";
-import Home from "./pages/home/Home";
+import Home from "./pages/Home/Home";
 import Search from "./pages/Search/Search";
 import NavBar from "./components/layout/NavBar";
 import Container from "./components/layout/container";
