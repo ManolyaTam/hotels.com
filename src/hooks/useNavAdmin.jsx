@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { fetchCities } from "../services/admin/fetchCities";
+import { fetchHotels } from "../services/admin/fetchHotels";
 
 const useNavAdmin = () => {
   const { userAuth } = useContext(UserContext);
@@ -24,9 +25,11 @@ const useNavAdmin = () => {
           break;
         }
         case "/admin/hotels": {
-          // fetch hotels and set data
           setDataType("hotels");
-          setData(null);
+          const res = await fetchHotels(userAuth);
+          if (res.status === "success") {
+            setData(res.data);
+          }
           break;
         }
         case "/admin/rooms": {
