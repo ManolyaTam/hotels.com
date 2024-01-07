@@ -11,6 +11,7 @@ import Hotel from "./pages/Hotel/Hotel";
 import Checkout from "./pages/Checkout/Checkout";
 import MessageProvider from "./providers/MessageProvider";
 import CartProvider from "./providers/CartProvider";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                   <Route path="/admin/*" element={<Admin />} />
                   <Route path="/hotel/:id" element={<Hotel />} />
                   <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/*" element={<PageNotFound />} />
                 </Routes>
               </Container>
             </CartProvider>
