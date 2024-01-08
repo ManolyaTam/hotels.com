@@ -7,6 +7,7 @@ import CheckoutSteps from "./Steps";
 import Cart from "./Cart";
 import UserDetailsForm from "./UserDetailsForm";
 import Bookings from "./Bookings";
+import LoggedInOnly from "../../guards/LoggedInOnly";
 
 const Checkout = () => {
   const { isLoggedIn } = useContext(UserContext);
@@ -18,19 +19,20 @@ const Checkout = () => {
     <>
       {!cart?.length || <CheckoutSteps activeStep={activeStep} />}
       <Container>
-        {!isLoggedIn && (
-          <Typography color="error">Please log in to continue</Typography>
-        )}
-        {activeStep === 0 && (
-          <Cart isLoggedIn={isLoggedIn} setActiveStep={setActiveStep} />
-        )}
+        {activeStep === 0 && <Cart setActiveStep={setActiveStep} />}
         {activeStep === 1 && (
-          <UserDetailsForm
-            setActiveStep={setActiveStep}
-            setCheckoutRes={setCheckoutRes}
-          />
+          <LoggedInOnly>
+            <UserDetailsForm
+              setActiveStep={setActiveStep}
+              setCheckoutRes={setCheckoutRes}
+            />
+          </LoggedInOnly>
         )}
-        {activeStep === 2 && <Bookings responses={checkoutRes} />}
+        {activeStep === 2 && (
+          <LoggedInOnly>
+            <Bookings responses={checkoutRes} />
+          </LoggedInOnly>
+        )}
       </Container>
     </>
   );
