@@ -7,10 +7,26 @@ import Details from "./Details";
 import GuestReviews from "./GuestReviews";
 import Gallery from "./Gallery";
 import Rooms from "./Rooms";
+import { useState } from "react";
+import dayjs from "dayjs";
 
 const Hotel = () => {
   const params = useParams(); // to read hotel id from url
-  const { hotel, reviews, gallery, rooms } = useFetchHotelData(+params.id);
+  const { hotel, reviews, gallery, rooms, setRooms } = useFetchHotelData(
+    +params.id,
+  );
+  const [showDates, setShowDates] = useState(false);
+  const today = dayjs();
+  const [date, setDate] = useState([
+    new Date(today),
+    new Date(today.add(1, "day")),
+  ]);
+
+  const DateStyle = {
+    variant: "span",
+    fontWeight: "bold",
+    color: "success.main",
+  };
 
   return (
     <>
@@ -54,8 +70,30 @@ const Hotel = () => {
               justifyContent="space-between"
             >
               <Typography variant="h6">Available Rooms</Typography>
-              <RoomsSearch />
+              <RoomsSearch
+                setShowDates={setShowDates}
+                setRooms={setRooms}
+                date={date}
+                setDate={setDate}
+                hotelNumber={params.id}
+              />
             </Box>
+            {showDates ? (
+              <Typography textAlign="end">
+                showing available rooms between&nbsp;
+                <Typography {...DateStyle}>
+                  {new Date().toDateString(date[0])}
+                </Typography>
+                &nbsp;and&nbsp;
+                <Typography {...DateStyle}>
+                  {new Date().toDateString(date[1])}
+                </Typography>
+              </Typography>
+            ) : (
+              <Typography textAlign="end">
+                showing all available rooms
+              </Typography>
+            )}
             <Rooms rooms={rooms} hotelNumber={params.id} />
           </Paper>
         </Grid>
