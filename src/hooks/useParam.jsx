@@ -22,7 +22,7 @@ const useParam = () => {
     const numberOfRooms = param.get("numberOfRooms") || 1;
     const adults = param.get("adults") || 2;
     const children = param.get("children") || 0;
-    const city = search;
+    const city = param.get("city");
     const starRate = param.get("starRate") || "";
     const sort = param.get("sort") || "";
     return {
