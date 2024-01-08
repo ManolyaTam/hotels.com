@@ -1,5 +1,6 @@
-import { Typography, Paper, Grid, CircularProgress } from "@mui/material";
+import { Typography, Paper, Grid, CircularProgress, Box } from "@mui/material";
 import Map from "./Map";
+import RoomsSearch from "./RoomsSearch";
 import useFetchHotelData from "../../hooks/useGetHotel";
 import { useParams } from "react-router-dom";
 import Details from "./Details";
@@ -47,7 +48,14 @@ const Hotel = () => {
             )}
           </Paper>
           <Paper sx={{ backgroundColor: "#fbfbfb", mb: 2, padding: "10px" }}>
-            <Typography variant="h6">Available Rooms</Typography>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Typography variant="h6">Available Rooms</Typography>
+              <RoomsSearch />
+            </Box>
             <Rooms rooms={rooms} hotelNumber={params.id} />
           </Paper>
         </Grid>
