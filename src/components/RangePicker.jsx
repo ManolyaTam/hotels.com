@@ -13,10 +13,11 @@ const RangePicker = ({ name, value, onChange }) => {
         name={name}
         value={value}
         onChange={onChange}
-        placeholder={["Check-in", "Checkout"]}
+        placeholder={["Check-in :", " Checkout"]}
         size="lg"
         showOneCalendar
         ranges={[]}
+        cleanable={false}
       />
     </Box>
   );
