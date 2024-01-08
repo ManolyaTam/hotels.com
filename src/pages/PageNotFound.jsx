@@ -1,7 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import { replace } from "formik";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
