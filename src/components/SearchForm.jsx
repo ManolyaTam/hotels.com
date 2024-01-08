@@ -59,7 +59,7 @@ const SearchForm = ({ initialValues }) => {
           name="search"
           className="search-input"
           style={{ marginRight: 5, maxwidth: 400, marginBlock: 7 }}
-          placeholder="Search for hotels, cities..."
+          placeholder="Search for hotels..."
           value={formik.values.search}
           onChange={formik.handleChange}
         />

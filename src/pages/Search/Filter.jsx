@@ -17,6 +17,7 @@ import { useFormik } from "formik";
 import Button from "../../components/Button";
 import useParam from "../../hooks/useParam";
 import { useState } from "react";
+import Input from "../../components/Input";
 
 const Filter = () => {
   const [rating, setRating] = useState(4);
@@ -30,9 +31,14 @@ const Filter = () => {
         king: true,
       },
       sortBy: "none",
+      city: "",
     },
     onSubmit: (values) => {
-      updateParams({ sort: values.sortBy, starRate: rating });
+      updateParams({
+        sort: values.sortBy,
+        starRate: rating,
+        city: values.city,
+      });
     },
   });
 
@@ -46,7 +52,7 @@ const Filter = () => {
         <Typography variant="h6">Filters</Typography>
         <form onSubmit={formik.handleSubmit}>
           <List>
-            <Box>
+            <Box style={{ marginBottom: 2 }}>
               <ListItem disablePadding>
                 <Typography fontWeight="bold">Price Range</Typography>
               </ListItem>
@@ -64,6 +70,17 @@ const Filter = () => {
                 min={50}
                 max={500}
                 step={10}
+              />
+            </Box>
+            <Box style={{ marginBottom: 10 }}>
+              <ListItem disablePadding>
+                <Typography fontWeight="bold">City</Typography>
+              </ListItem>
+              <Input
+                placeholder={"Ramallah"}
+                name="city"
+                value={formik.values.city}
+                onChange={formik.handleChange}
               />
             </Box>
             <Box>
