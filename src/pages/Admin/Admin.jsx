@@ -27,8 +27,6 @@ const Admin = () => {
           <Cities data={data} />
         ) : dataType === "hotels" ? (
           <Hotels data={data} />
-        ) : dataType === "rooms" ? (
-          "<Rooms data={data} />"
         ) : (
           ""
         )

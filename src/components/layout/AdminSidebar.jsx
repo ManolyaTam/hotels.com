@@ -60,7 +60,6 @@ const AdminSidebar = ({ open, onClose }) => {
             icon: <MapsHomeWorkIcon />,
             navTo: "/admin/hotels",
           },
-          { text: "Manage Rooms", icon: <BedIcon />, navTo: "/admin/rooms" },
         ].map((item, index) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton
