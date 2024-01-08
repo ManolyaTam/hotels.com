@@ -1,4 +1,4 @@
-import { DeleteForever, Edit } from "@mui/icons-material";
+import { DeleteForever, Edit, Add } from "@mui/icons-material";
 import { useParams } from "react-router-dom";
 import {
   IconButton,
@@ -35,11 +35,21 @@ const HotelRooms = () => {
 
   return (
     <Box marginInline="auto" maxWidth={1000}>
-      {hotel ? (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        marginBottom={2}
+      >
         <Typography>
           Showing rooms of <b>{hotel.hotelName}</b>
         </Typography>
-      ) : null}
+        <Tooltip title="Create Room">
+          <IconButton color="primary">
+            <Add />
+          </IconButton>
+        </Tooltip>
+      </Box>
       <Paper style={{ marginTop: 15 }}>
         <Table>
           <TableHead>
