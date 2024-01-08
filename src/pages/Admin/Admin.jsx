@@ -1,6 +1,6 @@
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import useNavAdmin from "../../hooks/useNavAdmin";
 import Cities from "./Cities";
 import Hotels from "./Hotels";
