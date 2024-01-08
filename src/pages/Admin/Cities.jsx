@@ -7,6 +7,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Tooltip,
 } from "@mui/material";
 
 const Cities = ({ data }) => {
@@ -36,12 +37,16 @@ const Cities = ({ data }) => {
               <TableCell>{row.creationDate}</TableCell>
               <TableCell>{row.modificationDate}</TableCell>
               <TableCell>
-                <IconButton color="error">
-                  <DeleteForever />
-                </IconButton>
-                <IconButton color="primary">
-                  <Edit />
-                </IconButton>
+                <Tooltip title="Delete">
+                  <IconButton color="error">
+                    <DeleteForever />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Edit">
+                  <IconButton color="primary">
+                    <Edit />
+                  </IconButton>
+                </Tooltip>
               </TableCell>
             </TableRow>
           ))}

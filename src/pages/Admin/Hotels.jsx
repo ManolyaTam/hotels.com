@@ -6,6 +6,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Tooltip,
 } from "@mui/material";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import { DeleteForever, Edit } from "@mui/icons-material";
@@ -36,15 +37,21 @@ const Hotels = ({ data }) => {
               <TableCell>{row.creationDate}</TableCell>
               <TableCell>{row.modificationDate}</TableCell>
               <TableCell>
-                <IconButton color="error">
-                  <DeleteForever />
-                </IconButton>
-                <IconButton color="primary">
-                  <Edit />
-                </IconButton>
-                <IconButton color="primary">
-                  <ManageSearchIcon />
-                </IconButton>
+                <Tooltip title="Delete">
+                  <IconButton color="error">
+                    <DeleteForever />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Edit">
+                  <IconButton color="primary">
+                    <Edit />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="View Rooms">
+                  <IconButton color="primary">
+                    <ManageSearchIcon />
+                  </IconButton>
+                </Tooltip>
               </TableCell>
             </TableRow>
           ))}

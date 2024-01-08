@@ -10,7 +10,6 @@ import {
   styled,
 } from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
-import BedIcon from "@mui/icons-material/Bed";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import { useNavigate } from "react-router-dom";
