@@ -17,6 +17,7 @@ const RangePicker = ({ name, value, onChange }) => {
         size="lg"
         showOneCalendar
         ranges={[]}
+        cleanable={false}
       />
     </Box>
   );
