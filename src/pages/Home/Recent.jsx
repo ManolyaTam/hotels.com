@@ -1,4 +1,4 @@
-import HotelCard from "../../components/HotelCard";
+import RecentHotelCard from "../../components/RecentHotelCard";
 import { Typography, Box } from "@mui/material";
 const Recent = ({ recentArr }) => {
   return (
@@ -7,7 +7,7 @@ const Recent = ({ recentArr }) => {
       <Box style={{ display: "flex", flexWrap: "wrap" }}>
         {recentArr.map((item, index) => (
           <Box key={"recent-" + index} style={{ margin: 10 }}>
-            <HotelCard
+            <RecentHotelCard
               {...item}
               imgUrl={item.thumbnailUrl}
               // price={item.finalPrice} TODO: check if price is always given
@@ -15,6 +15,8 @@ const Recent = ({ recentArr }) => {
               rating={item.starRating}
               originalPrice={item.originalRoomPrice}
               date={item.visitDate}
+              priceMax={item.priceUpperBound}
+              priceMin={item.priceLowerBound}
             />
           </Box>
         ))}
