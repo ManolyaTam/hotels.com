@@ -1,4 +1,6 @@
+import { DeleteForever, Edit } from "@mui/icons-material";
 import {
+  IconButton,
   Paper,
   Table,
   TableBody,
@@ -20,7 +22,7 @@ const Cities = ({ data }) => {
             <TableCell>Hotels</TableCell>
             <TableCell>Creation Date</TableCell>
             <TableCell>Modification Date</TableCell>
-            <TableCell>-</TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -33,7 +35,14 @@ const Cities = ({ data }) => {
               <TableCell>{row.hotels}</TableCell>
               <TableCell>{row.creationDate}</TableCell>
               <TableCell>{row.modificationDate}</TableCell>
-              <TableCell>-</TableCell>
+              <TableCell>
+                <IconButton color="error">
+                  <DeleteForever />
+                </IconButton>
+                <IconButton color="primary">
+                  <Edit />
+                </IconButton>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
