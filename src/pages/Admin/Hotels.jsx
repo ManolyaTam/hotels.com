@@ -8,9 +8,17 @@ import {
   TableRow,
   Tooltip,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import { DeleteForever, Edit } from "@mui/icons-material";
+
 const Hotels = ({ data }) => {
+  const navigate = useNavigate();
+
+  const viewRooms = (id) => {
+    navigate(`/admin/hotels/${id}/rooms`);
+  };
+
   return (
     <Paper style={{ marginTop: 15 }}>
       <Table>
@@ -48,7 +56,7 @@ const Hotels = ({ data }) => {
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="View Rooms">
-                  <IconButton color="primary">
+                  <IconButton color="primary" onClick={() => viewRooms(row.id)}>
                     <ManageSearchIcon />
                   </IconButton>
                 </Tooltip>

@@ -23,7 +23,22 @@ const fetchHotels = async (auth) => {
     });
 };
 
-export { fetchHotels };
+const getHotelInfoById = async (id) => {
+  return fetch(BASE_URL + `/api/hotels/${id}`)
+    .then((response) => {
+      if (response.status === 200) return response.json();
+      else throw new Error("Unexpected response code");
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+      return { status: "error" };
+    });
+};
+
+export { fetchHotels, getHotelInfoById };
 
 const transformData = (data) => {
   return data.map((item) => ({

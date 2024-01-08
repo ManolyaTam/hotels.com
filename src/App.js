@@ -13,6 +13,7 @@ import MessageProvider from "./providers/MessageProvider";
 import CartProvider from "./providers/CartProvider";
 import PageNotFound from "./pages/PageNotFound";
 import AdminsOnly from "./guards/AdminsOnly";
+import HotelRooms from "./pages/Admin/HotelRooms";
 
 function App() {
   return (
@@ -28,7 +29,14 @@ function App() {
                   <Route path="/" element={<Navigate to="/home" />} />
                   <Route path="/home" element={<Home />} />
                   <Route path="/search" element={<Search />} />
-
+                  <Route
+                    path="/admin/hotels/:id/rooms"
+                    element={
+                      <AdminsOnly>
+                        <HotelRooms />
+                      </AdminsOnly>
+                    }
+                  />
                   <Route
                     path="/admin/*"
                     element={
@@ -37,7 +45,6 @@ function App() {
                       </AdminsOnly>
                     }
                   />
-
                   <Route path="/hotel/:id" element={<Hotel />} />
                   <Route path="/checkout" element={<Checkout />} />
                   <Route path="/*" element={<PageNotFound />} />
