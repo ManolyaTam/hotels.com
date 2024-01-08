@@ -32,12 +32,6 @@ const useNavAdmin = () => {
           }
           break;
         }
-        case "/admin/rooms": {
-          //fetch rooms and set data
-          setDataType("rooms");
-          setData(null);
-          break;
-        }
         default: {
           navigate("/admin/cities");
         }

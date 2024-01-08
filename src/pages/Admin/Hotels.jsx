@@ -1,12 +1,15 @@
 import {
+  IconButton,
   Paper,
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
+  Tooltip,
 } from "@mui/material";
-
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
+import { DeleteForever, Edit } from "@mui/icons-material";
 const Hotels = ({ data }) => {
   return (
     <Paper style={{ marginTop: 15 }}>
@@ -20,7 +23,7 @@ const Hotels = ({ data }) => {
             <TableCell>Star Rating</TableCell>
             <TableCell>Creation Date</TableCell>
             <TableCell>Modification Date</TableCell>
-            <TableCell>-</TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -33,7 +36,23 @@ const Hotels = ({ data }) => {
               <TableCell>{row.starRating}</TableCell>
               <TableCell>{row.creationDate}</TableCell>
               <TableCell>{row.modificationDate}</TableCell>
-              <TableCell>-</TableCell>
+              <TableCell>
+                <Tooltip title="Delete">
+                  <IconButton color="error">
+                    <DeleteForever />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Edit">
+                  <IconButton color="primary">
+                    <Edit />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="View Rooms">
+                  <IconButton color="primary">
+                    <ManageSearchIcon />
+                  </IconButton>
+                </Tooltip>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
