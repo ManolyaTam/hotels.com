@@ -1,18 +1,22 @@
-import { useState } from "react";
 import RangePicker from "../../components/RangePicker";
-import dayjs from "dayjs";
 import Button from "../../components/Button";
+import { getHotelRoomsByDate } from "../../services/hotel/getHotelRooms";
 
-const RoomsSearch = () => {
-  const today = dayjs();
-  const [date, setDate] = useState([
-    new Date(today),
-    new Date(today.add(1, "day")),
-  ]);
-  const onSubmit = (e) => {
+const RoomsSearch = ({
+  date,
+  setDate,
+  hotelNumber,
+  setRooms,
+  setShowDates,
+}) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("submitting");
-    console.log(date);
+    const checkin = date[0].getTime();
+    const checkout = date[1].getTime();
+    const res = await getHotelRoomsByDate(hotelNumber, checkin, checkout);
+    console.log(res);
+    setRooms(res);
+    setShowDates(true);
   };
 
   return (
