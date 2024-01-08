@@ -11,6 +11,8 @@ import Hotel from "./pages/Hotel/Hotel";
 import Checkout from "./pages/Checkout/Checkout";
 import MessageProvider from "./providers/MessageProvider";
 import CartProvider from "./providers/CartProvider";
+import PageNotFound from "./pages/PageNotFound";
+import AdminsOnly from "./guards/AdminsOnly";
 
 function App() {
   return (
@@ -26,9 +28,19 @@ function App() {
                   <Route path="/" element={<Navigate to="/home" />} />
                   <Route path="/home" element={<Home />} />
                   <Route path="/search" element={<Search />} />
-                  <Route path="/admin/*" element={<Admin />} />
+
+                  <Route
+                    path="/admin/*"
+                    element={
+                      <AdminsOnly>
+                        <Admin />
+                      </AdminsOnly>
+                    }
+                  />
+
                   <Route path="/hotel/:id" element={<Hotel />} />
                   <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/*" element={<PageNotFound />} />
                 </Routes>
               </Container>
             </CartProvider>

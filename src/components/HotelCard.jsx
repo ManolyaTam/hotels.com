@@ -23,10 +23,8 @@ const HotelCard = ({
   hotelName,
   city,
   price,
-  date,
   hotelId,
 }) => {
-  const dateTime = date ? new Date(date) : null;
   const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 350 }}>
@@ -39,19 +37,9 @@ const HotelCard = ({
         <Typography fontSize={12} color="text.secondary">
           {hotelName}, {city}
         </Typography>
-        {dateTime && (
-          <Typography fontSize={12} color="text.secondary">
-            {dateTime?.toLocaleDateString()} at{" "}
-            {dateTime?.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-          </Typography>
-        )}
         <Typography variant="body2" color="text.secondary" gutterBottom>
           {description}
         </Typography>
-
         <Box
           style={{
             display: "flex",

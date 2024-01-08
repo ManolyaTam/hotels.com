@@ -32,7 +32,7 @@ const useFetchHotelData = (id) => {
     loadRooms();
   }, [id]);
 
-  return { hotel, reviews, gallery, rooms };
+  return { hotel, reviews, gallery, rooms, setRooms };
 };
 
 export default useFetchHotelData;

@@ -1,4 +1,5 @@
 import { Grid, Box, CircularProgress } from "@mui/material";
+import NoResults from "../../components/NoResults";
 import SearchForm from "../../components/SearchForm";
 import useParam from "../../hooks/useParam";
 import DetailedRoomCard from "../../components/DetailedRoomCard";
@@ -28,18 +29,22 @@ const Search = () => {
         </Grid>
         {!loading ? (
           <Grid item xs={12} sm={9}>
-            {results.map((item, index) => (
-              <Box key={index} style={{ padding: 5 }}>
-                <DetailedRoomCard
-                  {...item}
-                  imgUrl={item.roomPhotoUrl}
-                  price={item.roomPrice}
-                  rating={item.starRating}
-                  city={item.cityName}
-                  roomAmenities={item.amenities}
-                />
-              </Box>
-            ))}
+            {results.length ? (
+              results.map((item, index) => (
+                <Box key={index} style={{ padding: 5 }}>
+                  <DetailedRoomCard
+                    {...item}
+                    imgUrl={item.roomPhotoUrl}
+                    price={item.roomPrice}
+                    rating={item.starRating}
+                    city={item.cityName}
+                    roomAmenities={item.amenities}
+                  />
+                </Box>
+              ))
+            ) : (
+              <NoResults />
+            )}
           </Grid>
         ) : (
           <CircularProgress />
