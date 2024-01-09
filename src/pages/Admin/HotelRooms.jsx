@@ -1,5 +1,6 @@
 import { DeleteForever, Edit, Add } from "@mui/icons-material";
 import { useParams } from "react-router-dom";
+import { MessageContext } from "../../providers/MessageProvider";
 import {
   IconButton,
   Paper,
@@ -11,27 +12,63 @@ import {
   Tooltip,
   Box,
   Typography,
+  Container,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getAllRoomsInHotel } from "../../services/admin/fetchRooms";
 import { getHotelInfoById } from "../../services/admin/fetchHotels";
+import { deleteRoom } from "../../services/admin/deleteRoom";
+import { UserContext } from "../../providers/UserProvider";
+import Button from "../../components/Button";
 
 const HotelRooms = () => {
+  const { showMessage, hideMessage } = useContext(MessageContext);
   const params = useParams();
   const [rooms, setRooms] = useState([]);
   const [hotel, setHotel] = useState("");
+  const hotelId = params.id;
   useEffect(() => {
     const loadRooms = async () => {
-      const res = await getAllRoomsInHotel(params.id);
+      const res = await getAllRoomsInHotel(hotelId);
       setRooms(res);
     };
     loadRooms();
     const loadHotelData = async () => {
-      const res = await getHotelInfoById(params.id);
+      const res = await getHotelInfoById(hotelId);
       setHotel(res);
     };
     loadHotelData();
-  }, [params]);
+  }, [hotelId]);
+
+  const { userAuth } = useContext(UserContext);
+
+  const DeleteRoom = async (roomId) => {
+    const res = await deleteRoom();
+    if (res.status === "success") {
+      showMessage("success", "Room successfully deleted");
+    } else if (res.status === "fail") {
+      showMessage("error", "something went wrong");
+    } else {
+      showMessage(
+        "warning",
+        "an unexpected error occured, please contact website adminstrator",
+      );
+    }
+  };
+
+  const onDelete = (roomId) => {
+    showMessage(
+      "error",
+      <DeletePopup
+        id={roomId}
+        onCancel={hideMessage}
+        onOk={() => {
+          hideMessage();
+          DeleteRoom(hotelId, roomId, userAuth);
+        }}
+      />,
+    );
+  };
 
   return (
     <Box marginInline="auto" maxWidth={1000}>
@@ -78,7 +115,10 @@ const HotelRooms = () => {
                 <TableCell>{row.modificationDate}</TableCell>
                 <TableCell>
                   <Tooltip title="Delete">
-                    <IconButton color="error">
+                    <IconButton
+                      color="error"
+                      onClick={() => onDelete(row.roomId)}
+                    >
                       <DeleteForever />
                     </IconButton>
                   </Tooltip>
@@ -98,3 +138,15 @@ const HotelRooms = () => {
 };
 
 export default HotelRooms;
+
+const DeletePopup = ({ id, onOk, onCancel }) => {
+  return (
+    <Container>
+      <Typography>
+        Are you sure you want to delete Room with id = {id}
+      </Typography>
+      <Button label="Yes" variant="text" onClick={onOk} />
+      <Button label="No" variant="text" onClick={onCancel} />
+    </Container>
+  );
+};

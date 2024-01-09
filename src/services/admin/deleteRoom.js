@@ -1,7 +1,7 @@
 import { BASE_URL } from "../api-config";
 
-const deleteCity = async (id, auth) => {
-  return fetch(BASE_URL + `/api/cities/${id}`, {
+const deleteRoom = async (hotelId, roomId, auth) => {
+  return fetch(BASE_URL + `/api/hotels/${hotelId}/rooms/${roomId}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${auth}`,
@@ -26,4 +26,4 @@ const deleteCity = async (id, auth) => {
     });
 };
 
-export { deleteCity };
+export { deleteRoom };
