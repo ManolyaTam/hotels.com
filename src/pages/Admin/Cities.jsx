@@ -1,6 +1,6 @@
 import { Add, DeleteForever, Edit } from "@mui/icons-material";
 import { MessageContext } from "../../providers/MessageProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { deleteCity } from "../../services/admin/deleteCity"; // Updated import statement
 import Button from "../../components/Button";
@@ -17,8 +17,11 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import CreateForm from "./CreateForm";
+import CreateCityForm from "./Create Forms/CreateCityForm";
 
 const Cities = ({ data }) => {
+  const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
   const { showMessage, hideMessage } = useContext(MessageContext);
   const { userAuth } = useContext(UserContext);
 
@@ -51,7 +54,7 @@ const Cities = ({ data }) => {
   };
 
   const onCreate = () => {
-    console.log("Create button clicked");
+    setCreateFromIsOpen(true);
   };
 
   return (
@@ -111,6 +114,9 @@ const Cities = ({ data }) => {
           </TableBody>
         </Table>
       </Paper>
+      <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
+        <CreateCityForm />
+      </CreateForm>
     </>
   );
 };
