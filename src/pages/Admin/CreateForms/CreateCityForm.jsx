@@ -8,13 +8,16 @@ const CreateCityForm = () => {
       cityName: "",
       country: "",
       postOffice: "",
-      hotels: 0
+      hotels: 0,
     },
     validationSchema: yup.object({
       cityName: yup.string().required("City name is required"),
       country: yup.string().required("Country is required"),
       postOffice: yup.string().required("Post Office is required"),
-      hotels: yup.number().required("Hotels must be a number")
+      hotels: yup
+        .number()
+        .min(0, "Hotels must be a non-negative number or 0")
+        .required("Hotels must be a number"),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -28,7 +31,7 @@ const CreateCityForm = () => {
         display: "flex",
         flexDirection: "column",
         gap: 10,
-        width: "33vw"
+        width: "33vw",
       }}
     >
       <Typography variant="h5">Add a new City</Typography>

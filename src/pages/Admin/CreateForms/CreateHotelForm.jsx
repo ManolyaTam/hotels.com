@@ -11,8 +11,15 @@ const CreateHotelForm = () => {
     },
     validationSchema: yup.object({
       hotelOwner: yup.string().required("Hotel owner is required"),
-      rooms: yup.number().required("Rooms must be a number"),
-      starRating: yup.number().required("Star rating is required"),
+      rooms: yup
+        .number()
+        .required("Rooms must be a number")
+        .min(0, "Rooms must be a non-negative number"),
+      starRating: yup
+        .number()
+        .min(1, "Star rating must be greater than or equal to 1")
+        .max(5, "Star rating must be less than or equal to 5")
+        .required("Star rating is required"),
     }),
     onSubmit: (values) => {
       console.log(values);

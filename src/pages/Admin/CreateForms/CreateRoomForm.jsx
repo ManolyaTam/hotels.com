@@ -1,0 +1,96 @@
+import { useFormik } from "formik";
+import { TextField, Button, Typography } from "@mui/material";
+import * as yup from "yup";
+
+const CreateRoomForm = () => {
+  const formik = useFormik({
+    initialValues: {
+      roomNumber: "",
+      type: "",
+      adults: 1,
+      children: 0,
+      price: 0,
+    },
+    validationSchema: yup.object({
+      roomNumber: yup.string().required("Room number is required"),
+      type: yup.string().required("Type is required"),
+      adults: yup
+        .number()
+        .required("Number of adults is required")
+        .min(1, "Number of adults must be greater than or equal to 1"),
+      children: yup
+        .number()
+        .required("Number of children is required")
+        .min(0, "Number of children must be greater than or equal to 0"),
+      price: yup
+        .number()
+        .required("Price is required")
+        .min(1, "Price must be greater than 0"),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  return (
+    <form
+      onSubmit={formik.handleSubmit}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 10,
+        width: "33vw",
+      }}
+    >
+      <Typography variant="h5">Add a new Room</Typography>
+      <TextField
+        id="roomNumber"
+        name="roomNumber"
+        label="Room Number"
+        value={formik.values.roomNumber}
+        onChange={formik.handleChange}
+        error={formik.touched.roomNumber && Boolean(formik.errors.roomNumber)}
+        helperText={formik.touched.roomNumber && formik.errors.roomNumber}
+      />
+      <TextField
+        id="type"
+        name="type"
+        label="Type"
+        value={formik.values.type}
+        onChange={formik.handleChange}
+        error={formik.touched.type && Boolean(formik.errors.type)}
+        helperText={formik.touched.type && formik.errors.type}
+      />
+      <TextField
+        id="adults"
+        name="adults"
+        label="Adults"
+        value={formik.values.adults}
+        onChange={formik.handleChange}
+        error={formik.touched.adults && Boolean(formik.errors.adults)}
+        helperText={formik.touched.adults && formik.errors.adults}
+      />
+      <TextField
+        id="children"
+        name="children"
+        label="Children"
+        value={formik.values.children}
+        onChange={formik.handleChange}
+        error={formik.touched.children && Boolean(formik.errors.children)}
+        helperText={formik.touched.children && formik.errors.children}
+      />
+      <TextField
+        id="price"
+        name="price"
+        label="Price"
+        value={formik.values.price}
+        onChange={formik.handleChange}
+        error={formik.touched.price && Boolean(formik.errors.price)}
+        helperText={formik.touched.price && formik.errors.price}
+      />
+      <Button type="submit">Create</Button>
+    </form>
+  );
+};
+
+export default CreateRoomForm;
