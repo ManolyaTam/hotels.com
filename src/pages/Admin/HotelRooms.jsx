@@ -81,7 +81,7 @@ const HotelRooms = () => {
         <Typography>
           Showing rooms of <b>{hotel.hotelName}</b>
         </Typography>
-        <Tooltip title="Create Room">
+        <Tooltip title="Add Room">
           <IconButton color="primary">
             <Add />
           </IconButton>

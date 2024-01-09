@@ -1,4 +1,5 @@
 import {
+  Box,
   Container,
   IconButton,
   Paper,
@@ -12,7 +13,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
-import { DeleteForever, Edit } from "@mui/icons-material";
+import { Add, DeleteForever, Edit } from "@mui/icons-material";
 import { useContext } from "react";
 import { MessageContext } from "../../providers/MessageProvider";
 import { UserContext } from "../../providers/UserProvider";
@@ -65,8 +66,26 @@ const Hotels = ({ data }) => {
     );
   };
 
+  const onCreate = () => {
+    console.log("Create button clicked");
+  };
+
   return (
     <Paper style={{ marginTop: 15 }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          paddingTop: 1,
+          paddingRight: 1,
+        }}
+      >
+        <Tooltip title="Add Hotel">
+          <IconButton color="primary" onClick={onCreate}>
+            <Add />
+          </IconButton>
+        </Tooltip>
+      </Box>
       <Table>
         <TableHead>
           <TableRow>

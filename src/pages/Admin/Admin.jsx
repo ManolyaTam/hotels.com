@@ -18,7 +18,6 @@ const Admin = () => {
           variant="contained"
           style={{ marginInline: 5 }}
         />
-        <Button label="Create" variant="outlined" style={{ marginInline: 5 }} />
       </Box>
 
       {/* TODO:  City/Hotel/Room Create Form, activated by clicking create btn */}
