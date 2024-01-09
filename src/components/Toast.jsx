@@ -17,7 +17,8 @@ const Toast = ({ message, isOpen, type, anchorOrigin, onClose }) => {
 };
 
 Toast.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   isOpen: PropTypes.bool,
   anchorOrigin: PropTypes.shape({
     horizontal: PropTypes.oneOf(["left", "center", "right"]),
