@@ -14,14 +14,17 @@ import {
 import { useNavigate } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import { Add, DeleteForever, Edit } from "@mui/icons-material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MessageContext } from "../../providers/MessageProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { getHotelInfoById } from "../../services/admin/fetchHotels";
 import { deleteHotel } from "../../services/admin/deleteHotel";
 import Button from "../../components/Button";
+import CreateForm from "./CreateForm";
+import CreateHotelForm from "./CreateForms/CreateHotelForm";
 
 const Hotels = ({ data }) => {
+  const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
   const navigate = useNavigate();
   const { showMessage, hideMessage } = useContext(MessageContext);
   const { userAuth } = useContext(UserContext);
@@ -67,70 +70,78 @@ const Hotels = ({ data }) => {
   };
 
   const onCreate = () => {
-    console.log("Create button clicked");
+    setCreateFromIsOpen(true);
   };
 
   return (
-    <Paper style={{ marginTop: 15 }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          paddingTop: 1,
-          paddingRight: 1,
-        }}
-      >
-        <Tooltip title="Add Hotel">
-          <IconButton color="primary" onClick={onCreate}>
-            <Add />
-          </IconButton>
-        </Tooltip>
-      </Box>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>id</TableCell>
-            <TableCell>Hotel</TableCell>
-            <TableCell>Owner</TableCell>
-            <TableCell>Rooms</TableCell>
-            <TableCell>Star Rating</TableCell>
-            <TableCell>Creation Date</TableCell>
-            <TableCell>Modification Date</TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.hotel}</TableCell>
-              <TableCell>{row.owner}</TableCell>
-              <TableCell>{row.rooms}</TableCell>
-              <TableCell>{row.starRating}</TableCell>
-              <TableCell>{row.creationDate}</TableCell>
-              <TableCell>{row.modificationDate}</TableCell>
-              <TableCell>
-                <Tooltip title="Delete">
-                  <IconButton color="error" onClick={() => onDelete(row.id)}>
-                    <DeleteForever />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Edit">
-                  <IconButton color="primary">
-                    <Edit />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="View Rooms">
-                  <IconButton color="primary" onClick={() => viewRooms(row.id)}>
-                    <ManageSearchIcon />
-                  </IconButton>
-                </Tooltip>
-              </TableCell>
+    <>
+      <Paper style={{ marginTop: 15 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingTop: 1,
+            paddingRight: 1,
+          }}
+        >
+          <Tooltip title="Add Hotel">
+            <IconButton color="primary" onClick={onCreate}>
+              <Add />
+            </IconButton>
+          </Tooltip>
+        </Box>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>id</TableCell>
+              <TableCell>Hotel</TableCell>
+              <TableCell>Owner</TableCell>
+              <TableCell>Rooms</TableCell>
+              <TableCell>Star Rating</TableCell>
+              <TableCell>Creation Date</TableCell>
+              <TableCell>Modification Date</TableCell>
+              <TableCell></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
+          </TableHead>
+          <TableBody>
+            {data.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.hotel}</TableCell>
+                <TableCell>{row.owner}</TableCell>
+                <TableCell>{row.rooms}</TableCell>
+                <TableCell>{row.starRating}</TableCell>
+                <TableCell>{row.creationDate}</TableCell>
+                <TableCell>{row.modificationDate}</TableCell>
+                <TableCell>
+                  <Tooltip title="Delete">
+                    <IconButton color="error" onClick={() => onDelete(row.id)}>
+                      <DeleteForever />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Edit">
+                    <IconButton color="primary">
+                      <Edit />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="View Rooms">
+                    <IconButton
+                      color="primary"
+                      onClick={() => viewRooms(row.id)}
+                    >
+                      <ManageSearchIcon />
+                    </IconButton>
+                  </Tooltip>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
+      <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
+        <CreateHotelForm />
+      </CreateForm>
+    </>
   );
 };
 

@@ -18,7 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 import CreateForm from "./CreateForm";
-import CreateCityForm from "./Create Forms/CreateCityForm";
+import CreateCityForm from "./CreateForms/CreateCityForm";
 
 const Cities = ({ data }) => {
   const [createFormIsOpen, setCreateFromIsOpen] = useState(false);

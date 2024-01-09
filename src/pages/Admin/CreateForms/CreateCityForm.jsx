@@ -1,7 +1,6 @@
-import React from "react";
 import { useFormik } from "formik";
 import { TextField, Button, Typography } from "@mui/material";
-import * as Yup from "yup";
+import * as yup from "yup";
 
 const CreateCityForm = () => {
   const formik = useFormik({
@@ -9,13 +8,13 @@ const CreateCityForm = () => {
       cityName: "",
       country: "",
       postOffice: "",
-      hotels: ""
+      hotels: 0
     },
-    validationSchema: Yup.object({
-      cityName: Yup.string().required("City name is required"),
-      country: Yup.string().required("Country is required"),
-      postOffice: Yup.string().required("Post Office is required"),
-      hotels: Yup.number().required("Hotels must be a number")
+    validationSchema: yup.object({
+      cityName: yup.string().required("City name is required"),
+      country: yup.string().required("Country is required"),
+      postOffice: yup.string().required("Post Office is required"),
+      hotels: yup.number().required("Hotels must be a number")
     }),
     onSubmit: (values) => {
       console.log(values);
