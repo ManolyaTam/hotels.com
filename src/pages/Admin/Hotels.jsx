@@ -1,4 +1,5 @@
 import {
+  Container,
   IconButton,
   Paper,
   Table,
@@ -7,16 +8,61 @@ import {
   TableHead,
   TableRow,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import { DeleteForever, Edit } from "@mui/icons-material";
+import { useContext } from "react";
+import { MessageContext } from "../../providers/MessageProvider";
+import { UserContext } from "../../providers/UserProvider";
+import { getHotelInfoById } from "../../services/admin/fetchHotels";
+import { deleteHotel } from "../../services/admin/deleteHotel";
+import Button from "../../components/Button";
 
 const Hotels = ({ data }) => {
   const navigate = useNavigate();
+  const { showMessage, hideMessage } = useContext(MessageContext);
+  const { userAuth } = useContext(UserContext);
 
   const viewRooms = (id) => {
     navigate(`/admin/hotels/${id}/rooms`);
+  };
+
+  const DeleteHotel = async (hotelId) => {
+    const hotelDetails = await getHotelInfoById(hotelId);
+    if (hotelDetails?.cityId) {
+      const res = await deleteHotel(hotelDetails.cityId, hotelId, userAuth);
+      if (res.status === "success") {
+        showMessage("success", "Hotel successfully deleted");
+      } else if (res.status === "fail") {
+        showMessage("error", "something went wrong");
+      } else {
+        showMessage(
+          "warning",
+          "an unexpected error occured, please contact website adminstrator",
+        );
+      }
+    } else {
+      showMessage(
+        "warning",
+        "an unexpected error occured, please contact website adminstrator",
+      );
+    }
+  };
+
+  const onDelete = (id) => {
+    showMessage(
+      "error",
+      <DeletePopup
+        id={id}
+        onCancel={hideMessage}
+        onOk={() => {
+          hideMessage();
+          DeleteHotel(id);
+        }}
+      />,
+    );
   };
 
   return (
@@ -46,7 +92,7 @@ const Hotels = ({ data }) => {
               <TableCell>{row.modificationDate}</TableCell>
               <TableCell>
                 <Tooltip title="Delete">
-                  <IconButton color="error">
+                  <IconButton color="error" onClick={() => onDelete(row.id)}>
                     <DeleteForever />
                   </IconButton>
                 </Tooltip>
@@ -70,3 +116,15 @@ const Hotels = ({ data }) => {
 };
 
 export default Hotels;
+
+const DeletePopup = ({ id, onOk, onCancel }) => {
+  return (
+    <Container>
+      <Typography>
+        Are you sure you want to delete Hotel with id = {id}
+      </Typography>
+      <Button label="Yes" variant="text" onClick={onOk} />
+      <Button label="No" variant="text" onClick={onCancel} />
+    </Container>
+  );
+};

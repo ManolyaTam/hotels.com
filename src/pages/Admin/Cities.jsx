@@ -24,7 +24,7 @@ const Cities = ({ data }) => {
   const DeleteCity = async (id) => {
     const res = await deleteCity(id, userAuth);
     if (res.status === "success") {
-      showMessage("success", "city successfully deleted");
+      showMessage("success", "City successfully deleted");
     } else if (res.status === "fail") {
       showMessage("error", "something went wrong");
     } else {
