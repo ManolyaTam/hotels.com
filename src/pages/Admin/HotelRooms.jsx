@@ -20,6 +20,8 @@ import { getHotelInfoById } from "../../services/admin/fetchHotels";
 import { deleteRoom } from "../../services/admin/deleteRoom";
 import { UserContext } from "../../providers/UserProvider";
 import Button from "../../components/Button";
+import CreateForm from "./CreateForm";
+import CreateRoomForm from "./CreateForms/CreateRoomForm";
 
 const HotelRooms = () => {
   const { showMessage, hideMessage } = useContext(MessageContext);
@@ -27,6 +29,9 @@ const HotelRooms = () => {
   const [rooms, setRooms] = useState([]);
   const [hotel, setHotel] = useState("");
   const hotelId = params.id;
+  const { userAuth } = useContext(UserContext);
+  const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
+
   useEffect(() => {
     const loadRooms = async () => {
       const res = await getAllRoomsInHotel(hotelId);
@@ -40,10 +45,8 @@ const HotelRooms = () => {
     loadHotelData();
   }, [hotelId]);
 
-  const { userAuth } = useContext(UserContext);
-
   const DeleteRoom = async (roomId) => {
-    const res = await deleteRoom();
+    const res = await deleteRoom(hotelId, roomId, userAuth);
     if (res.status === "success") {
       showMessage("success", "Room successfully deleted");
     } else if (res.status === "fail") {
@@ -54,6 +57,10 @@ const HotelRooms = () => {
         "an unexpected error occured, please contact website adminstrator",
       );
     }
+  };
+
+  const onCreate = () => {
+    setCreateFromIsOpen(true);
   };
 
   const onDelete = (roomId) => {
@@ -71,69 +78,74 @@ const HotelRooms = () => {
   };
 
   return (
-    <Box marginInline="auto" maxWidth={1000}>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        marginBottom={2}
-      >
-        <Typography>
-          Showing rooms of <b>{hotel.hotelName}</b>
-        </Typography>
-        <Tooltip title="Create Room">
-          <IconButton color="primary">
-            <Add />
-          </IconButton>
-        </Tooltip>
-      </Box>
-      <Paper style={{ marginTop: 15 }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Number</TableCell>
-              <TableCell>availability</TableCell>
-              <TableCell>Type</TableCell>
-              <TableCell>Adults</TableCell>
-              <TableCell>Children</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Creation Date</TableCell>
-              <TableCell>Modification Date</TableCell>
-              <TableCell></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rooms.map((row) => (
-              <TableRow key={row.roomId}>
-                <TableCell>{row.roomNumber}</TableCell>
-                <TableCell>{row.availability ? "Yes" : "No"}</TableCell>
-                <TableCell>{row.roomType}</TableCell>
-                <TableCell>{row.capacityOfAdults}</TableCell>
-                <TableCell>{row.capacityOfChildren}</TableCell>
-                <TableCell>{row.price}</TableCell>
-                <TableCell>{row.creationDate}</TableCell>
-                <TableCell>{row.modificationDate}</TableCell>
-                <TableCell>
-                  <Tooltip title="Delete">
-                    <IconButton
-                      color="error"
-                      onClick={() => onDelete(row.roomId)}
-                    >
-                      <DeleteForever />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Edit">
-                    <IconButton color="primary">
-                      <Edit />
-                    </IconButton>
-                  </Tooltip>
-                </TableCell>
+    <>
+      <Box marginInline="auto" maxWidth={1000}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          marginBottom={2}
+        >
+          <Typography>
+            Showing rooms of <b>{hotel.hotelName}</b>
+          </Typography>
+          <Tooltip title="Add Room">
+            <IconButton color="primary" onClick={onCreate}>
+              <Add />
+            </IconButton>
+          </Tooltip>
+        </Box>
+        <Paper style={{ marginTop: 15 }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Number</TableCell>
+                <TableCell>availability</TableCell>
+                <TableCell>Type</TableCell>
+                <TableCell>Adults</TableCell>
+                <TableCell>Children</TableCell>
+                <TableCell>Price</TableCell>
+                <TableCell>Creation Date</TableCell>
+                <TableCell>Modification Date</TableCell>
+                <TableCell></TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
-    </Box>
+            </TableHead>
+            <TableBody>
+              {rooms.map((row) => (
+                <TableRow key={row.roomId}>
+                  <TableCell>{row.roomNumber}</TableCell>
+                  <TableCell>{row.availability ? "Yes" : "No"}</TableCell>
+                  <TableCell>{row.roomType}</TableCell>
+                  <TableCell>{row.capacityOfAdults}</TableCell>
+                  <TableCell>{row.capacityOfChildren}</TableCell>
+                  <TableCell>{row.price}</TableCell>
+                  <TableCell>{row.creationDate}</TableCell>
+                  <TableCell>{row.modificationDate}</TableCell>
+                  <TableCell>
+                    <Tooltip title="Delete">
+                      <IconButton
+                        color="error"
+                        onClick={() => onDelete(row.roomId)}
+                      >
+                        <DeleteForever />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Edit">
+                      <IconButton color="primary">
+                        <Edit />
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Paper>
+      </Box>
+      <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
+        <CreateRoomForm hotelId={hotelId} />
+      </CreateForm>
+    </>
   );
 };
 
