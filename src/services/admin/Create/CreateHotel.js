@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api-config";
+import { BASE_URL, formatDate } from "../../api-config";
 
 const CreateHotel = async (
   auth,
@@ -25,6 +25,7 @@ const CreateHotel = async (
       description,
       latitude,
       longitude,
+      creationDate: formatDate(new Date()),
     }),
   })
     .then((response) => {

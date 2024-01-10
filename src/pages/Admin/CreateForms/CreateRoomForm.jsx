@@ -19,7 +19,7 @@ const CreateRoomForm = ({ hotelId }) => {
     },
     validationSchema: yup.object({
       roomNumber: yup.string().required("Room number is required"),
-      type: yup.number().required("Type is required"),
+      type: yup.string().required("Type is required"),
       adults: yup
         .number()
         .required("Number of adults is required")

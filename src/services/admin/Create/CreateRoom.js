@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api-config";
+import { BASE_URL, formatDate } from "../../api-config";
 
 const CreateRoom = async (
   auth,
@@ -21,6 +21,7 @@ const CreateRoom = async (
       adults,
       children,
       cost: price,
+      creationDate: formatDate(new Date()),
     }),
   })
     .then((response) => {

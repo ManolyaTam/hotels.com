@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../api-config";
+import { BASE_URL, formatDate } from "../../api-config";
 
 const CreateCity = async (auth, cityName, country, postOffice, hotels) => {
   return fetch(BASE_URL + `/api/cities`, {
@@ -12,6 +12,7 @@ const CreateCity = async (auth, cityName, country, postOffice, hotels) => {
       country: country,
       postOffice: postOffice,
       hotels: hotels,
+      creationDate: formatDate(new Date()),
     }),
   })
     .then((response) => {
