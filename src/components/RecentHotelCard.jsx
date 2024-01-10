@@ -1,6 +1,5 @@
 import {
   Card,
-  CardActionArea,
   CardContent,
   CardMedia,
   Box,
@@ -25,9 +24,7 @@ const RecentHotelCard = ({
   const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 350 }}>
-      <CardActionArea>
-        <CardMedia component="img" height="140" image={imgUrl} alt={alt} />
-      </CardActionArea>
+      <CardMedia component="img" height="140" image={imgUrl} alt={alt} />
       <CardContent>
         <Typography fontSize={15}>
           {hotelName}, {city}
