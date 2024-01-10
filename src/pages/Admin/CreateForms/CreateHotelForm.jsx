@@ -46,7 +46,6 @@ const CreateHotelForm = () => {
         .max(180, "Longitude must be between -180 and 180"),
     }),
     onSubmit: async (values) => {
-      console.log(values);
       const {
         cityId,
         hotelName,
@@ -69,7 +68,7 @@ const CreateHotelForm = () => {
         longitude,
       );
       if (res.status === "success") {
-        showMessage("success", "City was successfully created");
+        showMessage("success", "Hotel was successfully created");
       } else if (res.status === "error") {
         showMessage("error", "Something went wrong, please try again later");
       }

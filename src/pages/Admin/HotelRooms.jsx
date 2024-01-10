@@ -143,7 +143,7 @@ const HotelRooms = () => {
         </Paper>
       </Box>
       <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
-        <CreateRoomForm />
+        <CreateRoomForm hotelId={hotelId} />
       </CreateForm>
     </>
   );

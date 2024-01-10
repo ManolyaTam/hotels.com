@@ -1,19 +1,25 @@
 import { useFormik } from "formik";
 import { TextField, Button, Typography } from "@mui/material";
 import * as yup from "yup";
+import { MessageContext } from "../../../providers/MessageProvider";
+import { UserContext } from "../../../providers/UserProvider";
+import { useContext } from "react";
+import { CreateRoom } from "../../../services/admin/Create/CreateRoom";
 
-const CreateRoomForm = () => {
+const CreateRoomForm = ({ hotelId }) => {
+  const { userAuth } = useContext(UserContext);
+  const { showMessage } = useContext(MessageContext);
   const formik = useFormik({
     initialValues: {
       roomNumber: "",
-      type: "",
+      type: 0,
       adults: 1,
       children: 0,
       price: 0,
     },
     validationSchema: yup.object({
       roomNumber: yup.string().required("Room number is required"),
-      type: yup.string().required("Type is required"),
+      type: yup.number().required("Type is required"),
       adults: yup
         .number()
         .required("Number of adults is required")
@@ -27,8 +33,22 @@ const CreateRoomForm = () => {
         .required("Price is required")
         .min(1, "Price must be greater than 0"),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const { roomNumber, type, adults, children, price } = values;
+      const res = await CreateRoom(
+        userAuth,
+        hotelId,
+        roomNumber,
+        type,
+        adults,
+        children,
+        price,
+      );
+      if (res.status === "success") {
+        showMessage("success", "Room was successfully created");
+      } else if (res.status === "error") {
+        showMessage("error", "Something went wrong, please try again later");
+      }
     },
   });
 
