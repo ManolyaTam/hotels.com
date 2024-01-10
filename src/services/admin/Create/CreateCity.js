@@ -12,7 +12,7 @@ const CreateCity = async (auth, cityName, country, postOffice, hotels) => {
       country: country,
       postOffice: postOffice,
       hotels: hotels,
-      creationDate: formatDate(new Date()),
+      creationDate: formatDate(),
     }),
   })
     .then((response) => {

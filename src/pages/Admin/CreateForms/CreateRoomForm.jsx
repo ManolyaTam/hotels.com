@@ -12,7 +12,7 @@ const CreateRoomForm = ({ hotelId }) => {
   const formik = useFormik({
     initialValues: {
       roomNumber: "",
-      type: 0,
+      type: "",
       adults: 1,
       children: 0,
       price: 0,

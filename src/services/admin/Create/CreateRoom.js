@@ -1,5 +1,4 @@
 import { BASE_URL, formatDate } from "../../api-config";
-
 const CreateRoom = async (
   auth,
   hotelId,
@@ -21,12 +20,14 @@ const CreateRoom = async (
       adults,
       children,
       cost: price,
-      creationDate: formatDate(new Date()),
+      creationDate: formatDate(),
     }),
   })
     .then((response) => {
-      if (response.status === 201) {
+      if (response.status === 204) {
         return { status: "success" };
+      } else if (response.status === 404) {
+        return { status: "not found" };
       } else {
         throw new Error(
           `unexpected response ${response.status} ${response.statusText}`,
