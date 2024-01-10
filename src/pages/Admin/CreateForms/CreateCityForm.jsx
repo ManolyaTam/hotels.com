@@ -1,8 +1,14 @@
 import { useFormik } from "formik";
 import { TextField, Button, Typography } from "@mui/material";
 import * as yup from "yup";
+import { CreateCity } from "../../../services/admin/Create/CreateCity";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserProvider";
+import { MessageContext } from "../../../providers/MessageProvider";
 
 const CreateCityForm = () => {
+  const { userAuth } = useContext(UserContext);
+  const { showMessage } = useContext(MessageContext);
   const formik = useFormik({
     initialValues: {
       cityName: "",
@@ -19,8 +25,20 @@ const CreateCityForm = () => {
         .min(0, "Hotels must be a non-negative number or 0")
         .required("Hotels must be a number"),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const { cityName, country, postOffice, hotels } = values;
+      const res = await CreateCity(
+        userAuth,
+        cityName,
+        country,
+        postOffice,
+        hotels,
+      );
+      if (res.status === "success") {
+        showMessage("success", "City was successfully created");
+      } else if (res.status === "error") {
+        showMessage("error", "Something went wrong, please try again later");
+      }
     },
   });
 
