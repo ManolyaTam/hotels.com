@@ -2,7 +2,7 @@ export { default as Avatar } from "./Avatar";
 export { default as Button } from "./Button";
 export { default as CartCard } from "./CartCard";
 export { default as DestinationCard } from "./DestinationCard";
-export { default as DetailedRoom } from "./DetailedRoom";
+export { default as DetailedRoomCard } from "./DetailedRoomCard";
 export { default as HotelCard } from "./HotelCard";
 export { default as Input } from "./Input";
 export { default as NoResults } from "./NoResults";
