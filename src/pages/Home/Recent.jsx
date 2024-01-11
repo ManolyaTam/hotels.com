@@ -10,7 +10,6 @@ const Recent = ({ recentArr }) => {
             <RecentHotelCard
               {...item}
               imgUrl={item.thumbnailUrl}
-              // price={item.finalPrice} TODO: check if price is always given
               city={item.cityName}
               rating={item.starRating}
               originalPrice={item.originalRoomPrice}

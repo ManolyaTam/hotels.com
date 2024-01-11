@@ -51,7 +51,6 @@ function App() {
             </CartProvider>
           </MessageProvider>
         </UserProvider>
-        {/* TODO: Add Default Path + error page */}
       </BrowserRouter>
     </div>
   );
