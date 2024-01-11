@@ -1,4 +1,4 @@
-import RecentHotelCard from "../../components/RecentHotelCard";
+import { RecentHotelCard } from "../../components/index";
 import { Typography, Box } from "@mui/material";
 const Recent = ({ recentArr }) => {
   return (

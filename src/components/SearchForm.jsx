@@ -1,6 +1,4 @@
-import Input from "./Input";
-import RangePicker from "./RangePicker";
-import Button from "./Button";
+import { Button, Input, RangePicker } from "./index";
 import { Box } from "@mui/material";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";

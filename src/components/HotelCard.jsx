@@ -6,7 +6,7 @@ import {
   Typography,
   Rating,
 } from "@mui/material";
-import Button from "./Button";
+import { Button } from "./index";
 import { useNavigate } from "react-router-dom";
 
 const HotelCard = ({

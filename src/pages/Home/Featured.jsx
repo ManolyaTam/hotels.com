@@ -1,5 +1,5 @@
 import { Typography, Box } from "@mui/material";
-import HotelCard from "../../components/HotelCard";
+import { HotelCard } from "../../components/index";
 
 const Featured = ({ featuredArr }) => {
   return (

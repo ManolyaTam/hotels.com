@@ -1,5 +1,5 @@
 import { Box, AppBar, IconButton, Typography, Badge } from "@mui/material";
-import Avatar from "../Avatar";
+import { Avatar } from "../index";
 
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { UserContext } from "../../providers/UserProvider";
 import { CartContext } from "../../providers/CartProvider";
 import { useState, useContext } from "react";
-import AdminSidebar from "./AdminSidebar";
+import { AdminSidebar } from "../index";
 
 const NavBar = () => {
   const { isAdmin } = useContext(UserContext);

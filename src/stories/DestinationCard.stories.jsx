@@ -1,4 +1,4 @@
-import DestinationCard from "../components/DestinationCard";
+import { DestinationCard } from "../components/index";
 
 const DestinationCardStory = {
   component: DestinationCard,

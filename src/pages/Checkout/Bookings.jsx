@@ -1,4 +1,4 @@
-import Button from "../../components/Button";
+import { Button } from "../../components/index";
 
 import { Card, Box, CardContent, Typography } from "@mui/material";
 

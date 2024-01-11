@@ -3,7 +3,7 @@ import { MessageContext } from "../../providers/MessageProvider";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { deleteCity } from "../../services/admin/deleteCity"; // Updated import statement
-import Button from "../../components/Button";
+import { Button } from "../../components/index";
 import {
   Box,
   Container,

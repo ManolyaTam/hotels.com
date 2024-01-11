@@ -19,7 +19,7 @@ import { MessageContext } from "../../providers/MessageProvider";
 import { UserContext } from "../../providers/UserProvider";
 import { getHotelInfoById } from "../../services/admin/fetchHotels";
 import { deleteHotel } from "../../services/admin/deleteHotel";
-import Button from "../../components/Button";
+import { Button } from "../../components/index";
 import CreateForm from "./CreateForm";
 import CreateHotelForm from "./CreateForms/CreateHotelForm";
 

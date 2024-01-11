@@ -1,5 +1,4 @@
-import RangePicker from "../../components/RangePicker";
-import Button from "../../components/Button";
+import { Button, RangePicker } from "../../components/index";
 import { getHotelRoomsByDate } from "../../services/hotel/getHotelRooms";
 
 const RoomsSearch = ({

@@ -1,4 +1,4 @@
-import RoomCard from "../../components/RoomCard";
+import { RoomCard } from "../../components/index";
 import { Box } from "@mui/material";
 import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";

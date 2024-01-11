@@ -19,7 +19,7 @@ import { getAllRoomsInHotel } from "../../services/admin/fetchRooms";
 import { getHotelInfoById } from "../../services/admin/fetchHotels";
 import { deleteRoom } from "../../services/admin/deleteRoom";
 import { UserContext } from "../../providers/UserProvider";
-import Button from "../../components/Button";
+import { Button } from "../../components/index";
 import CreateForm from "./CreateForm";
 import CreateRoomForm from "./CreateForms/CreateRoomForm";
 
