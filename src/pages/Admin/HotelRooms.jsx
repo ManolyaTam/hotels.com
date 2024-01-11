@@ -15,9 +15,9 @@ import {
   Container,
 } from "@mui/material";
 import { useEffect, useState, useContext } from "react";
-import { getAllRoomsInHotel } from "../../services/admin/fetchRooms";
-import { getHotelInfoById } from "../../services/admin/fetchHotels";
-import { deleteRoom } from "../../services/admin/deleteRoom";
+import { getAllRoomsInHotel } from "../../services/admin/Get/fetchRooms";
+import { getHotelInfoById } from "../../services/admin/Get/fetchHotels";
+import { deleteRoom } from "../../services/admin/Delete/deleteRoom";
 import { UserContext } from "../../providers/UserProvider";
 import { Button } from "../../components/index";
 import CreateForm from "./CreateForm";

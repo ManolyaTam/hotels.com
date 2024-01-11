@@ -1,4 +1,4 @@
-import { BASE_URL } from "../api-config";
+import { BASE_URL } from "../../api-config";
 
 const getAllRoomsInHotel = async (id) => {
   return fetch(
