@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../providers/UserProvider";
-import { fetchCities } from "../services/admin/fetchCities";
-import { fetchHotels } from "../services/admin/fetchHotels";
+import { fetchCities } from "../services/admin/Get/fetchCities";
+import { fetchHotels } from "../services/admin/Get/fetchHotels";
 
 const useNavAdmin = () => {
   const { userAuth } = useContext(UserContext);

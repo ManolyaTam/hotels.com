@@ -1,8 +1,7 @@
 import { Typography, Paper, Box } from "@mui/material";
-import CartCard from "../../components/CartCard";
 import { CartContext } from "../../providers/CartProvider";
 import { useContext } from "react";
-import Button from "../../components/Button";
+import { Button, CartCard } from "../../components/index";
 
 const Cart = ({ setActiveStep }) => {
   const { cart, dispatch } = useContext(CartContext);

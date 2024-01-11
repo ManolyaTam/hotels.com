@@ -1,4 +1,4 @@
-import { BASE_URL } from "../api-config";
+import { BASE_URL } from "../../api-config";
 
 const deleteHotel = async (cityId, hotelId, auth) => {
   return fetch(BASE_URL + `/api/cities/${cityId}/hotels/${hotelId}`, {

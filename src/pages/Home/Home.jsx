@@ -2,7 +2,7 @@ import { Divider } from "@mui/material";
 import useFetchUserHome from "../../hooks/useFetchUserHome";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
-import SearchForm from "../../components/SearchForm";
+import { SearchForm } from "../../components/index";
 import Featured from "./Featured";
 import Recent from "./Recent";
 import Trending from "./Trending";

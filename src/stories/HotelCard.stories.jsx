@@ -1,4 +1,4 @@
-import HotelCard from "../components/HotelCard";
+import { HotelCard } from "../components/index";
 
 const HotelCardStory = {
   component: HotelCard,

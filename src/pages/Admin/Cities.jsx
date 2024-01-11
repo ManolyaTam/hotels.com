@@ -2,8 +2,8 @@ import { Add, DeleteForever, Edit } from "@mui/icons-material";
 import { MessageContext } from "../../providers/MessageProvider";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
-import { deleteCity } from "../../services/admin/deleteCity"; // Updated import statement
-import Button from "../../components/Button";
+import { deleteCity } from "../../services/admin/Delete/deleteCity"; // Updated import statement
+import { Button } from "../../components/index";
 import {
   Box,
   Container,

@@ -1,5 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
-import { reducer } from "../Reducers/cart";
+import { reducer } from "../reducers/cart";
 export const CartContext = createContext();
 
 const getCartFromLocalStorage = () => {

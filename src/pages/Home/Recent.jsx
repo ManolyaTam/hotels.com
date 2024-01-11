@@ -1,4 +1,4 @@
-import RecentHotelCard from "../../components/RecentHotelCard";
+import { RecentHotelCard } from "../../components/index";
 import { Typography, Box } from "@mui/material";
 const Recent = ({ recentArr }) => {
   return (
@@ -10,7 +10,6 @@ const Recent = ({ recentArr }) => {
             <RecentHotelCard
               {...item}
               imgUrl={item.thumbnailUrl}
-              // price={item.finalPrice} TODO: check if price is always given
               city={item.cityName}
               rating={item.starRating}
               originalPrice={item.originalRoomPrice}

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { Typography, Box, Container } from "@mui/material";
-import Button from "../components/Button";
+import { Button } from "../components/index";
 import { useNavigate } from "react-router-dom";
 
 const AdminsOnly = ({ children }) => {

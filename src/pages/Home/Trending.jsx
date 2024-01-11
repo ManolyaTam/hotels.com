@@ -1,5 +1,5 @@
 import { Typography, Box } from "@mui/material";
-import DestinationCard from "../../components/DestinationCard";
+import { DestinationCard } from "../../components/index";
 
 const Trending = ({ trendingArr }) => {
   return (

@@ -14,10 +14,9 @@ import {
   Radio,
 } from "@mui/material";
 import { useFormik } from "formik";
-import Button from "../../components/Button";
+import { Button, Input } from "../../components/index";
 import useParam from "../../hooks/useParam";
 import { useState } from "react";
-import Input from "../../components/Input";
 
 const Filter = () => {
   const [rating, setRating] = useState(4);

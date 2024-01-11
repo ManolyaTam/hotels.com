@@ -1,4 +1,4 @@
-import DateRangePicker from "../components/DateRangePicker";
+import { DateRangePicker } from "../components/index";
 import dayjs from "dayjs";
 
 const DateRangePickerStory = {

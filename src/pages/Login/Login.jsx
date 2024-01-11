@@ -7,8 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import { Button, Input } from "../../components/index";
 import useLogin from "../../hooks/useLogin";
 
 import { UserContext } from "../../providers/UserProvider";

@@ -1,6 +1,4 @@
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import Select from "../../components/Select";
+import { Button, Select, Input } from "../../components/index";
 import { Card } from "@mui/material";
 import useCheckout from "../../hooks/useCheckout";
 

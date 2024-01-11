@@ -1,9 +1,11 @@
 import { Grid, Box, CircularProgress } from "@mui/material";
-import NoResults from "../../components/NoResults";
-import SearchForm from "../../components/SearchForm";
 import useParam from "../../hooks/useParam";
-import DetailedRoomCard from "../../components/DetailedRoomCard";
-import { searchHotels } from "../../services/Search/searchHotels";
+import {
+  DetailedRoomCard,
+  NoResults,
+  SearchForm,
+} from "../../components/index";
+import { searchHotels } from "../../services/search/searchHotels";
 import Filter from "./Filter";
 import { useState, useEffect } from "react";
 

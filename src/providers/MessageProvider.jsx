@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import Toast from "../components/Toast";
+import { Toast } from "../components/index";
 export const MessageContext = createContext();
 
 const MessageProvider = ({ children }) => {

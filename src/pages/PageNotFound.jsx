@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import Button from "../components/Button";
+import { Button } from "../components/index";
 import { useNavigate } from "react-router-dom";
 
 const PageNotFound = () => {

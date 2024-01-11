@@ -1,6 +1,5 @@
 import AliceCarousel from "react-alice-carousel";
-import ReviewCard from "../../components/ReviewCard";
-import Button from "../../components/Button";
+import { Button, ReviewCard } from "../../components/index";
 import { Box } from "@mui/material";
 import { useRef } from "react";
 

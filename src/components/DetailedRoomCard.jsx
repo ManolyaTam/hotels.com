@@ -9,7 +9,7 @@ import {
   Chip,
   Rating,
 } from "@mui/material";
-import Button from "./Button";
+import { Button } from "./index";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
