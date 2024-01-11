@@ -1,16 +1,25 @@
 import "./login.css";
-import { Box, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  InputAdornment,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import useLogin from "../../hooks/useLogin";
 
 import { UserContext } from "../../providers/UserProvider";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (!user || !user?.userType) return;
@@ -41,18 +50,32 @@ const LoginPage = () => {
             helperText={formik.touched.username && formik.errors.username}
             required
           />
-          <Input
+          <TextField
+            margin="normal"
+            size="small"
             name="password"
             label="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             fullWidth
-            margin="normal"
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.username && Boolean(formik.errors.password)}
             helperText={formik.touched.username && formik.errors.password}
             required
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowPassword(!showPassword)}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <Button type="submit" label="Login" fullWidth />
         </form>
