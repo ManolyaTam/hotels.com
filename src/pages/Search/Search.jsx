@@ -5,7 +5,7 @@ import {
   NoResults,
   SearchForm,
 } from "../../components/index";
-import { searchHotels } from "../../services/Search/searchHotels";
+import { searchHotels } from "../../services/search/searchHotels";
 import Filter from "./Filter";
 import { useState, useEffect } from "react";
 
