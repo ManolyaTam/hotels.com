@@ -17,7 +17,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import CreateForm from "./CreateForm";
+import SlidingForm from "./SlidingForm";
 import CreateCityForm from "./CreateForms/CreateCityForm";
 
 const Cities = ({ data }) => {
@@ -114,9 +114,9 @@ const Cities = ({ data }) => {
           </TableBody>
         </Table>
       </Paper>
-      <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
+      <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateCityForm />
-      </CreateForm>
+      </SlidingForm>
     </>
   );
 };

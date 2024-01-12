@@ -1,7 +1,7 @@
 import { Box, Drawer, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-const CreateForm = ({ children, isOpen, setIsOpen }) => {
+const SlidingForm = ({ children, isOpen, setIsOpen }) => {
   return (
     <>
       <Drawer
@@ -21,4 +21,4 @@ const CreateForm = ({ children, isOpen, setIsOpen }) => {
   );
 };
 
-export default CreateForm;
+export default SlidingForm;

@@ -20,7 +20,7 @@ import { UserContext } from "../../providers/UserProvider";
 import { getHotelInfoById } from "../../services/admin/Get/fetchHotels";
 import { deleteHotel } from "../../services/admin/Delete/deleteHotel";
 import { Button } from "../../components/index";
-import CreateForm from "./CreateForm";
+import SlidingForm from "./SlidingForm";
 import CreateHotelForm from "./CreateForms/CreateHotelForm";
 
 const Hotels = ({ data }) => {
@@ -138,9 +138,9 @@ const Hotels = ({ data }) => {
           </TableBody>
         </Table>
       </Paper>
-      <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
+      <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateHotelForm />
-      </CreateForm>
+      </SlidingForm>
     </>
   );
 };
