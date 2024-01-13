@@ -19,7 +19,7 @@ const UpdateCity = async (
       country: country,
       postOffice: postOffice,
       hotels: hotels,
-      creationDate: formatDate(),
+      modificationDate: formatDate(),
     }),
   })
     .then((response) => {
