@@ -1,30 +1,38 @@
 import { BASE_URL, formatDate } from "../../api-config";
 
-const UpdateCity = async (
+const updateHotel = async (
   auth,
-  cityId,
-  cityName,
-  country,
-  postOffice,
-  hotels,
+  hotelId,
+  hotelName,
+  hotelOwner,
+  rooms,
+  starRating,
+  description,
+  latitude,
+  longitude,
 ) => {
-  return fetch(BASE_URL + `/api/cities/${cityId}`, {
+  return fetch(BASE_URL + `/api/hotels/${hotelId}`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${auth}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name: cityName,
-      country: country,
-      postOffice: postOffice,
-      hotels: hotels,
+      name: hotelName,
+      hotelOwner,
+      rooms,
+      starRating,
+      description,
+      latitude: 0,
+      longitude,
       modificationDate: formatDate(),
     }),
   })
     .then((response) => {
       if (response.status === 200 || response.status === 204) {
         return { status: "success" };
+      } else if (response.status === 404) {
+        return { status: "not found" };
       } else {
         throw new Error(
           `unexpected response ${response.status} ${response.statusText}`,
@@ -39,4 +47,4 @@ const UpdateCity = async (
     });
 };
 
-export { UpdateCity };
+export { updateHotel };

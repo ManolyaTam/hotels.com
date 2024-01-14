@@ -22,9 +22,11 @@ import { deleteHotel } from "../../services/admin/Delete/deleteHotel";
 import { Button } from "../../components/index";
 import SlidingForm from "./SlidingForm";
 import CreateHotelForm from "./CreateForms/CreateHotelForm";
+import UpdateHotelForm from "./UpdateForms/UpdateHotelForm";
 
 const Hotels = ({ data }) => {
   const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
+  const [updateObject, setUpdateObject] = useState(false);
   const navigate = useNavigate();
   const { showMessage, hideMessage } = useContext(MessageContext);
   const { userAuth } = useContext(UserContext);
@@ -98,6 +100,8 @@ const Hotels = ({ data }) => {
               <TableCell>Owner</TableCell>
               <TableCell>Rooms</TableCell>
               <TableCell>Star Rating</TableCell>
+              <TableCell>Latitude</TableCell>
+              <TableCell>Longitude</TableCell>
               <TableCell>Creation Date</TableCell>
               <TableCell>Modification Date</TableCell>
               <TableCell></TableCell>
@@ -111,6 +115,8 @@ const Hotels = ({ data }) => {
                 <TableCell>{row.owner}</TableCell>
                 <TableCell>{row.rooms}</TableCell>
                 <TableCell>{row.starRating}</TableCell>
+                <TableCell>{row.latitude}</TableCell>
+                <TableCell>{row.longitude}</TableCell>
                 <TableCell>{row.creationDate}</TableCell>
                 <TableCell>{row.modificationDate}</TableCell>
                 <TableCell>
@@ -120,7 +126,10 @@ const Hotels = ({ data }) => {
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Edit">
-                    <IconButton color="primary">
+                    <IconButton
+                      color="primary"
+                      onClick={() => setUpdateObject(row)}
+                    >
                       <Edit />
                     </IconButton>
                   </Tooltip>
@@ -141,6 +150,11 @@ const Hotels = ({ data }) => {
       <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateHotelForm />
       </SlidingForm>
+      {Boolean(updateObject) && (
+        <SlidingForm isOpen={Boolean(updateObject)} setIsOpen={setUpdateObject}>
+          <UpdateHotelForm initVals={updateObject} hotelId={updateObject.id} />
+        </SlidingForm>
+      )}
     </>
   );
 };
