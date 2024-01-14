@@ -2,10 +2,14 @@ import { Box } from "@mui/material";
 import { Input, Button } from "../../components";
 import { useFormik } from "formik";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { searchCities } from "../../services/admin/search/searchCities";
+import { searchHotels } from "../../services/admin/search/searchHotels";
+import { UserContext } from "../../providers/UserProvider";
 
-const Search = ({ dataType }) => {
+const Search = ({ dataType, setData }) => {
   // dataType: "cities", "hotels" or "rooms"
+  const { userAuth } = useContext(UserContext);
   const location = useLocation();
   const path = location.pathname;
 
@@ -13,11 +17,13 @@ const Search = ({ dataType }) => {
     initialValues: {
       searchQuery: "",
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       if (dataType === "cities") {
-        console.log(`searching for ${values.searchQuery} in cities`);
+        const res = await searchCities(userAuth, values.searchQuery);
+        setData(res);
       } else if (dataType === "hotels") {
-        console.log(`searching for ${values.searchQuery} in hotels`);
+        const res = await searchHotels(userAuth, values.searchQuery);
+        setData(res);
       }
     },
   });

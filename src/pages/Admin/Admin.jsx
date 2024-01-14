@@ -6,10 +6,10 @@ import Hotels from "./Hotels";
 import Search from "./Search";
 
 const Admin = () => {
-  const { data, dataType } = useNavAdmin();
+  const { data, dataType, setData } = useNavAdmin();
   return (
     <Box marginInline="auto" maxWidth={1000}>
-      <Search dataType={dataType} />
+      <Search dataType={dataType} setData={setData} />
 
       {data?.length ? (
         dataType === "cities" ? (

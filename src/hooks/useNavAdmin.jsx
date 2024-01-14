@@ -44,6 +44,6 @@ const useNavAdmin = () => {
     }
   }, [route, navigate, userAuth]);
 
-  return { data, dataType };
+  return { data, dataType, setData };
 };
 export default useNavAdmin;
