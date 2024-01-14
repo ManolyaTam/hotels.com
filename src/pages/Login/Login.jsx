@@ -76,6 +76,11 @@ const LoginPage = () => {
               ),
             }}
           />
+          {formik.status && (
+            <Typography variant="caption" color="error">
+              {formik.status}
+            </Typography>
+          )}
           <Button type="submit" label="Login" fullWidth />
         </form>
       </Paper>

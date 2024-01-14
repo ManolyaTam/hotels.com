@@ -31,10 +31,7 @@ const useLogin = () => {
           if (res.statusCode === 400) {
             showMessage("warning", "Username and password are required");
           } else if (res.statusCode === 401) {
-            showMessage(
-              "warning",
-              "Username/Password combination is invalid, please try again",
-            );
+            formik.setStatus("Username or password are incorrect");
           }
         }
       })
