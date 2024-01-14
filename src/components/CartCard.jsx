@@ -6,11 +6,11 @@ import {
   Box,
   Typography,
   Container,
+  CardActionArea,
 } from "@mui/material";
 import { Button } from "./index";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const CartCard = ({
   imgUrl,
@@ -26,19 +26,20 @@ const CartCard = ({
   hotelId,
 }) => {
   const navigate = useNavigate();
-  const [viewServices, setViewServices] = useState(true);
 
   return (
     <Card sx={{ padding: "5px", border: "1px solid lightgrey" }}>
       <Grid container>
         {/* First Column */}
         <Grid item xs={12} md={4}>
-          <CardMedia
-            component="img"
-            image={imgUrl}
-            sx={{ objectFit: "contain" }}
-            alt={alt}
-          />
+          <CardActionArea onClick={() => navigate(`/hotel/${hotelId}`)}>
+            <CardMedia
+              component="img"
+              image={imgUrl}
+              sx={{ objectFit: "contain" }}
+              alt={alt}
+            />
+          </CardActionArea>
         </Grid>
 
         {/* Second Column */}
@@ -69,47 +70,27 @@ const CartCard = ({
         {/* Third Column */}
         <Grid item xs={12} md={5}>
           <CardContent>
-            <Box
-              className="master-detail"
-              style={{
-                border: "1px solid lightgrey",
-                padding: "5px",
-                margin: "2px",
-                borderRadius: "4px",
-              }}
-            >
-              <Box>
-                <Box display="flex" alignItems="center">
-                  {!showLinktoHotel && (
-                    <Button
-                      style={{ padding: 0, width: "25px" }}
-                      variant="text"
-                      label={viewServices ? "▶" : "▼"}
-                      onClick={() =>
-                        setViewServices((viewServices) => !viewServices)
-                      }
-                    />
-                  )}
-                  <Typography>Services</Typography>
-                </Box>
+            <Box>
+              <Box display="flex" alignItems="center">
+                <Typography>Services</Typography>
               </Box>
-              {(!viewServices || showLinktoHotel) && (
-                <Grid>
-                  {roomAmenities.map((service, index) => (
-                    <Box key={index}>
-                      <Container>
-                        <Typography fontSize={13}>
-                          <b>{service.name}</b>
-                        </Typography>
-                        <Typography fontSize={12}>
-                          {service.description}
-                        </Typography>
-                      </Container>
-                    </Box>
-                  ))}
-                </Grid>
-              )}
             </Box>
+            {showLinktoHotel && (
+              <Grid>
+                {roomAmenities.map((service, index) => (
+                  <Box key={index}>
+                    <Container>
+                      <Typography fontSize={13}>
+                        <b>{service.name}</b>
+                      </Typography>
+                      <Typography fontSize={12}>
+                        {service.description}
+                      </Typography>
+                    </Container>
+                  </Box>
+                ))}
+              </Grid>
+            )}
 
             <Box
               style={{

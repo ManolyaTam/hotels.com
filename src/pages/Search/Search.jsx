@@ -31,22 +31,24 @@ const Search = () => {
         </Grid>
         {!loading ? (
           <Grid item xs={12} sm={9}>
-            {results.length ? (
-              results.map((item, index) => (
-                <Box key={index} style={{ padding: 5 }}>
-                  <DetailedRoomCard
-                    {...item}
-                    imgUrl={item.roomPhotoUrl}
-                    price={item.roomPrice}
-                    rating={item.starRating}
-                    city={item.cityName}
-                    roomAmenities={item.amenities}
-                  />
-                </Box>
-              ))
-            ) : (
-              <NoResults />
-            )}
+            <Box display={"flex"} flexWrap={"wrap"}>
+              {results.length ? (
+                results.map((item, index) => (
+                  <Box key={index} style={{ padding: 5 }}>
+                    <DetailedRoomCard
+                      {...item}
+                      imgUrl={item.roomPhotoUrl}
+                      price={item.roomPrice}
+                      rating={item.starRating}
+                      city={item.cityName}
+                      roomAmenities={item.amenities}
+                    />
+                  </Box>
+                ))
+              ) : (
+                <NoResults />
+              )}
+            </Box>
           </Grid>
         ) : (
           <CircularProgress />

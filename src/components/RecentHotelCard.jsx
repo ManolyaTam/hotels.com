@@ -5,6 +5,7 @@ import {
   Box,
   Typography,
   Rating,
+  CardActionArea,
 } from "@mui/material";
 import { Button } from "./index";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +25,13 @@ const RecentHotelCard = ({
   const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 350 }}>
-      <CardMedia component="img" height="140" image={imgUrl} alt={alt} />
+      <CardActionArea
+        onClick={() => {
+          navigate(`/hotel/${hotelId}`);
+        }}
+      >
+        <CardMedia component="img" height="140" image={imgUrl} alt={alt} />
+      </CardActionArea>
       <CardContent>
         <Typography fontSize={15}>
           {hotelName}, {city}
