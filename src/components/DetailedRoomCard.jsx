@@ -8,6 +8,7 @@ import {
   Container,
   Chip,
   Rating,
+  CardActionArea,
 } from "@mui/material";
 import { Button } from "./index";
 import PersonIcon from "@mui/icons-material/Person";
@@ -37,12 +38,18 @@ const DetailedRoomCard = ({
       <Grid container>
         {/* First Column */}
         <Grid item xs={12} md={4}>
-          <CardMedia
-            component="img"
-            image={imgUrl}
-            sx={{ objectFit: "contain" }}
-            alt={alt}
-          />
+          <CardActionArea
+            onClick={() => {
+              navigate(`/hotel/${hotelId}`);
+            }}
+          >
+            <CardMedia
+              component="img"
+              image={imgUrl}
+              sx={{ objectFit: "contain" }}
+              alt={alt}
+            />
+          </CardActionArea>
         </Grid>
         {/* Second Column */}
         <Grid item xs={12} md={3}>
