@@ -2,7 +2,7 @@ import { Add, DeleteForever, Edit } from "@mui/icons-material";
 import { MessageContext } from "../../providers/MessageProvider";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
-import { deleteCity } from "../../services/admin/Delete/deleteCity"; // Updated import statement
+import { deleteCity } from "../../services/admin/Delete/deleteCity";
 import { Button } from "../../components/index";
 import {
   Box,
@@ -17,11 +17,13 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import CreateForm from "./CreateForm";
+import SlidingForm from "./SlidingForm";
 import CreateCityForm from "./CreateForms/CreateCityForm";
+import UpdateCityForm from "./UpdateForms/UpdateCityForm";
 
 const Cities = ({ data }) => {
   const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
+  const [updateObject, setUpdateObject] = useState(false);
   const { showMessage, hideMessage } = useContext(MessageContext);
   const { userAuth } = useContext(UserContext);
 
@@ -103,7 +105,12 @@ const Cities = ({ data }) => {
                       <DeleteForever />
                     </IconButton>
                   </Tooltip>
-                  <Tooltip title="Edit">
+                  <Tooltip
+                    title="Edit"
+                    onClick={() => {
+                      setUpdateObject(row);
+                    }}
+                  >
                     <IconButton color="primary">
                       <Edit />
                     </IconButton>
@@ -114,9 +121,14 @@ const Cities = ({ data }) => {
           </TableBody>
         </Table>
       </Paper>
-      <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
+      <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateCityForm />
-      </CreateForm>
+      </SlidingForm>
+      {Boolean(updateObject) && (
+        <SlidingForm isOpen={Boolean(updateObject)} setIsOpen={setUpdateObject}>
+          <UpdateCityForm cityId={updateObject.id} initValues={updateObject} />
+        </SlidingForm>
+      )}
     </>
   );
 };

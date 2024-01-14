@@ -46,6 +46,8 @@ const transformData = (data) => {
     hotel: item.name,
     owner: item.owner,
     rooms: item.rooms,
+    latitude: item.latitude,
+    longitude: item.longitude,
     starRating: item.starRating,
     creationDate: item.creationDate,
     modificationDate: item.modificationDate,

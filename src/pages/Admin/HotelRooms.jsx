@@ -20,8 +20,9 @@ import { getHotelInfoById } from "../../services/admin/Get/fetchHotels";
 import { deleteRoom } from "../../services/admin/Delete/deleteRoom";
 import { UserContext } from "../../providers/UserProvider";
 import { Button } from "../../components/index";
-import CreateForm from "./CreateForm";
+import SlidingForm from "./SlidingForm";
 import CreateRoomForm from "./CreateForms/CreateRoomForm";
+import UpdateRoomForm from "./UpdateForms/UpdateRoomForm";
 
 const HotelRooms = () => {
   const { showMessage, hideMessage } = useContext(MessageContext);
@@ -31,6 +32,7 @@ const HotelRooms = () => {
   const hotelId = params.id;
   const { userAuth } = useContext(UserContext);
   const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
+  const [updateFormObject, setUpdateObject] = useState(false);
 
   useEffect(() => {
     const loadRooms = async () => {
@@ -131,7 +133,10 @@ const HotelRooms = () => {
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="Edit">
-                      <IconButton color="primary">
+                      <IconButton
+                        color="primary"
+                        onClick={() => setUpdateObject(row)}
+                      >
                         <Edit />
                       </IconButton>
                     </Tooltip>
@@ -142,9 +147,20 @@ const HotelRooms = () => {
           </Table>
         </Paper>
       </Box>
-      <CreateForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
+      <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateRoomForm hotelId={hotelId} />
-      </CreateForm>
+      </SlidingForm>
+      {Boolean(updateFormObject) && (
+        <SlidingForm
+          isOpen={Boolean(updateFormObject)}
+          setIsOpen={setUpdateObject}
+        >
+          <UpdateRoomForm
+            roomId={updateFormObject.roomId}
+            initVals={updateFormObject}
+          />
+        </SlidingForm>
+      )}
     </>
   );
 };
