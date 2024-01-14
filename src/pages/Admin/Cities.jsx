@@ -20,6 +20,7 @@ import {
 import SlidingForm from "./SlidingForm";
 import CreateCityForm from "./CreateForms/CreateCityForm";
 import UpdateCityForm from "./UpdateForms/UpdateCityForm";
+import Pagination from "./Pagination";
 
 const Cities = ({ data }) => {
   const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
@@ -121,6 +122,7 @@ const Cities = ({ data }) => {
           </TableBody>
         </Table>
       </Paper>
+      <Pagination count={1} defaultPage={1} />
       <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateCityForm />
       </SlidingForm>
