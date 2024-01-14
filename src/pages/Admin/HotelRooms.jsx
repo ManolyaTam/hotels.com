@@ -23,6 +23,7 @@ import { Button } from "../../components/index";
 import SlidingForm from "./SlidingForm";
 import CreateRoomForm from "./CreateForms/CreateRoomForm";
 import UpdateRoomForm from "./UpdateForms/UpdateRoomForm";
+import Pagination from "./Pagination";
 
 const HotelRooms = () => {
   const { showMessage, hideMessage } = useContext(MessageContext);
@@ -146,6 +147,7 @@ const HotelRooms = () => {
             </TableBody>
           </Table>
         </Paper>
+        <Pagination count={1} defaultPage={1} />
       </Box>
       <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateRoomForm hotelId={hotelId} />

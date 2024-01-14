@@ -23,6 +23,7 @@ import { Button } from "../../components/index";
 import SlidingForm from "./SlidingForm";
 import CreateHotelForm from "./CreateForms/CreateHotelForm";
 import UpdateHotelForm from "./UpdateForms/UpdateHotelForm";
+import Pagination from "./Pagination";
 
 const Hotels = ({ data }) => {
   const [createFormIsOpen, setCreateFromIsOpen] = useState(false);
@@ -147,6 +148,7 @@ const Hotels = ({ data }) => {
           </TableBody>
         </Table>
       </Paper>
+      <Pagination count={1} defaultPage={1} />
       <SlidingForm isOpen={createFormIsOpen} setIsOpen={setCreateFromIsOpen}>
         <CreateHotelForm />
       </SlidingForm>
